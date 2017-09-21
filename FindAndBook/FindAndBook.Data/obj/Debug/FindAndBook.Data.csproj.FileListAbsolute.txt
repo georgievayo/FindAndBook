@@ -1,0 +1,10 @@
+C:\Users\Yoana\Desktop\FindAndBook\FindAndBook\FindAndBook.Data\obj\Debug\FindAndBook.Data.csprojResolveAssemblyReference.cache
+C:\Users\Yoana\Desktop\FindAndBook\FindAndBook\FindAndBook.Data\bin\Debug\FindAndBook.Data.dll.config
+C:\Users\Yoana\Desktop\FindAndBook\FindAndBook\FindAndBook.Data\bin\Debug\FindAndBook.Data.dll
+C:\Users\Yoana\Desktop\FindAndBook\FindAndBook\FindAndBook.Data\bin\Debug\FindAndBook.Data.pdb
+C:\Users\Yoana\Desktop\FindAndBook\FindAndBook\FindAndBook.Data\bin\Debug\EntityFramework.dll
+C:\Users\Yoana\Desktop\FindAndBook\FindAndBook\FindAndBook.Data\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Yoana\Desktop\FindAndBook\FindAndBook\FindAndBook.Data\bin\Debug\EntityFramework.xml
+C:\Users\Yoana\Desktop\FindAndBook\FindAndBook\FindAndBook.Data\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Yoana\Desktop\FindAndBook\FindAndBook\FindAndBook.Data\obj\Debug\FindAndBook.Data.dll
+C:\Users\Yoana\Desktop\FindAndBook\FindAndBook\FindAndBook.Data\obj\Debug\FindAndBook.Data.pdb
