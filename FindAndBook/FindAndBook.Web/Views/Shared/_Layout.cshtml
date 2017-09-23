@@ -4,40 +4,38 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - FindAndBook</title>
-    <link rel="stylesheet" href="~/Content/navigation.css" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.css" rel="stylesheet">
+    @Styles.Render("~/Content/navigation.css")
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 </head>
 <body>
-    <nav class="navbar navbar-default sidebar col-md-3" role="navigation">
-        <div class="container-fluid">
-            <div class="collapse navbar-collapse" id="bs-sidebar-navbar-collapse-1">
-                <ul class="nav navbar-nav">
-                    <li class="active"><div>@Html.ActionLink("Home", "Index", "Home")<span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-home"></span></div></li>
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"> My Account <span class="caret"></span><span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-user"></span></a>
-                        <ul class="dropdown-menu forAnimate" role="menu">
-                            <li>@Html.ActionLink("View Profile", "Index", "Home")</li>
-                            <li>@Html.ActionLink("Update Profile", "Index", "Home")</li>
-                            <li>@Html.ActionLink("Add new place", "Index", "Home")</li>
-                        </ul>
-                    </li>
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"> Places <span class="caret"></span><span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-th"></span></a>
-                        <ul class="dropdown-menu forAnimate" role="menu">
-                            <li>@Html.ActionLink("Restaurants", "Index", "Home")</li>
-                            <li>@Html.ActionLink("Clubs", "Index", "Home")</li>
-                        </ul>
-                    </li>
-                    <li><div>@Html.ActionLink("Login", "Login", "Account")<span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-log-in"></span></div></li>
-                    <li><a href="#">Sign up<span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-user"></span></a></li>
-                    <li><a href="#">Logout<span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-log-out"></span></a></li>
-                    <li><a href="#">Administration<span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-cog"></span></a></li>
-                </ul>
-            </div>
+<nav class="navbar navbar-default">
+    <div class="container">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">LOGO</a>
         </div>
-    </nav>
-    <div class="col-md-9 body-content">
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                <li>@Html.ActionLink("Places", "Index", "Places")</li>
+                <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                <li>@Html.ActionLink("Login", "Login", "Account")</li>
+                <li>@Html.ActionLink("Sign up", "Register", "Account")</li>
+            </ul>
+        </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+</nav>
+<div class="col-md-9 body-content">
         @RenderBody()
     </div>
     @Scripts.Render("~/bundles/jquery")
