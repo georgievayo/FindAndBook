@@ -101,6 +101,10 @@
       <HintPath>..\packages\Ninject.Web.Common.3.2.0.0\lib\net45-full\Ninject.Web.Common.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Ninject.Web.Mvc, Version=3.2.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ninject.MVC5.3.2.1.0\lib\net45-full\Ninject.Web.Mvc.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -223,7 +227,6 @@
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\FindAndBookNinjectModule.cs" />
     <Compile Include="App_Start\NinjectWeb.cs" />
-    <Compile Include="App_Start\NinjectWebCommon.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
@@ -326,6 +329,10 @@
     <ProjectReference Include="..\FindAndBook.Models\FindAndBook.Models.csproj">
       <Project>{ad395ca0-599f-4774-a88d-41b475561ae3}</Project>
       <Name>FindAndBook.Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FindAndBook.Providers\FindAndBook.Providers.csproj">
+      <Project>{86281080-03F2-46A5-9E5E-660AA5BFBFC0}</Project>
+      <Name>FindAndBook.Providers</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
