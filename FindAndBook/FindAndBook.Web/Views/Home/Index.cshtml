@@ -1,0 +1,33 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="container">
+    <div class="row">
+        Find your favourite place, book it and enjoy!
+    </div>
+    <div class="form-group">
+        <div class="input-group-btn search-panel">
+            <div class="row">
+                <div class="btn-group" data-toggle="buttons-radio">
+                    <button class="btn active">Restaurants</button>
+                    <button class="btn">Clubs</button>
+                </div>
+                <div>
+                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                        <span id="search_concept">Search by</span> <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a href="#name">Name</a></li>
+                        <li><a href="#description">Description</a></li>
+                        <li><a href="#address">Address</a></li>
+                        <li><a href="#bill">Average bill</a></li>
+                    </ul>
+                </div>
+                <input class="input-md" type="search" placeholder="Enter pattern..." />
+                <input type="submit" value="Search" />
+            </div>
+        </div>
+
+    </div>
+</div>
