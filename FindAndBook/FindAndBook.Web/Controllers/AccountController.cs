@@ -35,14 +35,13 @@ namespace FindAndBook.Web.Controllers
 
         // GET: /Account/Login
         [AllowAnonymous]
-        public ActionResult Login(string returnUrl)
+        public ActionResult Login()
         {
             if (this.provider.IsAuthenticated)
             {
                 return this.RedirectToAction("Index", "Home");
             }
 
-            ViewBag.ReturnUrl = returnUrl;
             return this.View();
         }
 

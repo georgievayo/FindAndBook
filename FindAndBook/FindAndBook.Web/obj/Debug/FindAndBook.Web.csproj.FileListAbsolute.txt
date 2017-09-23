@@ -90,3 +90,14 @@ C:\Users\Yoana\Desktop\FindAndBook\FindAndBook\FindAndBook.Web\bin\Microsoft.Owi
 C:\Users\Yoana\Desktop\FindAndBook\FindAndBook\FindAndBook.Web\bin\FindAndBook.Providers.pdb
 C:\Users\Yoana\Desktop\FindAndBook\FindAndBook\FindAndBook.Web\obj\Debug\FindAndBook.Web.dll
 C:\Users\Yoana\Desktop\FindAndBook\FindAndBook\FindAndBook.Web\obj\Debug\FindAndBook.Web.pdb
+C:\Users\Yoana\Desktop\FindAndBook\FindAndBook\FindAndBook.Web\bin\Castle.Core.dll
+C:\Users\Yoana\Desktop\FindAndBook\FindAndBook\FindAndBook.Web\bin\Ninject.dll
+C:\Users\Yoana\Desktop\FindAndBook\FindAndBook\FindAndBook.Web\bin\Ninject.Extensions.Factory.dll
+C:\Users\Yoana\Desktop\FindAndBook\FindAndBook\FindAndBook.Web\bin\Ninject.Web.Common.dll
+C:\Users\Yoana\Desktop\FindAndBook\FindAndBook\FindAndBook.Web\bin\Ninject.Web.dll
+C:\Users\Yoana\Desktop\FindAndBook\FindAndBook\FindAndBook.Web\bin\WebActivatorEx.dll
+C:\Users\Yoana\Desktop\FindAndBook\FindAndBook\FindAndBook.Web\bin\Castle.Core.xml
+C:\Users\Yoana\Desktop\FindAndBook\FindAndBook\FindAndBook.Web\bin\Ninject.xml
+C:\Users\Yoana\Desktop\FindAndBook\FindAndBook\FindAndBook.Web\bin\Ninject.Extensions.Factory.xml
+C:\Users\Yoana\Desktop\FindAndBook\FindAndBook\FindAndBook.Web\bin\Ninject.Web.xml
+C:\Users\Yoana\Desktop\FindAndBook\FindAndBook\FindAndBook.Web\bin\Ninject.Web.Common.xml
