@@ -15,6 +15,11 @@ namespace FindAndBook.Data
             Database.SetInitializer<FindAndBookContext>(null);
         }
 
+        public static FindAndBookContext Create()
+        {
+            return new FindAndBookContext();
+        }
+
         public DbSet<Address> Addresses { get; set; }
         public DbSet<BookedTable> BookedTables { get; set; }
         public DbSet<Booking> Bookings { get; set; }
