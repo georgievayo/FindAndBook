@@ -3,9 +3,17 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FindAndBook", "FindAndBook\FindAndBook.csproj", "{03FD273B-0988-4F6D-8CA5-B4CF31177EB4}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FindAndBook.Web", "FindAndBook\FindAndBook.Web.csproj", "{03FD273B-0988-4F6D-8CA5-B4CF31177EB4}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FindAndBook.Data", "FindAndBook.Data\FindAndBook.Data.csproj", "{A392A611-D090-4877-8879-3C3C6EF49348}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FindAndBook.Models", "FindAndBook.Models\FindAndBook.Models.csproj", "{AD395CA0-599F-4774-A88D-41B475561AE3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FindAndBook.Authentication", "FindAndBook.Authentication\FindAndBook.Authentication.csproj", "{240F6D12-7D2B-4AAF-A467-116676AA94CB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FindAndBook.Providers", "FindAndBook.Providers\FindAndBook.Providers.csproj", "{86281080-03F2-46A5-9E5E-660AA5BFBFC0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FindAndBook.Factories", "FindAndBook.Factories\FindAndBook.Factories.csproj", "{70B60740-999C-47D2-A317-2214C41095C0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +29,22 @@ Global
 		{A392A611-D090-4877-8879-3C3C6EF49348}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A392A611-D090-4877-8879-3C3C6EF49348}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A392A611-D090-4877-8879-3C3C6EF49348}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AD395CA0-599F-4774-A88D-41B475561AE3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AD395CA0-599F-4774-A88D-41B475561AE3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AD395CA0-599F-4774-A88D-41B475561AE3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AD395CA0-599F-4774-A88D-41B475561AE3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{240F6D12-7D2B-4AAF-A467-116676AA94CB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{240F6D12-7D2B-4AAF-A467-116676AA94CB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{240F6D12-7D2B-4AAF-A467-116676AA94CB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{240F6D12-7D2B-4AAF-A467-116676AA94CB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{86281080-03F2-46A5-9E5E-660AA5BFBFC0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{86281080-03F2-46A5-9E5E-660AA5BFBFC0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{86281080-03F2-46A5-9E5E-660AA5BFBFC0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{86281080-03F2-46A5-9E5E-660AA5BFBFC0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{70B60740-999C-47D2-A317-2214C41095C0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{70B60740-999C-47D2-A317-2214C41095C0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{70B60740-999C-47D2-A317-2214C41095C0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{70B60740-999C-47D2-A317-2214C41095C0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

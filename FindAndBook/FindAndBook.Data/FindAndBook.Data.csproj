@@ -9,7 +9,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>FindAndBook.Data</RootNamespace>
     <AssemblyName>FindAndBook.Data</AssemblyName>
-    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
   </PropertyGroup>
@@ -39,6 +39,14 @@
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.1\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.EntityFramework, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.EntityFramework.2.2.1\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
@@ -50,30 +58,36 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Migrations\201709211639084_Initial.cs" />
+    <Compile Include="Migrations\201709211639084_Initial.Designer.cs">
+      <DependentUpon>201709211639084_Initial.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
-    <Compile Include="Models\Address.cs" />
-    <Compile Include="Models\BookedTable.cs" />
-    <Compile Include="Models\Booking.cs" />
     <Compile Include="FindAndBookContext.cs" />
-    <Compile Include="Models\Mapping\AddressMap.cs" />
-    <Compile Include="Models\Mapping\BookedTableMap.cs" />
-    <Compile Include="Models\Mapping\BookingMap.cs" />
-    <Compile Include="Models\Mapping\MenuMap.cs" />
-    <Compile Include="Models\Mapping\OrderMap.cs" />
-    <Compile Include="Models\Mapping\PlaceMap.cs" />
-    <Compile Include="Models\Mapping\ReviewMap.cs" />
-    <Compile Include="Models\Mapping\TableMap.cs" />
-    <Compile Include="Models\Menu.cs" />
-    <Compile Include="Models\Order.cs" />
-    <Compile Include="Models\Place.cs" />
-    <Compile Include="Models\Review.cs" />
-    <Compile Include="Models\Table.cs" />
+    <Compile Include="Mapping\AddressMap.cs" />
+    <Compile Include="Mapping\BookedTableMap.cs" />
+    <Compile Include="Mapping\BookingMap.cs" />
+    <Compile Include="Mapping\MenuMap.cs" />
+    <Compile Include="Mapping\OrderMap.cs" />
+    <Compile Include="Mapping\PlaceMap.cs" />
+    <Compile Include="Mapping\ReviewMap.cs" />
+    <Compile Include="Mapping\TableMap.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\FindAndBook.Models\FindAndBook.Models.csproj">
+      <Project>{ad395ca0-599f-4774-a88d-41b475561ae3}</Project>
+      <Name>FindAndBook.Models</Name>
+    </ProjectReference>
+  </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201709211639084_Initial.resx">
+      <DependentUpon>201709211639084_Initial.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

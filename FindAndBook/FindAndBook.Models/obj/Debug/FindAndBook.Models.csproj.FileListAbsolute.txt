@@ -1,0 +1,14 @@
+C:\Users\Yoana\Desktop\FindAndBook\FindAndBook\FindAndBook.Models\bin\Debug\FindAndBook.Models.dll
+C:\Users\Yoana\Desktop\FindAndBook\FindAndBook\FindAndBook.Models\bin\Debug\FindAndBook.Models.pdb
+C:\Users\Yoana\Desktop\FindAndBook\FindAndBook\FindAndBook.Models\obj\Debug\FindAndBook.Models.csprojResolveAssemblyReference.cache
+C:\Users\Yoana\Desktop\FindAndBook\FindAndBook\FindAndBook.Models\obj\Debug\FindAndBook.Models.dll
+C:\Users\Yoana\Desktop\FindAndBook\FindAndBook\FindAndBook.Models\obj\Debug\FindAndBook.Models.pdb
+C:\Users\Yoana\Desktop\FindAndBook\FindAndBook\FindAndBook.Models\bin\Debug\FindAndBook.Models.dll.config
+C:\Users\Yoana\Desktop\FindAndBook\FindAndBook\FindAndBook.Models\bin\Debug\EntityFramework.dll
+C:\Users\Yoana\Desktop\FindAndBook\FindAndBook\FindAndBook.Models\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Yoana\Desktop\FindAndBook\FindAndBook\FindAndBook.Models\bin\Debug\EntityFramework.xml
+C:\Users\Yoana\Desktop\FindAndBook\FindAndBook\FindAndBook.Models\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Yoana\Desktop\FindAndBook\FindAndBook\FindAndBook.Models\bin\Debug\Microsoft.AspNet.Identity.Core.dll
+C:\Users\Yoana\Desktop\FindAndBook\FindAndBook\FindAndBook.Models\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.dll
+C:\Users\Yoana\Desktop\FindAndBook\FindAndBook\FindAndBook.Models\bin\Debug\Microsoft.AspNet.Identity.Core.xml
+C:\Users\Yoana\Desktop\FindAndBook\FindAndBook\FindAndBook.Models\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.xml

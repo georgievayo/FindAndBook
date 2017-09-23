@@ -1,19 +1,18 @@
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
+using FindAndBook.Data.Mapping;
 using FindAndBook.Data.Models.Mapping;
+using FindAndBook.Models;
+using Microsoft.AspNet.Identity.EntityFramework;
 
-namespace FindAndBook.Data.Models
+namespace FindAndBook.Data
 {
-    public partial class FindAndBookContext : DbContext
+    public partial class FindAndBookContext : IdentityDbContext<User>
     {
-        static FindAndBookContext()
+        public FindAndBookContext() 
+            : base("FindAndBook", throwIfV1Schema: false)
         {
             Database.SetInitializer<FindAndBookContext>(null);
-        }
-
-        public FindAndBookContext()
-            : base("Name=FindAndBookContext")
-        {
         }
 
         public DbSet<Address> Addresses { get; set; }
