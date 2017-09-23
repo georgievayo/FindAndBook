@@ -2,7 +2,7 @@
 using System.Web.Mvc;
 using FindAndBook.Authentication.Contracts;
 using FindAndBook.Factories;
-using FindAndBook.Models;
+using FindAndBook.Models.Account;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 

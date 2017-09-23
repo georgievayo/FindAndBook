@@ -72,7 +72,7 @@ namespace FindAndBook.Authentication
 
         public IdentityResult RegisterAndLoginUser(User user, string password, bool isPersistent, bool rememberBrowser)
         {
-            var result = ApplicationUserManager.Create(user, password);
+            var result = this.UserManager.Create(user, password);
 
             if (result.Succeeded)
             {
