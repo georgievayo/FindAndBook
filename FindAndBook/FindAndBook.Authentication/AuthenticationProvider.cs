@@ -82,6 +82,8 @@ namespace FindAndBook.Authentication
             return result;
         }
 
+
+
         public SignInStatus SignInWithPassword(string email, string password, bool rememberMe, bool shouldLockout)
         {
             return this.SignInManager.PasswordSignIn(email, password, rememberMe, shouldLockout);

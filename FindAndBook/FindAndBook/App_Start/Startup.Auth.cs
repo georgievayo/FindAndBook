@@ -1,4 +1,5 @@
 ﻿using System;
+using FindAndBook.Authentication.Managers;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;

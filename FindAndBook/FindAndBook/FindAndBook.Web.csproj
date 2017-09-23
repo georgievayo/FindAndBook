@@ -44,6 +44,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="FindAndBook, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Bin\FindAndBook.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.AI.Agent.Intercept, Version=2.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.ApplicationInsights.Agent.Intercept.2.0.6\lib\net45\Microsoft.AI.Agent.Intercept.dll</HintPath>
       <Private>True</Private>
@@ -280,9 +284,17 @@
       <Project>{240f6d12-7d2b-4aaf-a467-116676aa94cb}</Project>
       <Name>FindAndBook.Authentication</Name>
     </ProjectReference>
+    <ProjectReference Include="..\FindAndBook.Data\FindAndBook.Data.csproj">
+      <Project>{A392A611-D090-4877-8879-3C3C6EF49348}</Project>
+      <Name>FindAndBook.Data</Name>
+    </ProjectReference>
     <ProjectReference Include="..\FindAndBook.Factories\FindAndBook.Factories.csproj">
       <Project>{70B60740-999C-47D2-A317-2214C41095C0}</Project>
       <Name>FindAndBook.Factories</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FindAndBook.Models\FindAndBook.Models.csproj">
+      <Project>{ad395ca0-599f-4774-a88d-41b475561ae3}</Project>
+      <Name>FindAndBook.Models</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
