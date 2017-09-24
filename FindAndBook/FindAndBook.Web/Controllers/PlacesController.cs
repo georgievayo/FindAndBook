@@ -39,13 +39,14 @@ namespace FindAndBook.Web.Controllers
         {
             var userId = this.authProvider.CurrentUserId;
             var isManager = this.authProvider.IsInRole(userId, "Manager");
-            var model = this.viewModelFactory.CreateCreateViewModel(isManager);
+            var model = this.viewModelFactory.CreateCreateViewModel();
 
             return View(model);
         }
 
         //[Authorize]
         //[HttpPost]
+        //[ValidateAntiForgeryToken]
         //public ActionResult Create(CreateViewModel model)
         //{
         //    if (!ModelState.IsValid)

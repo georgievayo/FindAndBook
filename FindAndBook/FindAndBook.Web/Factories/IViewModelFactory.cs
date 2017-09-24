@@ -9,7 +9,7 @@ namespace FindAndBook.Web.Factories
     {
         HomeViewModel CreateHomeViewModel(bool isAuthenticated);
 
-        CreateViewModel CreateCreateViewModel(bool isManager);
+        CreateViewModel CreateCreateViewModel();
 
         NavigationViewModel CreateNavigationViewModel(bool isAuthenticated, bool isManager, bool isAdmin);
     }
