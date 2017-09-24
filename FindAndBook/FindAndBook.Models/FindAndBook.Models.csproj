@@ -60,6 +60,7 @@
     <Compile Include="Address.cs" />
     <Compile Include="BookedTable.cs" />
     <Compile Include="Booking.cs" />
+    <Compile Include="Enumerations\RoleType.cs" />
     <Compile Include="Manager.cs" />
     <Compile Include="Menu.cs" />
     <Compile Include="Order.cs" />

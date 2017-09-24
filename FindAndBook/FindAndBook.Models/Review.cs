@@ -5,9 +5,16 @@ namespace FindAndBook.Models
 {
     public partial class Review
     {
-        public string PlaceId { get; set; }
-        public string UserId { get; set; }
-        public string Review1 { get; set; }
+        public Guid PlaceId { get; set; }
+
+        public virtual Place Place { get; set; }
+
+        public Guid UserId { get; set; }
+
+        public virtual User User { get; set; }
+
+        public string Message { get; set; }
+
         public int Rating { get; set; }
     }
 }

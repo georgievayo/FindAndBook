@@ -31,6 +31,7 @@ namespace FindAndBook.Data
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
+            base.OnModelCreating(modelBuilder);
             modelBuilder.Configurations.Add(new AddressMap());
             modelBuilder.Configurations.Add(new BookedTableMap());
             modelBuilder.Configurations.Add(new BookingMap());

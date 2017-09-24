@@ -13,14 +13,10 @@ namespace FindAndBook.Data.Mapping
 
             // Properties
             this.Property(t => t.BookingId)
-                .IsRequired()
-                .IsFixedLength()
-                .HasMaxLength(10);
+                .IsRequired();
 
             this.Property(t => t.TableId)
-                .IsRequired()
-                .IsFixedLength()
-                .HasMaxLength(10);
+                .IsRequired();
 
             // Table & Column Mappings
             this.ToTable("BookedTables");

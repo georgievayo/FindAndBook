@@ -5,8 +5,14 @@ namespace FindAndBook.Models
 {
     public partial class Table
     {
-        public string PlaceId { get; set; }
+        public Guid Id { get; set; }
+
+        public Guid PlaceId { get; set; }
+
+        public virtual Place Place { get; set; }
+
         public int NumberOfPeople { get; set; }
+
         public int NumberOfTables { get; set; }
     }
 }

@@ -14,19 +14,13 @@ namespace FindAndBook.Data.Mapping
 
             // Properties
             this.Property(t => t.Id)
-                .IsRequired()
-                .IsFixedLength()
-                .HasMaxLength(10);
+                .IsRequired();
 
             this.Property(t => t.PlaceId)
-                .IsRequired()
-                .IsFixedLength()
-                .HasMaxLength(10);
+                .IsRequired();
 
             this.Property(t => t.UserId)
-                .IsRequired()
-                .IsFixedLength()
-                .HasMaxLength(10);
+                .IsRequired();
 
             this.Property(t => t.Date)
                 .IsRequired()

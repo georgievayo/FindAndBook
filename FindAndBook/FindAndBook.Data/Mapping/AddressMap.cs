@@ -14,8 +14,7 @@ namespace FindAndBook.Data.Mapping
 
             // Properties
             this.Property(t => t.PlaceId)
-                .IsRequired()
-                .HasMaxLength(10);
+                .IsRequired();
 
             this.Property(t => t.Country)
                 .IsRequired()

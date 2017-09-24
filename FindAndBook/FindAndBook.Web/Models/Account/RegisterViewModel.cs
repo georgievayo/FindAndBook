@@ -26,13 +26,11 @@ namespace FindAndBook.Web.Models.Account
         public string ConfirmPassword { get; set; }
 
         [Required]
-        [EmailAddress]
-        [Display(Name = "FirstName")]
+        [Display(Name = "First Name")]
         public string FirstName { get; set; }
 
         [Required]
-        [EmailAddress]
-        [Display(Name = "LastName")]
+        [Display(Name = "Last Name")]
         public string LastName { get; set; }
     }
 

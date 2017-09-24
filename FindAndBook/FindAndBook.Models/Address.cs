@@ -5,7 +5,8 @@ namespace FindAndBook.Models
 {
     public partial class Address
     {
-        public string PlaceId { get; set; }
+        public Guid PlaceId { get; set; }
+        public virtual Place Place { get; set; }
         public string Country { get; set; }
         public string City { get; set; }
         public string Area { get; set; }

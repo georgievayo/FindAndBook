@@ -20,6 +20,6 @@ namespace FindAndBook.Models
             
         }
 
-        public ICollection<Place> Places { get; set; }
+        public virtual ICollection<Place> Places { get; set; }
     }
 }

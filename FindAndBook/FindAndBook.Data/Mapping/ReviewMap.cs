@@ -9,21 +9,15 @@ namespace FindAndBook.Data.Mapping
     {
         public ReviewMap()
         {
-            // Primary Key
-            this.HasKey(t => new { t.PlaceId, t.UserId, t.Review1, t.Rating });
-
+            this.HasKey(t => new {t.PlaceId, t.UserId});
             // Properties
             this.Property(t => t.PlaceId)
-                .IsRequired()
-                .IsFixedLength()
-                .HasMaxLength(10);
+                .IsRequired();
 
             this.Property(t => t.UserId)
-                .IsRequired()
-                .IsFixedLength()
-                .HasMaxLength(10);
+                .IsRequired();
 
-            this.Property(t => t.Review1)
+            this.Property(t => t.Message)
                 .IsRequired();
 
             this.Property(t => t.Rating)
@@ -33,7 +27,7 @@ namespace FindAndBook.Data.Mapping
             this.ToTable("Reviews");
             this.Property(t => t.PlaceId).HasColumnName("PlaceId");
             this.Property(t => t.UserId).HasColumnName("UserId");
-            this.Property(t => t.Review1).HasColumnName("Review");
+            this.Property(t => t.Message).HasColumnName("Message");
             this.Property(t => t.Rating).HasColumnName("Rating");
         }
     }

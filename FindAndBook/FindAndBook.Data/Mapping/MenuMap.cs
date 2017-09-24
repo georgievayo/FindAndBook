@@ -13,9 +13,7 @@ namespace FindAndBook.Data.Mapping
 
             // Properties
             this.Property(t => t.PlaceId)
-                .IsRequired()
-                .IsFixedLength()
-                .HasMaxLength(10);
+                .IsRequired();
 
             this.Property(t => t.Name)
                 .HasMaxLength(20);

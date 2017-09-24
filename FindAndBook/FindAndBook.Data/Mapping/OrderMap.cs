@@ -14,8 +14,7 @@ namespace FindAndBook.Data.Models.Mapping
 
             // Properties
             this.Property(t => t.BookingId)
-                .IsRequired()
-                .HasMaxLength(10);
+                .IsRequired();
 
             this.Property(t => t.Name)
                 .IsRequired()

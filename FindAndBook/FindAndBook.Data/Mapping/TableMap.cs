@@ -9,14 +9,7 @@ namespace FindAndBook.Data.Mapping
     {
         public TableMap()
         {
-            // Primary Key
-            this.HasKey(t => new { t.PlaceId, t.NumberOfPeople, t.NumberOfTables });
-
             // Properties
-            this.Property(t => t.PlaceId)
-                .IsRequired()
-                .IsFixedLength()
-                .HasMaxLength(10);
 
             this.Property(t => t.NumberOfPeople)
                 .HasDatabaseGeneratedOption(DatabaseGeneratedOption.None);

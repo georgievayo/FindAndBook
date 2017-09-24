@@ -1,0 +1,76 @@
+﻿@{
+    ViewBag.Title = "Create";
+}
+
+<form class="form-horizontal">
+    <fieldset>
+        <legend>Add your place</legend>
+        <div class="form-group">
+            <label for="name" class="col-lg-2 control-label">Name</label>
+            <div class="col-lg-10">
+                <input class="form-control" id="name" placeholder="Name" type="text" required>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="types" class="col-lg-2 control-label">Types</label>
+            <div class="col-lg-10">
+                <select multiple class="form-control" id="types" required>
+                    <option value="breakfast">Breakfast</option>
+                    <option value="lunch">Lunch</option>
+                    <option value="dinner">Dinner</option>
+                    <option value="luxury dining">Luxury Dining</option>
+                    <option value="cafe">Cafe</option>
+                    <option value="party">Party</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-lg-2 control-label">Address</label>
+            <div class="col-lg-10">
+                <input class="form-control" placeholder="Country" type="text" required>
+                <input class="form-control" placeholder="City" type="text" required>
+                <input class="form-control" placeholder="Area" type="text">
+                <input class="form-control" placeholder="Street" type="text" required>
+                <input class="form-control" placeholder="Number" type="number" required>
+            </div>
+        </div>
+        
+        <div class="form-group">
+            <label for="contact" class="col-lg-2 control-label">Contact</label>
+            <div class="col-lg-10">
+                <input class="form-control" id="contact" placeholder="Contact" type="text" required>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="description" class="col-lg-2 control-label">Description</label>
+            <div class="col-lg-10">
+                <textarea class="form-control" rows="3" id="description" placeholder="What can this place offer?"></textarea>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="weekday" class="col-lg-2 control-label">Weekday hours</label>
+            <div class="col-lg-10">
+                <input class="form-control" id="weekday" placeholder="Weekday hours" type="text" required>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="weekend" class="col-lg-2 control-label">Weekend hours</label>
+            <div class="col-lg-10">
+                <input class="form-control" id="weekend" placeholder="Weekend hours" type="text" required>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="bill" class="col-lg-2 control-label">Average bill</label>
+            <div class="col-lg-10">
+                <input class="form-control" id="bill" placeholder="Average bill" type="text" required>
+            </div>
+        </div>
+        
+        <div class="form-group">
+            <div class="col-lg-10 col-lg-offset-2">
+                <button type="reset" class="btn btn-default">Cancel</button>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+        </div>
+    </fieldset>
+</form>
