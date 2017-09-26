@@ -5,9 +5,13 @@ namespace FindAndBook.Models
 {
     public partial class Address
     {
-        public Address(Place place, string country, string city, string area, string street, int number)
+        public Address()
         {
-            this.Place = place;
+            
+        }
+        public Address(Guid? placeId, string country, string city, string area, string street, int number)
+        {
+            this.PlaceId = placeId;
             this.Country = country;
             this.City = city;
             this.Area = area;

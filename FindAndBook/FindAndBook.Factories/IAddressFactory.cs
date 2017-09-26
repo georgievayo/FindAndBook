@@ -9,6 +9,6 @@ namespace FindAndBook.Factories
 {
     public interface IAddressFactory
     {
-        Address CreateAddress(Place place, string country, string city, string area, string street, int number);
+        Address CreateAddress(Guid? placeId, string country, string city, string area, string street, int number);
     }
 }

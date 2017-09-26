@@ -88,7 +88,7 @@ namespace FindAndBook.Web.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = this.userFactory.CreateUser(model.Username, model.Email);
+                var user = this.userFactory.CreateUser(model.Username, model.Email, model.FirstName, model.LastName);
                 var result = this.provider.RegisterAndLoginUser(user, model.Password, isPersistent: false, rememberBrowser: false);
                 //var res = this.provider.AddToRole(user.Id, model.Role);
                 if (result.Succeeded)

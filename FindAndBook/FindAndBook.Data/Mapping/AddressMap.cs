@@ -2,6 +2,7 @@ using FindAndBook.Models;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity.ModelConfiguration;
+using System.Data.Entity.ModelConfiguration.Configuration;
 
 namespace FindAndBook.Data.Mapping
 {
@@ -31,7 +32,9 @@ namespace FindAndBook.Data.Mapping
 
             // Table & Column Mappings
             this.ToTable("Addresses");
-            this.Property(t => t.Id).HasColumnName("Id");
+            this.Property(t => t.Id)
+                .HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity)
+                .HasColumnName("Id");
             this.Property(t => t.PlaceId).HasColumnName("PlaceId");
             this.HasRequired(t => t.Place);
             this.Property(t => t.Country).HasColumnName("Country");

@@ -1,0 +1,10 @@
+﻿@model FindAndBook.Web.Models.Places.PlaceShortViewModel
+
+<div class="row">
+    <div class="col-md-12">
+        @Model.Name
+        @Model.Address.Country, @Model.Address.City, @Model.Address.Area, @Model.Address.Street @Model.Address.Number
+        @Model.AverageBill
+        @Model.Contact
+    </div>
+</div>

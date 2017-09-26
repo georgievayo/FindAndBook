@@ -14,7 +14,9 @@ namespace FindAndBook.Data.Mapping
                 .IsRequired();
 
             this.ToTable("Reviews");
-            this.Property(t => t.Id).HasColumnName("Id");
+            this.Property(t => t.Id)
+                .HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity)
+                .HasColumnName("Id");
             this.Property(t => t.UserId).HasColumnName("UserId");
             this.Property(t => t.PlaceId).HasColumnName("PlaceId");
             this.Property(t => t.Message).HasColumnName("Message");

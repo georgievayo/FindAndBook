@@ -21,7 +21,9 @@ namespace FindAndBook.Data.Mapping
 
             // Table & Column Mappings
             this.ToTable("Bookings");
-            this.Property(t => t.Id).HasColumnName("Id");
+            this.Property(t => t.Id)
+                .HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity)
+                .HasColumnName("Id");
             this.Property(t => t.UserId).HasColumnName("UserId");
             this.Property(t => t.PlaceId).HasColumnName("PlaceId");
             this.Property(t => t.DateTime).HasColumnName("DateTime");

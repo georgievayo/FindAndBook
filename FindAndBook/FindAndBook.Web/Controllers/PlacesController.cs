@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Web.Mvc;
 using FindAndBook.Authentication.Contracts;
 using FindAndBook.Services.Contracts;
@@ -77,10 +78,24 @@ namespace FindAndBook.Web.Controllers
             var userId = this.authProvider.CurrentUserId;
             var place = this.placeService.CreatePlace(model.Name, model.Contact, model.WeekendHours, model.WeekdayHours,
                 model.Description, model.AverageBill, userId);
-            var address = this.addressService.CreateAddress(place, model.Country, model.City, model.Area, model.Street,
+            var address = this.addressService.CreateAddress(place.Id, model.Country, model.City, model.Area, model.Street,
                 model.Number);
 
             return this.RedirectToAction("Details", new { id = place.Id });
+        }
+
+        [HttpGet]
+        public ActionResult List()
+        {
+            var places = this.placeService.GetAll()
+                .Select(p =>
+                {
+                    var address = this.addressService.GetAddressByPlaceId(p.Id);
+                    return this.viewModelFactory.CreatePlaceShort(p, address);
+                })
+                .ToList();
+
+            return View(places);
         }
     }
 }

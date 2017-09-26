@@ -5,6 +5,10 @@ namespace FindAndBook.Models
 {
     public partial class Place
     {
+        public Place()
+        {
+            
+        }
         public Place(string name, string contact, string weekendHours,
             string weekdaayHours, string details, int? averageBill, User manager)
         {

@@ -12,5 +12,7 @@ namespace FindAndBook.Web.Factories
         CreateViewModel CreateCreateViewModel();
 
         NavigationViewModel CreateNavigationViewModel(bool isAuthenticated, bool isManager, bool isAdmin);
+
+        PlaceShortViewModel CreatePlaceShort(Place place, Address address);
     }
 }

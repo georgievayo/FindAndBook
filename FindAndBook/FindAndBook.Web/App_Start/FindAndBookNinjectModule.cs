@@ -10,6 +10,7 @@ using FindAndBook.Services.Contracts;
 using FindAndBook.Web.Factories;
 using Ninject.Extensions.Factory;
 using Ninject.Modules;
+using Ninject.Web.Common;
 
 namespace FindAndBook.Web
 {
@@ -18,7 +19,7 @@ namespace FindAndBook.Web
         public override void Load()
         {
             // Providers
-            this.Bind<IAuthenticationProvider>().To<AuthenticationProvider>().InSingletonScope();
+            this.Bind<IAuthenticationProvider>().To<AuthenticationProvider>().InRequestScope();
             this.Bind<IDateTimeProvider>().To<DateTimeProvider>().InSingletonScope();
             this.Bind<IHttpContextProvider>().To<HttpContextProvider>().InSingletonScope();
 
@@ -29,12 +30,13 @@ namespace FindAndBook.Web
             this.Bind<IAddressFactory>().ToFactory().InSingletonScope();
 
             // Services
-            this.Bind<IPlaceService>().To<PlaceService>().InSingletonScope();
-            this.Bind<IUserService>().To<UserService>().InSingletonScope();
-            this.Bind<IAddressService>().To<AddressService>().InSingletonScope();
+            this.Bind<IPlaceService>().To<PlaceService>().InRequestScope();
+            this.Bind<IUserService>().To<UserService>().InRequestScope();
+            this.Bind<IAddressService>().To<AddressService>().InRequestScope();
 
-            this.Bind(typeof(IRepository<>)).To(typeof(EFRepository<>)).InSingletonScope();
-            this.Bind<IUnitOfWork>().To<UnitOfWork>().InSingletonScope();
+            this.Bind(typeof(IRepository<>)).To(typeof(EFRepository<>)).InRequestScope();
+            this.Bind<IUnitOfWork>().To<UnitOfWork>().InRequestScope();
+            this.Bind<FindAndBookContext>().ToSelf().InRequestScope();
         }
     }
 }

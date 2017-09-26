@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using FindAndBook.Data.Contracts;
 using FindAndBook.Factories;
 using FindAndBook.Models;
@@ -57,6 +59,13 @@ namespace FindAndBook.Services
             this.unitOfWork.Commit();
 
             return newPlace;
+        }
+
+        public ICollection<Place> GetAll()
+        {
+            var result = this.placeRepository.All.ToList();
+
+            return result;
         }
 
     }

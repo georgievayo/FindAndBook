@@ -14,13 +14,14 @@ namespace FindAndBook.Models
             this.Bookings = new HashSet<Booking>();
         }
 
-        public User(string username, string email)
+        public User(string username, string email, string firstName, string lastName)
             :this()
         {
             this.UserName = username;
             this.Email = email;
+            this.FirstName = firstName;
+            this.LastName = lastName;
         }
-
 
         public string FirstName { get; set; }
 

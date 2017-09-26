@@ -13,7 +13,9 @@ namespace FindAndBook.Data.Mapping
                 .IsRequired();
 
             this.ToTable("Orders");
-            this.Property(t => t.Id).HasColumnName("Id");
+            this.Property(t => t.Id)
+                .HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity)
+                .HasColumnName("Id");
             this.Property(t => t.BookingId).HasColumnName("BookingId");
             this.Property(t => t.Quantity).HasColumnName("Quantity");
 
