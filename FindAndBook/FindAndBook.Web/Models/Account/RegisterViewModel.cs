@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace FindAndBook.Web.Models.Account
 {
@@ -32,6 +33,10 @@ namespace FindAndBook.Web.Models.Account
         [Required]
         [Display(Name = "Last Name")]
         public string LastName { get; set; }
+
+        [Required]
+        [Display(Name = "Type of account")]
+        public string Role { get; set; }
     }
 
 }

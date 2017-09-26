@@ -12,14 +12,17 @@ namespace FindAndBook.Data.Mapping
     {
         public UserMap()
         {
+            this.HasKey(t => t.Id);
 
-            // Table & Column Mappings
             this.ToTable("AspNetUsers");
+            this.Property(t => t.Id).HasColumnName("Id");
             this.Property(t => t.Email).HasColumnName("Email");
             this.Property(t => t.UserName).HasColumnName("Username");
             this.Property(t => t.FirstName).HasColumnName("FirstName");
             this.Property(t => t.LastName).HasColumnName("LastName");
-            this.Property(t => t.Role).HasColumnName("Role");
+
+            this.HasMany(t => t.Bookings);
+            this.HasMany(t => t.Reviews);
         }
     }
 }

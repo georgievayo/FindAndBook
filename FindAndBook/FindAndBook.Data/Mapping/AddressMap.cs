@@ -10,33 +10,30 @@ namespace FindAndBook.Data.Mapping
         public AddressMap()
         {
             // Primary Key
-            this.HasKey(t => new { t.PlaceId, t.Country, t.City, t.Street, t.Number });
+            this.HasKey(t => t.Id);
 
             // Properties
-            this.Property(t => t.PlaceId)
-                .IsRequired();
 
             this.Property(t => t.Country)
                 .IsRequired()
-                .HasMaxLength(10);
+                .HasMaxLength(20);
 
             this.Property(t => t.City)
                 .IsRequired()
-                .HasMaxLength(10);
+                .HasMaxLength(20);
 
             this.Property(t => t.Area)
-                .HasMaxLength(10);
+                .HasMaxLength(20);
 
             this.Property(t => t.Street)
                 .IsRequired()
-                .HasMaxLength(10);
-
-            this.Property(t => t.Number)
-                .HasDatabaseGeneratedOption(DatabaseGeneratedOption.None);
+                .HasMaxLength(20);
 
             // Table & Column Mappings
             this.ToTable("Addresses");
+            this.Property(t => t.Id).HasColumnName("Id");
             this.Property(t => t.PlaceId).HasColumnName("PlaceId");
+            this.HasRequired(t => t.Place);
             this.Property(t => t.Country).HasColumnName("Country");
             this.Property(t => t.City).HasColumnName("City");
             this.Property(t => t.Area).HasColumnName("Area");

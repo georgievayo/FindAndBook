@@ -8,13 +8,8 @@ namespace FindAndBook.Data.Mapping
     {
         public PlaceMap()
         {
-            // Primary Key
-            this.HasKey(t => new { t.Id, t.Name });
-
-            // Properties
-            this.Property(t => t.Id)
-                .IsRequired();
-
+            this.HasKey(t => t.Id);
+            
             this.Property(t => t.Name)
                 .IsRequired()
                 .HasMaxLength(30);
@@ -28,7 +23,6 @@ namespace FindAndBook.Data.Mapping
             this.Property(t => t.WeekdayHours)
                 .HasMaxLength(20);
 
-            // Table & Column Mappings
             this.ToTable("Places");
             this.Property(t => t.Id).HasColumnName("Id");
             this.Property(t => t.Name).HasColumnName("Name");
@@ -37,6 +31,10 @@ namespace FindAndBook.Data.Mapping
             this.Property(t => t.WeekdayHours).HasColumnName("WeekdayHours");
             this.Property(t => t.Details).HasColumnName("Details");
             this.Property(t => t.AverageBill).HasColumnName("AverageBill");
+            this.Property(t => t.ManagerId).HasColumnName("ManagerId");
+
+            this.HasOptional(t => t.Manager).WithMany().HasForeignKey(t=>t.ManagerId);
+            this.HasMany(t => t.Reviews);
         }
     }
 }

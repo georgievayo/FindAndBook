@@ -1,0 +1,46 @@
+﻿using System;
+using FindAndBook.Data.Contracts;
+using FindAndBook.Factories;
+using FindAndBook.Models;
+using FindAndBook.Services.Contracts;
+
+namespace FindAndBook.Services
+{
+    public class UserService : IUserService
+    {
+        private IRepository<User> userRepository;
+
+        private IUnitOfWork unitOfWork;
+
+        private IUserFactory userFactory;
+
+        public UserService(IRepository<User> userRepository, IUnitOfWork unitOfWork, IUserFactory userFactory)
+        {
+            if (userRepository == null)
+            {
+                throw new ArgumentNullException(nameof(userRepository));
+            }
+
+            if (unitOfWork == null)
+            {
+                throw new ArgumentNullException(nameof(unitOfWork));
+            }
+
+            if (userFactory == null)
+            {
+                throw new ArgumentNullException(nameof(userFactory));
+            }
+
+            this.userRepository = userRepository;
+            this.unitOfWork = unitOfWork;
+            this.userFactory = userFactory;
+        }
+
+        public User GetUserById(string id)
+        {
+            var foundUser = this.userRepository.GetById(id);
+
+            return foundUser;
+        }
+    }
+}

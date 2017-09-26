@@ -4,25 +4,22 @@ using FindAndBook.Models;
 
 namespace FindAndBook.Data.Mapping
 {
-    public class MenuMap : EntityTypeConfiguration<Menu>
+    public class ConsumableMap : EntityTypeConfiguration<Consumable>
     {
-        public MenuMap()
+        public ConsumableMap()
         {
-            // Primary Key
-            this.HasKey(t => t.PlaceId);
-
-            // Properties
-            this.Property(t => t.PlaceId)
-                .IsRequired();
+            this.HasKey(t => t.Id);
 
             this.Property(t => t.Name)
-                .HasMaxLength(20);
+                .IsRequired();
 
             this.Property(t => t.Type)
-                .HasMaxLength(10);
+                .IsRequired();
 
-            // Table & Column Mappings
+            this.HasOptional(t => t.Place);
+            
             this.ToTable("Menus");
+            this.Property(t => t.Id).HasColumnName("Id");
             this.Property(t => t.PlaceId).HasColumnName("PlaceId");
             this.Property(t => t.Name).HasColumnName("Name");
             this.Property(t => t.Type).HasColumnName("Type");

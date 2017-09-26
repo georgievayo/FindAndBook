@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using FindAndBook.Models.Enumerations;
+using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace FindAndBook.Models
 {
-    public class User : IdentityUser
+    public class User : IdentityUser, IUser
     {
         public User()
         {
@@ -24,8 +26,8 @@ namespace FindAndBook.Models
 
         public string LastName { get; set; }
 
-        public RoleType Role { get; set; }
-
         public virtual ICollection<Booking> Bookings { get; set; }
+
+        public virtual ICollection<Review> Reviews { get; set; }
     }
 }

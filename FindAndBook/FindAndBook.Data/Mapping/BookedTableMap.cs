@@ -8,20 +8,19 @@ namespace FindAndBook.Data.Mapping
     {
         public BookedTableMap()
         {
-            // Primary Key
-            this.HasKey(t => new { t.BookingId, t.TableId });
+            this.HasKey(t => new { t.BookingId, t.TableId});
 
-            // Properties
-            this.Property(t => t.BookingId)
-                .IsRequired();
-
-            this.Property(t => t.TableId)
-                .IsRequired();
-
-            // Table & Column Mappings
             this.ToTable("BookedTables");
             this.Property(t => t.BookingId).HasColumnName("BookingId");
             this.Property(t => t.TableId).HasColumnName("TableId");
+
+            this.HasRequired(t => t.Booking)
+                .WithMany(t => t.Tables)
+                .HasForeignKey(d => d.BookingId);
+
+            this.HasRequired(t => t.Table)
+                .WithMany(t => t.Bookings)
+                .HasForeignKey(d => d.TableId);
         }
     }
 }

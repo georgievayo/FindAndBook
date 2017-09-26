@@ -103,3 +103,5 @@ C:\Users\Yoana\Desktop\FindAndBook\FindAndBook\FindAndBook.Web\bin\Ninject.Web.M
 C:\Users\Yoana\Desktop\FindAndBook\FindAndBook\FindAndBook.Web\bin\Ninject.Web.Mvc.xml
 C:\Users\Yoana\Desktop\FindAndBook\FindAndBook\FindAndBook.Web\bin\Ninject.Web.dll
 C:\Users\Yoana\Desktop\FindAndBook\FindAndBook\FindAndBook.Web\bin\Ninject.Web.xml
+C:\Users\Yoana\Desktop\FindAndBook\FindAndBook\FindAndBook.Web\bin\FindAndBook.Services.dll
+C:\Users\Yoana\Desktop\FindAndBook\FindAndBook\FindAndBook.Web\bin\FindAndBook.Services.pdb

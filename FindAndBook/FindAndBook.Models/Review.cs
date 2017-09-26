@@ -5,11 +5,13 @@ namespace FindAndBook.Models
 {
     public partial class Review
     {
-        public Guid PlaceId { get; set; }
+        public Guid Id { get; set; }
+
+        public Guid? PlaceId { get; set; }
 
         public virtual Place Place { get; set; }
 
-        public Guid UserId { get; set; }
+        public string UserId { get; set; }
 
         public virtual User User { get; set; }
 

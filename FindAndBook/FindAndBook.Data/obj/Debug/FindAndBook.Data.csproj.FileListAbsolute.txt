@@ -16,4 +16,4 @@ C:\Users\Yoana\Desktop\FindAndBook\FindAndBook\FindAndBook.Data\bin\Debug\Micros
 C:\Users\Yoana\Desktop\FindAndBook\FindAndBook\FindAndBook.Data\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.xml
 C:\Users\Yoana\Desktop\FindAndBook\FindAndBook\FindAndBook.Data\obj\Debug\FindAndBook.Data.Migrations.Initial.resources
 C:\Users\Yoana\Desktop\FindAndBook\FindAndBook\FindAndBook.Data\obj\Debug\FindAndBook.Data.csproj.GenerateResource.Cache
-C:\Users\Yoana\Desktop\FindAndBook\FindAndBook\FindAndBook.Data\obj\Debug\FindAndBook.Data.Migrations.Adduserstable.resources
+C:\Users\Yoana\Desktop\FindAndBook\FindAndBook\FindAndBook.Data\obj\Debug\FindAndBook.Data.Migrations.FixUserId.resources

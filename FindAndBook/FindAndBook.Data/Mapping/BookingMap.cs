@@ -10,39 +10,25 @@ namespace FindAndBook.Data.Mapping
         public BookingMap()
         {
             // Primary Key
-            this.HasKey(t => new { t.Id, t.PlaceId, t.UserId, t.Date, t.Time, t.NumberOfPeople });
+            this.HasKey(t => new { t.Id });
 
             // Properties
             this.Property(t => t.Id)
                 .IsRequired();
 
-            this.Property(t => t.PlaceId)
+            this.Property(t => t.DateTime)
                 .IsRequired();
-
-            this.Property(t => t.UserId)
-                .IsRequired();
-
-            this.Property(t => t.Date)
-                .IsRequired()
-                .IsFixedLength()
-                .HasMaxLength(10);
-
-            this.Property(t => t.Time)
-                .IsRequired()
-                .IsFixedLength()
-                .HasMaxLength(10);
-
-            this.Property(t => t.NumberOfPeople)
-                .HasDatabaseGeneratedOption(DatabaseGeneratedOption.None);
 
             // Table & Column Mappings
             this.ToTable("Bookings");
             this.Property(t => t.Id).HasColumnName("Id");
-            this.Property(t => t.PlaceId).HasColumnName("PlaceId");
             this.Property(t => t.UserId).HasColumnName("UserId");
-            this.Property(t => t.Date).HasColumnName("Date");
-            this.Property(t => t.Time).HasColumnName("Time");
+            this.Property(t => t.PlaceId).HasColumnName("PlaceId");
+            this.Property(t => t.DateTime).HasColumnName("DateTime");
             this.Property(t => t.NumberOfPeople).HasColumnName("NumberOfPeople");
+
+            this.HasOptional(t => t.Place);
+            this.HasOptional(t => t.User).WithMany().HasForeignKey(t => t.UserId);
         }
     }
 }

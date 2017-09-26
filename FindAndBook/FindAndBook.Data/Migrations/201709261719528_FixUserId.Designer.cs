@@ -7,13 +7,13 @@ namespace FindAndBook.Data.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class Initial : IMigrationMetadata
+    public sealed partial class FixUserId : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(Initial));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(FixUserId));
         
         string IMigrationMetadata.Id
         {
-            get { return "201709211639084_Initial"; }
+            get { return "201709261719528_FixUserId"; }
         }
         
         string IMigrationMetadata.Source

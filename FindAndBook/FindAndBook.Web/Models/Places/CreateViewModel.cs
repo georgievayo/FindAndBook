@@ -65,7 +65,7 @@ namespace FindAndBook.Web.Models.Places
         [Required]
         [Display(Name = "Average bill")]
         [AllowHtml]
-        public string AverageBill { get; set; }
+        public int? AverageBill { get; set; }
 
         public IEnumerable<SelectListItem> TypeList => new List<SelectListItem>
         {

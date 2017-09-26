@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Web.Mvc;
 using FindAndBook.Authentication.Contracts;
-using FindAndBook.Factories;
+using FindAndBook.Services.Contracts;
 using FindAndBook.Web.Factories;
 using FindAndBook.Web.Models.Places;
 
@@ -11,8 +11,11 @@ namespace FindAndBook.Web.Controllers
     {
         private IViewModelFactory viewModelFactory;
         private IAuthenticationProvider authProvider;
+        private IPlaceService placeService;
+        private IAddressService addressService;
 
-        public PlacesController(IAuthenticationProvider authProvider, IViewModelFactory factory)
+        public PlacesController(IAuthenticationProvider authProvider, IViewModelFactory factory,
+            IPlaceService placeService, IAddressService addressService)
         {
             if (factory == null)
             {
@@ -24,8 +27,20 @@ namespace FindAndBook.Web.Controllers
                 throw new ArgumentNullException(nameof(authProvider));
             }
 
+            if (placeService == null)
+            {
+                throw new ArgumentNullException(nameof(placeService));
+            }
+
+            if (addressService == null)
+            {
+                throw new ArgumentNullException(nameof(addressService));
+            }
+
             this.viewModelFactory = factory;
             this.authProvider = authProvider;
+            this.placeService = placeService;
+            this.addressService = addressService;
         }
 
         public ActionResult Index()
@@ -37,6 +52,11 @@ namespace FindAndBook.Web.Controllers
         [HttpGet]
         public ActionResult Create()
         {
+            if (!this.authProvider.IsAuthenticated)
+            {
+                return this.RedirectToAction("Login", "Account");
+            }
+
             var userId = this.authProvider.CurrentUserId;
             var isManager = this.authProvider.IsInRole(userId, "Manager");
             var model = this.viewModelFactory.CreateCreateViewModel();
@@ -44,16 +64,23 @@ namespace FindAndBook.Web.Controllers
             return View(model);
         }
 
-        //[Authorize]
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //public ActionResult Create(CreateViewModel model)
-        //{
-        //    if (!ModelState.IsValid)
-        //    {
-        //        return this.View(model);
-        //    }
+        [Authorize]
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Create(CreateViewModel model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return this.View(model);
+            }
 
-        //}
+            var userId = this.authProvider.CurrentUserId;
+            var place = this.placeService.CreatePlace(model.Name, model.Contact, model.WeekendHours, model.WeekdayHours,
+                model.Description, model.AverageBill, userId);
+            var address = this.addressService.CreateAddress(place, model.Country, model.City, model.Area, model.Street,
+                model.Number);
+
+            return this.RedirectToAction("Details", new { id = place.Id });
+        }
     }
 }

@@ -343,6 +343,10 @@
       <Project>{86281080-03F2-46A5-9E5E-660AA5BFBFC0}</Project>
       <Name>FindAndBook.Providers</Name>
     </ProjectReference>
+    <ProjectReference Include="..\FindAndBook.Services\FindAndBook.Services.csproj">
+      <Project>{D8F3636E-3C62-4F9D-B492-D7B92269CCBE}</Project>
+      <Name>FindAndBook.Services</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

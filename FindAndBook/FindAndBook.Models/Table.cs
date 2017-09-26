@@ -7,12 +7,14 @@ namespace FindAndBook.Models
     {
         public Guid Id { get; set; }
 
-        public Guid PlaceId { get; set; }
+        public Guid? PlaceId { get; set; }
 
         public virtual Place Place { get; set; }
 
         public int NumberOfPeople { get; set; }
 
         public int NumberOfTables { get; set; }
+
+        public virtual ICollection<BookedTable> Bookings { get; set; }
     }
 }

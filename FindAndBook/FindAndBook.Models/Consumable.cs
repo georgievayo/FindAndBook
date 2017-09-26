@@ -3,9 +3,11 @@ using System.Collections.Generic;
 
 namespace FindAndBook.Models
 {
-    public partial class Menu
+    public partial class Consumable
     {
-        public Guid PlaceId { get; set; }
+        public Guid Id { get; set; }
+
+        public Guid? PlaceId { get; set; }
 
         public virtual Place Place { get; set; }
 
@@ -18,5 +20,7 @@ namespace FindAndBook.Models
         public int? Quantity { get; set; }
 
         public string Ingredients { get; set; }
+
+        public virtual ICollection<OrderedConsumable> Orders { get; set; }
     }
 }

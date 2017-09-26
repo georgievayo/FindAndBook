@@ -90,7 +90,7 @@ namespace FindAndBook.Web.Controllers
             {
                 var user = this.userFactory.CreateUser(model.Username, model.Email);
                 var result = this.provider.RegisterAndLoginUser(user, model.Password, isPersistent: false, rememberBrowser: false);
-
+                //var res = this.provider.AddToRole(user.Id, model.Role);
                 if (result.Succeeded)
                 {
                     return RedirectToAction("Index", "Home");

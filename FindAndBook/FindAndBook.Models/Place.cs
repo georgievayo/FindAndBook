@@ -5,7 +5,23 @@ namespace FindAndBook.Models
 {
     public partial class Place
     {
+        public Place(string name, string contact, string weekendHours,
+            string weekdaayHours, string details, int? averageBill, User manager)
+        {
+            this.Name = name;
+            this.Contact = contact;
+            this.WeekdayHours = weekdaayHours;
+            this.WeekendHours = weekendHours;
+            this.Details = details;
+            this.AverageBill = averageBill;
+            this.Manager = manager;
+        }
+
         public Guid Id { get; set; }
+
+        public string ManagerId { get; set; }
+
+        public virtual User Manager { get; set; }
 
         public string Name { get; set; }
 
@@ -18,5 +34,13 @@ namespace FindAndBook.Models
         public string Details { get; set; }
 
         public int? AverageBill { get; set; }
+
+        public virtual ICollection<Review> Reviews { get; set; }
+
+        public virtual ICollection<Booking> Bookings { get; set; }
+
+        public virtual ICollection<Consumable> Consumables { get; set; }
+
+
     }
 }

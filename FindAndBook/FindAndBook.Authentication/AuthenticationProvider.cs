@@ -4,6 +4,7 @@ using FindAndBook.Authentication.Managers;
 using FindAndBook.Models;
 using FindAndBook.Providers.Contracts;
 using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
 
 namespace FindAndBook.Authentication
@@ -38,6 +39,7 @@ namespace FindAndBook.Authentication
                 return this.httpContextProvider.GetUserManager<ApplicationSignInManager>();
             }
         }
+
         protected ApplicationUserManager UserManager
         {
             get
