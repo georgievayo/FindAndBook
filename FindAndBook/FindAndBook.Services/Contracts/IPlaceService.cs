@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using FindAndBook.Models;
 
 namespace FindAndBook.Services.Contracts
@@ -9,5 +10,7 @@ namespace FindAndBook.Services.Contracts
             string weekendHours, string weekdaayHours, string details, int? averageBill, string userId);
 
         ICollection<Place> GetAll();
+
+        Place GetPlaceById(Guid id);
     }
 }

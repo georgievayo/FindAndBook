@@ -68,5 +68,10 @@ namespace FindAndBook.Services
             return result;
         }
 
+        public Place GetPlaceById(Guid id)
+        {
+            return this.placeRepository.GetById(id);
+        }
+
     }
 }

@@ -13,6 +13,7 @@ namespace FindAndBook.Models
             string weekdaayHours, string details, int? averageBill, User manager)
         {
             this.Name = name;
+            this.PhotoUrl = "http://basera-dfw.com/wp-content/uploads/2016/03/restaurant.jpeg";
             this.Contact = contact;
             this.WeekdayHours = weekdaayHours;
             this.WeekendHours = weekendHours;
@@ -28,6 +29,8 @@ namespace FindAndBook.Models
         public virtual User Manager { get; set; }
 
         public string Name { get; set; }
+
+        public string PhotoUrl { get; set; }
 
         public string Contact { get; set; }
 

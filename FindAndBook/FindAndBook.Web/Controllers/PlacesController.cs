@@ -97,5 +97,15 @@ namespace FindAndBook.Web.Controllers
 
             return View(places);
         }
+
+        [HttpGet]
+        public ActionResult Details(Guid id)
+        {
+            var place = this.placeService.GetPlaceById(id);
+            var address = this.addressService.GetAddressByPlaceId(place.Id);
+            var model = this.viewModelFactory.CreatePlaceDetailsViewModel(place, address);
+
+            return this.View(model);
+        }
     }
 }

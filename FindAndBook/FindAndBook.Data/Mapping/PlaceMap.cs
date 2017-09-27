@@ -1,6 +1,3 @@
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Data.Entity.ModelConfiguration.Configuration;
 using System.Data.Entity.ModelConfiguration;
 
 using FindAndBook.Models;
@@ -29,6 +26,7 @@ namespace FindAndBook.Data.Mapping
             this.ToTable("Places");
             this.Property(t => t.Id).HasColumnName("Id");
             this.Property(t => t.Name).HasColumnName("Name");
+            this.Property(t => t.PhotoUrl).HasColumnName("PhotoUrl");
             this.Property(t => t.Contact).HasColumnName("Contact");
             this.Property(t => t.WeekendHours).HasColumnName("WeekendHours");
             this.Property(t => t.WeekdayHours).HasColumnName("WeekdayHours");
