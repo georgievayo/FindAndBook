@@ -10,5 +10,7 @@ namespace FindAndBook.Services.Contracts
     public interface IUserService
     {
         User GetUserById(string id);
+
+        IQueryable<User> GetUserByUsername(string username);
     }
 }

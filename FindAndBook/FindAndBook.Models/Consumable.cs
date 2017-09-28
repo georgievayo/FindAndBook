@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace FindAndBook.Models
 {
@@ -21,6 +22,6 @@ namespace FindAndBook.Models
 
         public string Ingredients { get; set; }
 
-        public virtual ICollection<OrderedConsumable> Orders { get; set; }
+        public virtual ICollection<Order> Orders { get; set; }
     }
 }

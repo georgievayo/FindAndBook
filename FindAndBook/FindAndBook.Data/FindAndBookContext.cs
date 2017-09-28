@@ -22,15 +22,11 @@ namespace FindAndBook.Data
 
         public DbSet<Address> Addresses { get; set; }
 
-        public DbSet<BookedTable> BookedTables { get; set; }
-
         public DbSet<Booking> Bookings { get; set; }
 
         public DbSet<Consumable> Consumables { get; set; }
 
         public DbSet<Order> Orders { get; set; }
-
-        public DbSet<OrderedConsumable> OrderedConsumables { get; set; }
 
         public DbSet<Place> Places { get; set; }
 
@@ -40,17 +36,15 @@ namespace FindAndBook.Data
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            base.OnModelCreating(modelBuilder);
             modelBuilder.Configurations.Add(new AddressMap());
-            modelBuilder.Configurations.Add(new BookedTableMap());
             modelBuilder.Configurations.Add(new BookingMap());
             modelBuilder.Configurations.Add(new ConsumableMap());
-            modelBuilder.Configurations.Add(new OrderedConsumableMap());
             modelBuilder.Configurations.Add(new OrderMap());
             modelBuilder.Configurations.Add(new PlaceMap());
             modelBuilder.Configurations.Add(new ReviewMap());
             modelBuilder.Configurations.Add(new TableMap());
             modelBuilder.Configurations.Add(new UserMap());
+            base.OnModelCreating(modelBuilder);
         }
 
         public IDbSet<TEntity> DbSet<TEntity>() where TEntity : class

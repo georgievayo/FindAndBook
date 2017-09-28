@@ -9,6 +9,6 @@ namespace FindAndBook.Factories
 {
     public interface IUserFactory
     {
-        User CreateUser(string username, string email, string firstName, string lastName);
+        User CreateUser(string username, string email, string firstName, string lastName, string phoneNumber);
     }
 }

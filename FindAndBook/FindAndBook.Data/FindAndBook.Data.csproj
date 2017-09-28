@@ -61,24 +61,14 @@
     <Compile Include="Contracts\IUnitOfWork.cs" />
     <Compile Include="EFRepository.cs" />
     <Compile Include="Contracts\IRepository.cs" />
-    <Compile Include="Mapping\OrderedConsumableMap.cs" />
     <Compile Include="Mapping\UserMap.cs" />
-    <Compile Include="Migrations\201709261715418_Initial.cs" />
-    <Compile Include="Migrations\201709261715418_Initial.Designer.cs">
-      <DependentUpon>201709261715418_Initial.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201709261719528_FixUserId.cs" />
-    <Compile Include="Migrations\201709261719528_FixUserId.Designer.cs">
-      <DependentUpon>201709261719528_FixUserId.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201709270810338_AddPhotoUrlToPlace.cs" />
-    <Compile Include="Migrations\201709270810338_AddPhotoUrlToPlace.Designer.cs">
-      <DependentUpon>201709270810338_AddPhotoUrlToPlace.cs</DependentUpon>
+    <Compile Include="Migrations\201709281950261_Initial.cs" />
+    <Compile Include="Migrations\201709281950261_Initial.Designer.cs">
+      <DependentUpon>201709281950261_Initial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="FindAndBookContext.cs" />
     <Compile Include="Mapping\AddressMap.cs" />
-    <Compile Include="Mapping\BookedTableMap.cs" />
     <Compile Include="Mapping\BookingMap.cs" />
     <Compile Include="Mapping\ConsumableMap.cs" />
     <Compile Include="Mapping\OrderMap.cs" />
@@ -99,14 +89,8 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201709261715418_Initial.resx">
-      <DependentUpon>201709261715418_Initial.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201709261719528_FixUserId.resx">
-      <DependentUpon>201709261719528_FixUserId.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201709270810338_AddPhotoUrlToPlace.resx">
-      <DependentUpon>201709270810338_AddPhotoUrlToPlace.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201709281950261_Initial.resx">
+      <DependentUpon>201709281950261_Initial.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

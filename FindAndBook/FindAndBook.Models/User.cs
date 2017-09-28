@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations.Schema;
-using FindAndBook.Models.Enumerations;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 
@@ -12,15 +10,18 @@ namespace FindAndBook.Models
         public User()
         {
             this.Bookings = new HashSet<Booking>();
+            this.Reviews = new HashSet<Review>();
+            this.Places = new HashSet<Place>();
         }
 
-        public User(string username, string email, string firstName, string lastName)
+        public User(string username, string email, string firstName, string lastName, string phoneNumber)
             :this()
         {
             this.UserName = username;
             this.Email = email;
             this.FirstName = firstName;
             this.LastName = lastName;
+            this.PhoneNumber = phoneNumber;
         }
 
         public string FirstName { get; set; }
@@ -30,5 +31,7 @@ namespace FindAndBook.Models
         public virtual ICollection<Booking> Bookings { get; set; }
 
         public virtual ICollection<Review> Reviews { get; set; }
+
+        public virtual ICollection<Place> Places { get; set; }
     }
 }

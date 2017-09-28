@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace FindAndBook.Models
 {
@@ -16,6 +17,8 @@ namespace FindAndBook.Models
         public virtual User User { get; set; }
 
         public string Message { get; set; }
+
+        public DateTime PostedOn { get; set; }
 
         public int Rating { get; set; }
     }

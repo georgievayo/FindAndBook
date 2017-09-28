@@ -6,6 +6,6 @@ namespace FindAndBook.Factories
     public interface IPlaceFactory
     {
         Place CreatePlace(string name, string contact, string weekendHours,
-            string weekdaayHours, string details, int? averageBill, User manager);
+            string weekdaayHours, string details, int? averageBill, User manager, Address address);
     }
 }

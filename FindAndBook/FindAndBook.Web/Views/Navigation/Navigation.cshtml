@@ -1,6 +1,5 @@
 ﻿@model FindAndBook.Web.Models.Navigation.NavigationViewModel
 <div class="container">
-    <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
         <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
             <span class="sr-only">Toggle navigation</span>
@@ -11,7 +10,6 @@
         <li>@Html.ActionLink("Find and Book", "Index", "Home", null, new { @class = "navbar-brand" })</li>
     </div>
 
-    <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav navbar-right">
             <li>@Html.ActionLink("Home", "Index", "Home")</li>
@@ -35,7 +33,7 @@
 
                     <ul class="nav navbar-nav navbar-right">
                         <li>
-                            @*@Html.ActionLink("Hello " + Model.Username + "!", "Details", "Profile", new { username = Model.Username }, htmlAttributes: new { title = "Manage" })*@
+                            @Html.ActionLink("Hello, " + @Model.Username + "!", "Profile", "Account", new { username = Model.Username }, htmlAttributes: new { title = "Manage" })
                         </li>
                         <li><a href="javascript:document.getElementById('logoutForm').submit()">Logout</a></li>
                     </ul>

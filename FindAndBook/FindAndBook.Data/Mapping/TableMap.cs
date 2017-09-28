@@ -9,23 +9,8 @@ namespace FindAndBook.Data.Mapping
     {
         public TableMap()
         {
-            this.HasKey(t => t.Id);
-
-            // Properties
-            this.Property(t => t.NumberOfPeople)
-                .IsRequired();
-
-            this.Property(t => t.NumberOfTables)
-                .IsRequired();
-
-            // Table & Column Mappings
-            this.ToTable("Tables");
-            this.Property(t => t.Id)
-                .HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity)
-                .HasColumnName("Id");
-            this.Property(t => t.PlaceId).HasColumnName("PlaceId");
-            this.Property(t => t.NumberOfPeople).HasColumnName("NumberOfPeople");
-            this.Property(t => t.NumberOfTables).HasColumnName("NumberOfTables");
+            this.Property(x => x.Id)
+                .HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
         }
     }
 }

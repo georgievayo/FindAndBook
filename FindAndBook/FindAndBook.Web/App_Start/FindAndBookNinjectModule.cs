@@ -1,4 +1,5 @@
-﻿using FindAndBook.Authentication;
+﻿using AutoMapper;
+using FindAndBook.Authentication;
 using FindAndBook.Authentication.Contracts;
 using FindAndBook.Data;
 using FindAndBook.Data.Contracts;
@@ -37,6 +38,7 @@ namespace FindAndBook.Web
             this.Bind(typeof(IRepository<>)).To(typeof(EFRepository<>)).InRequestScope();
             this.Bind<IUnitOfWork>().To<UnitOfWork>().InRequestScope();
             this.Bind<FindAndBookContext>().ToSelf().InRequestScope();
+            this.Bind<IMapper>().ToMethod(x => Mapper.Instance).InSingletonScope();
         }
     }
 }

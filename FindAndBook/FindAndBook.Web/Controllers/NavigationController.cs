@@ -1,11 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 using FindAndBook.Authentication.Contracts;
 using FindAndBook.Web.Factories;
-using Microsoft.AspNet.Identity;
 
 namespace FindAndBook.Web.Controllers
 {
@@ -40,12 +36,12 @@ namespace FindAndBook.Web.Controllers
             if (isAuthenticated)
             {
                 username = this.authenticationProvider.CurrentUserUsername;
-                var userId = this.authenticationProvider.CurrentUserId;
-
-                isAdmin = this.authenticationProvider.IsInRole(userId, "admin");
+                var currentUserId = this.authenticationProvider.CurrentUserId;
+                isAdmin = this.authenticationProvider.IsInRole(currentUserId, "Admin");
+                isManager = this.authenticationProvider.IsInRole(currentUserId, "Manager"); ;
             }
 
-            var model = this.viewModelFactory.CreateNavigationViewModel(isAuthenticated, isManager, isAdmin);
+            var model = this.viewModelFactory.CreateNavigationViewModel(isAuthenticated, isManager, isAdmin, username);
             return this.PartialView("Navigation", model);
         }
     }

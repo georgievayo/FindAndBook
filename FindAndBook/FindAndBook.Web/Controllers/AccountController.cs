@@ -1,7 +1,10 @@
 ﻿using System;
+using System.Linq;
 using System.Web.Mvc;
+using AutoMapper.QueryableExtensions;
 using FindAndBook.Authentication.Contracts;
 using FindAndBook.Factories;
+using FindAndBook.Services.Contracts;
 using FindAndBook.Web.Models.Account;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
@@ -16,8 +19,9 @@ namespace FindAndBook.Web.Controllers
 
         private readonly IAuthenticationProvider provider;
         private readonly IUserFactory userFactory;
+        private readonly IUserService userService;
 
-        public AccountController(IAuthenticationProvider provider, IUserFactory userFactory)
+        public AccountController(IAuthenticationProvider provider, IUserFactory userFactory, IUserService userService)
         {
             if (provider == null)
             {
@@ -29,8 +33,14 @@ namespace FindAndBook.Web.Controllers
                 throw new ArgumentNullException(nameof(userFactory));
             }
 
+            if (userService == null)
+            {
+                throw new ArgumentNullException(nameof(userService));
+            }
+
             this.provider = provider;
             this.userFactory = userFactory;
+            this.userService = userService;
         }
 
         // GET: /Account/Login
@@ -88,9 +98,9 @@ namespace FindAndBook.Web.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = this.userFactory.CreateUser(model.Username, model.Email, model.FirstName, model.LastName);
+                var user = this.userFactory.CreateUser(model.Username, model.Email, model.FirstName, model.LastName, model.PhoneNumber);
                 var result = this.provider.RegisterAndLoginUser(user, model.Password, isPersistent: false, rememberBrowser: false);
-                //var res = this.provider.AddToRole(user.Id, model.Role);
+                var res = this.provider.AddToRole(user.Id, model.Role);
                 if (result.Succeeded)
                 {
                     return RedirectToAction("Index", "Home");
@@ -117,6 +127,17 @@ namespace FindAndBook.Web.Controllers
             this.provider.SignOut();
 
             return this.RedirectToAction("Index", "Home");
+        }
+
+        [HttpGet]
+        public ActionResult Profile(string username)
+        {
+            var user = this.userService.GetUserByUsername(username)
+                .ProjectTo<ProfileViewModel>()
+                .ToList()
+                .FirstOrDefault();
+
+            return View(user);
         }
 
         private void AddErrors(IdentityResult result)

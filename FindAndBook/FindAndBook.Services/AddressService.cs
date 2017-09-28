@@ -38,20 +38,20 @@ namespace FindAndBook.Services
             this.addressFactory = addressFactory;
         }
 
-        public Address CreateAddress(Guid? placeId, string country, string city, string area, string street, int number)
+        public Address CreateAddress(string country, string city, string area, string street, int number)
         {
-            var address = this.addressFactory.CreateAddress(placeId, country, city, area, street, number);
+            var address = this.addressFactory.CreateAddress(country, city, area, street, number);
             this.addressRepository.Add(address);
             this.unitOfWork.Commit();
 
             return address;
         }
 
-        public Address GetAddressByPlaceId(Guid placeId)
-        {
-            return this.addressRepository.All
-                .ToList()
-                .FirstOrDefault(p => p.PlaceId == placeId);
-        }
+        //public Address GetAddressByPlaceId(Guid placeId)
+        //{
+        //    return this.addressRepository.All
+        //        .ToList()
+        //        .FirstOrDefault(p => p.PlaceId == placeId);
+        //}
     }
 }

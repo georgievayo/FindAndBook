@@ -5,8 +5,8 @@ namespace FindAndBook.Services.Contracts
 {
     public interface IAddressService
     {
-        Address CreateAddress(Guid? placeId, string country, string city, string area, string street, int number);
+        Address CreateAddress(string country, string city, string area, string street, int number);
 
-        Address GetAddressByPlaceId(Guid placeId);
+        //Address GetAddressByPlaceId(Guid placeId);
     }
 }

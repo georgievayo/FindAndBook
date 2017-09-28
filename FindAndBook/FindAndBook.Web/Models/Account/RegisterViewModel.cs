@@ -35,6 +35,10 @@ namespace FindAndBook.Web.Models.Account
         public string LastName { get; set; }
 
         [Required]
+        [Display(Name ="Phone number")]
+        public string PhoneNumber { get; set; }
+
+        [Required]
         [Display(Name = "Type of account")]
         public string Role { get; set; }
     }

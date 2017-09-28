@@ -1,6 +1,9 @@
 ﻿using System;
+using System.Data.Entity;
 using System.Linq;
 using System.Web.Mvc;
+using AutoMapper;
+using AutoMapper.QueryableExtensions;
 using FindAndBook.Authentication.Contracts;
 using FindAndBook.Services.Contracts;
 using FindAndBook.Web.Factories;
@@ -10,13 +13,14 @@ namespace FindAndBook.Web.Controllers
 {
     public class PlacesController : Controller
     {
-        private IViewModelFactory viewModelFactory;
-        private IAuthenticationProvider authProvider;
-        private IPlaceService placeService;
-        private IAddressService addressService;
+        private readonly IViewModelFactory viewModelFactory;
+        private readonly IAuthenticationProvider authProvider;
+        private readonly IPlaceService placeService;
+        private readonly IAddressService addressService;
+        private readonly IMapper mapper;
 
         public PlacesController(IAuthenticationProvider authProvider, IViewModelFactory factory,
-            IPlaceService placeService, IAddressService addressService)
+            IPlaceService placeService, IAddressService addressService, IMapper mapper)
         {
             if (factory == null)
             {
@@ -38,10 +42,16 @@ namespace FindAndBook.Web.Controllers
                 throw new ArgumentNullException(nameof(addressService));
             }
 
+            if (mapper == null)
+            {
+                throw new ArgumentNullException(nameof(mapper));
+            }
+
             this.viewModelFactory = factory;
             this.authProvider = authProvider;
             this.placeService = placeService;
             this.addressService = addressService;
+            this.mapper = mapper;
         }
 
         public ActionResult Index()
@@ -76,10 +86,10 @@ namespace FindAndBook.Web.Controllers
             }
 
             var userId = this.authProvider.CurrentUserId;
-            var place = this.placeService.CreatePlace(model.Name, model.Contact, model.WeekendHours, model.WeekdayHours,
-                model.Description, model.AverageBill, userId);
-            var address = this.addressService.CreateAddress(place.Id, model.Country, model.City, model.Area, model.Street,
+            var address = this.addressService.CreateAddress(model.Country, model.City, model.Area, model.Street,
                 model.Number);
+            var place = this.placeService.CreatePlace(model.Name, model.Contact, model.WeekendHours, model.WeekdayHours,
+                model.Description, model.AverageBill, userId, address);
 
             return this.RedirectToAction("Details", new { id = place.Id });
         }
@@ -87,23 +97,23 @@ namespace FindAndBook.Web.Controllers
         [HttpGet]
         public ActionResult List()
         {
-            var places = this.placeService.GetAll()
-                .Select(p =>
-                {
-                    var address = this.addressService.GetAddressByPlaceId(p.Id);
-                    return this.viewModelFactory.CreatePlaceShort(p, address);
-                })
+            var places = this.placeService
+                .GetAll()
+                .Include(p => p.Reviews)
+                .Include(p => p.Address)
+                .ProjectTo<PlaceShortViewModel>()
                 .ToList();
-
+           
             return View(places);
         }
 
         [HttpGet]
         public ActionResult Details(Guid id)
         {
-            var place = this.placeService.GetPlaceById(id);
-            var address = this.addressService.GetAddressByPlaceId(place.Id);
-            var model = this.viewModelFactory.CreatePlaceDetailsViewModel(place, address);
+            var model = this.placeService
+                .GetPlaceById(id)
+                .ProjectTo<DetailsViewModel>()
+                .FirstOrDefault();
 
             return this.View(model);
         }

@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace FindAndBook.Models
 {
@@ -7,10 +8,13 @@ namespace FindAndBook.Models
     {
         public Place()
         {
-            
+            this.Reviews = new HashSet<Review>();
+            this.Consumables = new HashSet<Consumable>();
+            this.Bookings = new HashSet<Booking>();
         }
         public Place(string name, string contact, string weekendHours,
-            string weekdaayHours, string details, int? averageBill, User manager)
+            string weekdaayHours, string details, int? averageBill, User manager, Address address)
+            : this()
         {
             this.Name = name;
             this.PhotoUrl = "http://basera-dfw.com/wp-content/uploads/2016/03/restaurant.jpeg";
@@ -20,15 +24,23 @@ namespace FindAndBook.Models
             this.Details = details;
             this.AverageBill = averageBill;
             this.Manager = manager;
+            //this.Address = address;
+            this.AddressId = address.Id;
         }
 
         public Guid Id { get; set; }
+
+        public Guid? AddressId { get; set; }
+
+        public Address Address { get; set; }
 
         public string ManagerId { get; set; }
 
         public virtual User Manager { get; set; }
 
         public string Name { get; set; }
+
+        public string Type { get; set; }
 
         public string PhotoUrl { get; set; }
 

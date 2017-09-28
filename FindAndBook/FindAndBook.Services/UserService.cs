@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Data.Entity;
+using System.Linq;
 using FindAndBook.Data.Contracts;
 using FindAndBook.Factories;
 using FindAndBook.Models;
@@ -41,6 +43,14 @@ namespace FindAndBook.Services
             var foundUser = this.userRepository.GetById(id);
 
             return foundUser;
+        }
+
+        public IQueryable<User> GetUserByUsername(string username)
+        {
+            return this.userRepository
+                .All
+                .Where(u => u.UserName == username)
+                .Include(x => x.Bookings);
         }
     }
 }

@@ -105,3 +105,5 @@ C:\Users\Yoana\Desktop\FindAndBook\FindAndBook\FindAndBook.Web\bin\Ninject.Web.d
 C:\Users\Yoana\Desktop\FindAndBook\FindAndBook\FindAndBook.Web\bin\Ninject.Web.xml
 C:\Users\Yoana\Desktop\FindAndBook\FindAndBook\FindAndBook.Web\bin\FindAndBook.Services.dll
 C:\Users\Yoana\Desktop\FindAndBook\FindAndBook\FindAndBook.Web\bin\FindAndBook.Services.pdb
+C:\Users\Yoana\Desktop\FindAndBook\FindAndBook\FindAndBook.Web\bin\AutoMapper.dll
+C:\Users\Yoana\Desktop\FindAndBook\FindAndBook\FindAndBook.Web\bin\AutoMapper.xml

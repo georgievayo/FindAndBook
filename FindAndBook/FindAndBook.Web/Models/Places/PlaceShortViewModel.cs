@@ -1,23 +1,13 @@
 ﻿using System;
 using System.Linq;
+using AutoMapper;
 using FindAndBook.Models;
+using FindAndBook.Web.Infrastructure;
 
 namespace FindAndBook.Web.Models.Places
 {
-    public class PlaceShortViewModel
+    public class PlaceShortViewModel : IMapFrom<Place>, ICustomMap
     {
-        public PlaceShortViewModel(Place place, Address address)
-        {
-            this.Id = place.Id;
-            this.Name = place.Name;
-            this.PhotoUrl = place.PhotoUrl;
-            this.Address = address;
-            this.Contact = place.Contact;
-            this.AverageBill = place.AverageBill;
-            this.ReviewsCount = place.Reviews.Count;
-            this.Rating = (double)place.Reviews.Sum(r => r.Rating) / place.Reviews.Count;
-        }
-
         public Guid? Id { get; set; }
 
         public string Name { get; set; }
@@ -33,5 +23,22 @@ namespace FindAndBook.Web.Models.Places
         public int ReviewsCount { get; set; }
 
         public double Rating { get; set; }
+
+        public void CreateMappings(IMapperConfigurationExpression configuration)
+        {
+            configuration.CreateMap<Place, PlaceShortViewModel>()
+                .ForMember(shortViewModel => shortViewModel.Id,
+                    cfg => cfg.MapFrom(place => place.Id))
+                .ForMember(shortViewModel => shortViewModel.Name,
+                    cfg => cfg.MapFrom(place => place.Name))
+                .ForMember(shortViewModel => shortViewModel.PhotoUrl,
+                    cfg => cfg.MapFrom(place => place.PhotoUrl))
+                .ForMember(shortViewModel => shortViewModel.Contact,
+                    cfg => cfg.MapFrom(place => place.Contact))
+                .ForMember(shortViewModel => shortViewModel.AverageBill,
+                    cfg => cfg.MapFrom(place => place.AverageBill))
+                .ForMember(shortViewModel => shortViewModel.ReviewsCount,
+                    cfg => cfg.MapFrom(place => place.Reviews.Count));
+        }
     }
 }

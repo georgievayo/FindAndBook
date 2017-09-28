@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace FindAndBook.Models
 {
@@ -15,6 +16,6 @@ namespace FindAndBook.Models
 
         public int NumberOfTables { get; set; }
 
-        public virtual ICollection<BookedTable> Bookings { get; set; }
+        public virtual ICollection<Booking> Bookings { get; set; }
     }
 }

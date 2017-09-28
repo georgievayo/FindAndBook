@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using FindAndBook.Data.Contracts;
 using FindAndBook.Factories;
@@ -10,16 +11,18 @@ namespace FindAndBook.Services
 {
     public class PlaceService : IPlaceService
     {
-        private IRepository<Place> placeRepository;
+        private readonly IRepository<Place> placeRepository;
 
-        private IUnitOfWork unitOfWork;
+        private readonly IUnitOfWork unitOfWork;
 
-        private IPlaceFactory placeFactory;
+        private readonly IPlaceFactory placeFactory;
 
-        private IUserService userService;
+        private readonly IUserService userService;
+
+        private readonly IAddressService addressService;
 
         public PlaceService(IRepository<Place> placeRepository, IUnitOfWork unitOfWork,
-            IPlaceFactory placeFactory, IUserService userService)
+            IPlaceFactory placeFactory, IUserService userService, IAddressService addressService)
         {
             if (placeRepository == null)
             {
@@ -45,15 +48,15 @@ namespace FindAndBook.Services
             this.unitOfWork = unitOfWork;
             this.placeFactory = placeFactory;
             this.userService = userService;
+            this.addressService = addressService;
         }
 
         public Place CreatePlace(string name, string contact, 
-            string weekendHours, string weekdaayHours, string details, int? averageBill, string userId)
+            string weekendHours, string weekdaayHours, string details, int? averageBill, string userId, Address address)
         {
             var manager = this.userService.GetUserById(userId);
-
             var newPlace = this.placeFactory.CreatePlace(name, contact, weekendHours, weekdaayHours, details,
-                averageBill, manager);
+                averageBill, manager, address);
 
             this.placeRepository.Add(newPlace);
             this.unitOfWork.Commit();
@@ -61,16 +64,16 @@ namespace FindAndBook.Services
             return newPlace;
         }
 
-        public ICollection<Place> GetAll()
+        public IQueryable<Place> GetAll()
         {
-            var result = this.placeRepository.All.ToList();
-
-            return result;
+            return this.placeRepository.All.Include(p => p.Reviews);
         }
 
-        public Place GetPlaceById(Guid id)
+        public IQueryable<Place> GetPlaceById(Guid id)
         {
-            return this.placeRepository.GetById(id);
+            return this.placeRepository.All
+                .Where(x => x.Id == id)
+                .Include(x => x.Address);
         }
 
     }

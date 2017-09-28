@@ -9,17 +9,8 @@ namespace FindAndBook.Data.Mapping
     {
         public OrderMap()
         {
-            this.Property(t => t.Id)
-                .IsRequired();
-
-            this.ToTable("Orders");
-            this.Property(t => t.Id)
-                .HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity)
-                .HasColumnName("Id");
-            this.Property(t => t.BookingId).HasColumnName("BookingId");
-            this.Property(t => t.Quantity).HasColumnName("Quantity");
-
-            this.HasMany(t => t.Consumables);
+            this.Property(x => x.Id)
+                .HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
         }
     }
 }

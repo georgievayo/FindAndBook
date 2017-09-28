@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace FindAndBook.Models
 {
@@ -9,9 +10,8 @@ namespace FindAndBook.Models
         {
             
         }
-        public Address(Guid? placeId, string country, string city, string area, string street, int number)
+        public Address(string country, string city, string area, string street, int number)
         {
-            this.PlaceId = placeId;
             this.Country = country;
             this.City = city;
             this.Area = area;
@@ -20,10 +20,6 @@ namespace FindAndBook.Models
         }
 
         public Guid Id { get; set; }
-
-        public Guid? PlaceId { get; set; }
-
-        public virtual Place Place { get; set; }
 
         public string Country { get; set; }
 
