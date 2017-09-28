@@ -13,6 +13,8 @@ namespace FindAndBook.Web.Models.Account
 
         public string FullName { get; set; }
 
+        public string PhoneNumber { get; set; }
+
         public ICollection<Booking> Bookings { get; set; }
 
         public void CreateMappings(IMapperConfigurationExpression configuration)
@@ -25,7 +27,9 @@ namespace FindAndBook.Web.Models.Account
                 .ForMember(profileViewModel => profileViewModel.FullName,
                     cfg => cfg.MapFrom(user => user.FirstName + " " + user.LastName))
                 .ForMember(profileViewModel => profileViewModel.Bookings,
-                    cfg => cfg.MapFrom(user => user.Bookings));
+                    cfg => cfg.MapFrom(user => user.Bookings))
+                .ForMember(profileViewModel => profileViewModel.PhoneNumber,
+                    cfg => cfg.MapFrom(user => user.PhoneNumber));
         }
     }
 }

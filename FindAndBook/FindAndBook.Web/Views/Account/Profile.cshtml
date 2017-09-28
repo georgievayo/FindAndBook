@@ -1,4 +1,7 @@
 ﻿@model FindAndBook.Web.Models.Account.ProfileViewModel
+@{
+    ViewBag.Title = "Profile";
+}
 @Styles.Render("~/Content/profile.css")
 <div class="container" style="margin-top: 30px;">
     <div class="profile-head">
@@ -9,8 +12,8 @@
             <h5>@Model.FullName</h5>
             <p>@Model.Username </p>
             <ul>
-                <li><span class="glyphicon glyphicon-phone"></span> <a href="#" title="call">(+021) 956 789123</a></li>
-                <li><span class="glyphicon glyphicon-envelope"></span><a href="#" title="mail">@Model.Email</a></li>
+                <li><span class="glyphicon glyphicon-phone"></span>@Model.PhoneNumber</li>
+                <li><span class="glyphicon glyphicon-envelope"></span>@Model.Email</li>
             </ul>
         </div>
     </div>

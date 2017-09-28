@@ -1,5 +1,8 @@
 ﻿@model ICollection<FindAndBook.Web.Models.Places.PlaceShortViewModel>
-    
+@{
+    ViewBag.Title = "List";
+}
+
 @foreach (var place in @Model)
 {
   @Html.Partial("_PlaceShort", place)
