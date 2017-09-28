@@ -88,7 +88,7 @@ namespace FindAndBook.Web.Controllers
             var userId = this.authProvider.CurrentUserId;
             var address = this.addressService.CreateAddress(model.Country, model.City, model.Area, model.Street,
                 model.Number);
-            var place = this.placeService.CreatePlace(model.Name, model.Contact, model.WeekendHours, model.WeekdayHours,
+            var place = this.placeService.CreatePlace(model.Name, model.Types, model.Contact, model.WeekendHours, model.WeekdayHours,
                 model.Description, model.AverageBill, userId, address);
 
             return this.RedirectToAction("Details", new { id = place.Id });

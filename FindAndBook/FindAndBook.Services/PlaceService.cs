@@ -51,11 +51,11 @@ namespace FindAndBook.Services
             this.addressService = addressService;
         }
 
-        public Place CreatePlace(string name, string contact, 
+        public Place CreatePlace(string name, string type, string contact, 
             string weekendHours, string weekdaayHours, string details, int? averageBill, string userId, Address address)
         {
             var manager = this.userService.GetUserById(userId);
-            var newPlace = this.placeFactory.CreatePlace(name, contact, weekendHours, weekdaayHours, details,
+            var newPlace = this.placeFactory.CreatePlace(name, type, contact, weekendHours, weekdaayHours, details,
                 averageBill, manager, address);
 
             this.placeRepository.Add(newPlace);

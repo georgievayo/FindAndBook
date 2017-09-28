@@ -12,11 +12,12 @@ namespace FindAndBook.Models
             this.Consumables = new HashSet<Consumable>();
             this.Bookings = new HashSet<Booking>();
         }
-        public Place(string name, string contact, string weekendHours,
+        public Place(string name, string type, string contact, string weekendHours,
             string weekdaayHours, string details, int? averageBill, User manager, Address address)
             : this()
         {
             this.Name = name;
+            this.Type = type;
             this.PhotoUrl = "http://basera-dfw.com/wp-content/uploads/2016/03/restaurant.jpeg";
             this.Contact = contact;
             this.WeekdayHours = weekdaayHours;
@@ -24,7 +25,6 @@ namespace FindAndBook.Models
             this.Details = details;
             this.AverageBill = averageBill;
             this.Manager = manager;
-            //this.Address = address;
             this.AddressId = address.Id;
         }
 
