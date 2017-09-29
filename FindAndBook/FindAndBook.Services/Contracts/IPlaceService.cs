@@ -14,6 +14,8 @@ namespace FindAndBook.Services.Contracts
 
         IQueryable<Place> GetPlaceById(Guid id);
 
+        IQueryable<Place> GetPlaceWithReviews(Guid id);
+
         IQueryable<Place> GetUserPlaces(string userId);
 
         IQueryable<Place> GetPlacesByCategory(string category);

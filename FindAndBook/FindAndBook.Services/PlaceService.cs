@@ -75,6 +75,14 @@ namespace FindAndBook.Services
                 .Include(x => x.Address);
         }
 
+        public IQueryable<Place> GetPlaceWithReviews(Guid id)
+        {
+            return this.placeRepository.All
+                .Where(x => x.Id == id)
+                .Include(x => x.Address)
+                .Include(x => x.Reviews);
+        }
+
         public IQueryable<Place> GetUserPlaces(string userId)
         {
             return this.placeRepository.All

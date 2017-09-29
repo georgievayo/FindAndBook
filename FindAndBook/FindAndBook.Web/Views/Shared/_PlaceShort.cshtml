@@ -1,5 +1,5 @@
 ﻿@model FindAndBook.Web.Models.Places.PlaceShortViewModel
-
+@Styles.Render("~/Content/place-short.css")
 <div class="container">
     <div class="col-md-4">
         <div class="thumbnail">
@@ -13,14 +13,27 @@
             </div>
             <div class="ratings">
                 <p>
-                    <span class="glyphicon glyphicon-star"></span>
-                    <span class="glyphicon glyphicon-star"></span>
-                    <span class="glyphicon glyphicon-star"></span>
-                    <span class="glyphicon glyphicon-star"></span>
-                    <span class="glyphicon glyphicon-star"></span>
+                    <span class="glyphicon glyphicon-star" id="sRate1"></span>
+                    <span class="glyphicon glyphicon-star" id="sRate2"></span>
+                    <span class="glyphicon glyphicon-star" id="sRate3"></span>
+                    <span class="glyphicon glyphicon-star" id="sRate4"></span>
+                    <span class="glyphicon glyphicon-star" id="sRate5"></span>
                     (@Model.ReviewsCount reviews)
                 </p>
             </div>
         </div>
     </div>
 </div>
+
+@section scripts {
+    <script>
+        function SCRate() {
+            console.log('here');
+            for (var i = 1; i <= @Model.Rating; i++) {
+                $("#sRate" + i).addClass('checked');
+            }
+        }
+
+        SCRate();
+    </script>
+}

@@ -113,7 +113,7 @@ namespace FindAndBook.Web.Controllers
         public ActionResult Details(Guid id)
         {
             var model = this.placeService
-                .GetPlaceById(id)
+                .GetPlaceWithReviews(id)
                 .ProjectTo<DetailsViewModel>()
                 .FirstOrDefault();
 

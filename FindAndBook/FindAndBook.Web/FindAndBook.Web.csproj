@@ -263,6 +263,7 @@
     <Content Include="Content\categories.css" />
     <Content Include="Content\details.css" />
     <Content Include="Content\navigation.css" />
+    <Content Include="Content\place-short.css" />
     <Content Include="Content\profile.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />

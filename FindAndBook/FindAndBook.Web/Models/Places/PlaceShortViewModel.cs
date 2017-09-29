@@ -38,7 +38,9 @@ namespace FindAndBook.Web.Models.Places
                 .ForMember(shortViewModel => shortViewModel.AverageBill,
                     cfg => cfg.MapFrom(place => place.AverageBill))
                 .ForMember(shortViewModel => shortViewModel.ReviewsCount,
-                    cfg => cfg.MapFrom(place => place.Reviews.Count));
+                    cfg => cfg.MapFrom(place => place.Reviews.Count))
+                .ForMember(shortViewModel => shortViewModel.Rating,
+                    cfg => cfg.MapFrom(place => place.Reviews.Count == 0 ? 0: place.Reviews.Average(x => x.Rating)));
         }
     }
 }
