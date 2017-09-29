@@ -13,5 +13,7 @@ namespace FindAndBook.Services.Contracts
         IQueryable<Place> GetAll();
 
         IQueryable<Place> GetPlaceById(Guid id);
+
+        IQueryable<Place> GetUserPlaces(string userId);
     }
 }

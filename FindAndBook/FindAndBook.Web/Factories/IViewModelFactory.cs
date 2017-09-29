@@ -1,5 +1,4 @@
-﻿using FindAndBook.Models;
-using FindAndBook.Web.Models.Home;
+﻿using FindAndBook.Web.Models.Home;
 using FindAndBook.Web.Models.Navigation;
 using FindAndBook.Web.Models.Places;
 
@@ -11,6 +10,6 @@ namespace FindAndBook.Web.Factories
 
         CreateViewModel CreateCreateViewModel();
 
-        NavigationViewModel CreateNavigationViewModel(bool isAuthenticated, bool isManager, bool isAdmin, string username);
+        NavigationViewModel CreateNavigationViewModel(bool isAuthenticated, bool isManager, bool isAdmin, string username, string userId);
     }
 }

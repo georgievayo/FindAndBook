@@ -52,5 +52,14 @@ namespace FindAndBook.Services
                 .Where(u => u.UserName == username)
                 .Include(x => x.Bookings);
         }
+
+        public User GetUserWithBookings(string id)
+        {
+            return this.userRepository
+                .All
+                .Where(x => x.Id == id)
+                .Include(x => x.Bookings)
+                .FirstOrDefault();
+        }
     }
 }

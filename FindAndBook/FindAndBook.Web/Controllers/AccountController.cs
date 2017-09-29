@@ -1,10 +1,14 @@
 ﻿using System;
+using System.Collections;
+using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
 using AutoMapper.QueryableExtensions;
 using FindAndBook.Authentication.Contracts;
 using FindAndBook.Factories;
+using FindAndBook.Models;
 using FindAndBook.Services.Contracts;
+using FindAndBook.Web.Factories;
 using FindAndBook.Web.Models.Account;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
@@ -20,8 +24,10 @@ namespace FindAndBook.Web.Controllers
         private readonly IAuthenticationProvider provider;
         private readonly IUserFactory userFactory;
         private readonly IUserService userService;
+        private readonly IViewModelFactory viewModelFactory;
 
-        public AccountController(IAuthenticationProvider provider, IUserFactory userFactory, IUserService userService)
+        public AccountController(IAuthenticationProvider provider, IUserFactory userFactory, 
+            IUserService userService, IViewModelFactory viewModelFactory)
         {
             if (provider == null)
             {
@@ -38,9 +44,15 @@ namespace FindAndBook.Web.Controllers
                 throw new ArgumentNullException(nameof(userService));
             }
 
+            if (viewModelFactory == null)
+            {
+                throw new ArgumentNullException(nameof(viewModelFactory));
+            }
+
             this.provider = provider;
             this.userFactory = userFactory;
             this.userService = userService;
+            this.viewModelFactory = viewModelFactory;
         }
 
         // GET: /Account/Login
@@ -138,6 +150,12 @@ namespace FindAndBook.Web.Controllers
                 .FirstOrDefault();
 
             return View(user);
+        }
+
+        [ChildActionOnly]
+        public ActionResult Bookings(ProfileViewModel model)
+        {
+            return this.PartialView("_Bookings", model);
         }
 
         private void AddErrors(IdentityResult result)

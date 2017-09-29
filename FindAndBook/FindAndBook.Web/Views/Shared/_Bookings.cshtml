@@ -1,0 +1,25 @@
+﻿@model FindAndBook.Web.Models.Account.ProfileViewModel
+@Styles.Render("~/Content/bookings.css")
+<div class="container">
+    <div class="row col-md-10 col-md-offset-1 custyle">
+        <table class="table table-striped custab">
+            <thead>
+            <tr>
+                <th>Where?</th>
+                <th>When?</th>
+                <th>How many people?</th>
+                <th class="text-center">Action</th>
+            </tr>
+            </thead>
+            @foreach (var booking in @Model.Bookings)
+            {
+                <tr>
+                    <td>@booking.Place.Name</td>
+                    <td>@booking.DateTime</td>
+                    <td>@booking.NumberOfPeople</td>
+                    <td class="text-center"><a href="#" class="btn btn-danger btn-xs"><span class="glyphicon glyphicon-remove"></span> Decline</a></td>
+                </tr>
+            }
+        </table>
+    </div>
+</div>

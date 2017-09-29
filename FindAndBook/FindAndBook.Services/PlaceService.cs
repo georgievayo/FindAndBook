@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using FindAndBook.Data.Contracts;
@@ -76,5 +75,12 @@ namespace FindAndBook.Services
                 .Include(x => x.Address);
         }
 
+        public IQueryable<Place> GetUserPlaces(string userId)
+        {
+            return this.placeRepository.All
+                .Where(x => x.ManagerId == userId)
+                .Include(x => x.Address)
+                .Include(x => x.Bookings);
+        }
     }
 }

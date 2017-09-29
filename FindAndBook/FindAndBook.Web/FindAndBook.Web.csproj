@@ -257,6 +257,7 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\bookings.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\categories.css" />
@@ -325,6 +326,8 @@
     <Content Include="Views\Places\List.cshtml" />
     <Content Include="Views\Places\Details.cshtml" />
     <Content Include="Views\Account\Profile.cshtml" />
+    <Content Include="Views\Shared\_Bookings.cshtml" />
+    <Content Include="Views\Places\MyPlaces.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

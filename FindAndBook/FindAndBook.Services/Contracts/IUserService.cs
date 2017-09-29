@@ -12,5 +12,7 @@ namespace FindAndBook.Services.Contracts
         User GetUserById(string id);
 
         IQueryable<User> GetUserByUsername(string username);
+
+        User GetUserWithBookings(string id);
     }
 }

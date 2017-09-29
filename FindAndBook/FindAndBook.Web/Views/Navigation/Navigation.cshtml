@@ -18,7 +18,7 @@
             @if (Model.IsManager)
             {
                 <li>@Html.ActionLink("Add new place", "Create", "Places")</li>
-                <li>@Html.ActionLink("My places", "Places", "Account")</li>
+                <li>@Html.ActionLink("My places", "MyPlaces", "Places", new { id = Model.UserId }, htmlAttributes: null)</li>
             }
             @if (!Model.IsAuthenticated)
             {

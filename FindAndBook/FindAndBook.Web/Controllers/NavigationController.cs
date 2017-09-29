@@ -30,18 +30,20 @@ namespace FindAndBook.Web.Controllers
         {
             var isAuthenticated = this.authenticationProvider.IsAuthenticated;
             var username = string.Empty;
+            var userId = string.Empty;
             var isAdmin = false;
             var isManager = false;
 
             if (isAuthenticated)
             {
                 username = this.authenticationProvider.CurrentUserUsername;
+                userId = this.authenticationProvider.CurrentUserId;
                 var currentUserId = this.authenticationProvider.CurrentUserId;
                 isAdmin = this.authenticationProvider.IsInRole(currentUserId, "Admin");
                 isManager = this.authenticationProvider.IsInRole(currentUserId, "Manager"); ;
             }
 
-            var model = this.viewModelFactory.CreateNavigationViewModel(isAuthenticated, isManager, isAdmin, username);
+            var model = this.viewModelFactory.CreateNavigationViewModel(isAuthenticated, isManager, isAdmin, username, userId);
             return this.PartialView("Navigation", model);
         }
     }

@@ -117,5 +117,13 @@ namespace FindAndBook.Web.Controllers
 
             return this.View(model);
         }
+
+        [HttpGet]
+        public ActionResult MyPlaces(string id)
+        {
+            var currentUser = this.authProvider.CurrentUserId;
+            var model = this.placeService.GetUserPlaces(currentUser).ToList();
+            return View(model);
+        }
     }
 }
