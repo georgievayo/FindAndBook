@@ -82,5 +82,13 @@ namespace FindAndBook.Services
                 .Include(x => x.Address)
                 .Include(x => x.Bookings);
         }
+
+        public IQueryable<Place> GetPlacesByCategory(string category)
+        {
+            return this.placeRepository.All
+                .Where(x => x.Type == category)
+                .Include(x => x.Address)
+                .Include(x => x.Reviews);
+        }
     }
 }

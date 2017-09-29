@@ -2,7 +2,6 @@
 using System.Data.Entity;
 using System.Linq;
 using System.Web.Mvc;
-using AutoMapper;
 using AutoMapper.QueryableExtensions;
 using FindAndBook.Authentication.Contracts;
 using FindAndBook.Services.Contracts;
@@ -17,10 +16,9 @@ namespace FindAndBook.Web.Controllers
         private readonly IAuthenticationProvider authProvider;
         private readonly IPlaceService placeService;
         private readonly IAddressService addressService;
-        private readonly IMapper mapper;
 
         public PlacesController(IAuthenticationProvider authProvider, IViewModelFactory factory,
-            IPlaceService placeService, IAddressService addressService, IMapper mapper)
+            IPlaceService placeService, IAddressService addressService)
         {
             if (factory == null)
             {
@@ -42,21 +40,25 @@ namespace FindAndBook.Web.Controllers
                 throw new ArgumentNullException(nameof(addressService));
             }
 
-            if (mapper == null)
-            {
-                throw new ArgumentNullException(nameof(mapper));
-            }
-
             this.viewModelFactory = factory;
             this.authProvider = authProvider;
             this.placeService = placeService;
             this.addressService = addressService;
-            this.mapper = mapper;
         }
 
         public ActionResult Index()
         {
             return View();
+        }
+
+        public ActionResult GetPlacesByCategory([Bind(Prefix = "category")] string category)
+        {
+            var places = this.placeService
+                .GetPlacesByCategory(category)
+                .ProjectTo<PlaceShortViewModel>()
+                .ToList();
+
+            return this.PartialView("_PartialList", places);
         }
 
         [Authorize]
