@@ -58,7 +58,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AddressService.cs" />
+    <Compile Include="BookingService.cs" />
     <Compile Include="Contracts\IAddressService.cs" />
+    <Compile Include="Contracts\IBookingService.cs" />
     <Compile Include="Contracts\IPlaceService.cs" />
     <Compile Include="Contracts\IUserService.cs" />
     <Compile Include="PlaceService.cs" />

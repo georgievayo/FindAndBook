@@ -34,6 +34,7 @@ namespace FindAndBook.Web
             this.Bind<IPlaceService>().To<PlaceService>().InRequestScope();
             this.Bind<IUserService>().To<UserService>().InRequestScope();
             this.Bind<IAddressService>().To<AddressService>().InRequestScope();
+            this.Bind<IBookingService>().To<BookingService>().InRequestScope();
 
             this.Bind(typeof(IRepository<>)).To(typeof(EFRepository<>)).InRequestScope();
             this.Bind<IUnitOfWork>().To<UnitOfWork>().InRequestScope();

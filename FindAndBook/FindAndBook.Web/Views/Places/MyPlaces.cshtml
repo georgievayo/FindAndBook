@@ -1,21 +1,24 @@
 ﻿@model ICollection<FindAndBook.Models.Place>
 @Styles.Render("~/Content/bookings.css")
+@{
+    ViewBag.Title = "My places";
+}
 <div class="container">
     <div class="row col-md-12 custyle">
         <table class="table table-striped custab">
             <thead>
-                <tr>
-                    <th>Name of place</th>
-                    <th>Type</th>
-                    <th>Address</th>
-                    <th>Contact</th>
-                    <th>Average Bill</th>
-                    <th>Weekday hours</th>
-                    <th>Weekend hours</th>
-                    <th>Details</th>
-                    <th>Photo</th>
-                    <th class="text-center">Action</th>
-                </tr>
+            <tr>
+                <th>Name of place</th>
+                <th>Type</th>
+                <th>Address</th>
+                <th>Contact</th>
+                <th>Average Bill</th>
+                <th>Weekday hours</th>
+                <th>Weekend hours</th>
+                <th>Details</th>
+                <th>Photo</th>
+                <th class="text-center">Action</th>
+            </tr>
             </thead>
             @foreach (var place in @Model)
             {
@@ -28,11 +31,24 @@
                     <td>@place.WeekdayHours</td>
                     <td>@place.WeekendHours</td>
                     <td>@place.Details</td>
-                    <td><img src="@place.PhotoUrl" alt="photo"/></td>
-                    <td class="text-center"><a href="#" class="btn btn-warning btn-xs"><span class="glyphicon glyphicon-edit"></span> Edit</a>
-                        <a href="#" class="btn btn-info btn-xs"><span class="glyphicon glyphicon-list"></span> Bookings</a></td>
+                    <td><img src="@place.PhotoUrl" alt="photo" /></td>
+                    <td class="text-center">
+                        <a href="#" class="btn btn-warning btn-xs"><span class="glyphicon glyphicon-edit"></span> Edit</a>
+                        @Ajax.ActionLink("Bookings", "GetBookings", new
+                        {
+                            id = @place.Id
+
+                        }, new AjaxOptions
+                        {
+                            UpdateTargetId = "bookings",
+                            InsertionMode = InsertionMode.Replace,
+                        },
+                        new { @class="btn btn-info btn-xs" })
+                        
+                    </td>
                 </tr>
             }
         </table>
+        <div id="bookings"></div>
     </div>
 </div>

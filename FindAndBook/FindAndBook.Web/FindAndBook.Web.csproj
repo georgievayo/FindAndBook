@@ -332,6 +332,7 @@
     <Content Include="Views\Shared\_Bookings.cshtml" />
     <Content Include="Views\Places\MyPlaces.cshtml" />
     <Content Include="Views\Shared\_PartialList.cshtml" />
+    <Content Include="Views\Shared\_PlaceBookings.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

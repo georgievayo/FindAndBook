@@ -1,0 +1,24 @@
+﻿@model ICollection<FindAndBook.Models.Booking>
+@Styles.Render("~/Content/bookings.css")
+
+<div class="container">
+    <div class="row col-md-12 custyle">
+        <table class="table table-striped custab">
+            <thead>
+                <tr>
+                    <th>User</th>
+                    <th>Date and time</th>
+                    <th>Number of people</th>
+                </tr>
+            </thead>
+            @foreach (var booking in @Model)
+            {
+                <tr>
+                    <td>@booking.User.FirstName @booking.User.LastName</td>
+                    <td>@booking.DateTime</td>
+                    <td>@booking.NumberOfPeople</td>
+                </tr>
+            }
+        </table>
+    </div>
+</div>

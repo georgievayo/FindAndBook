@@ -16,9 +16,10 @@ namespace FindAndBook.Web.Controllers
         private readonly IAuthenticationProvider authProvider;
         private readonly IPlaceService placeService;
         private readonly IAddressService addressService;
+        private readonly IBookingService bookingService;
 
         public PlacesController(IAuthenticationProvider authProvider, IViewModelFactory factory,
-            IPlaceService placeService, IAddressService addressService)
+            IPlaceService placeService, IAddressService addressService, IBookingService bookingService)
         {
             if (factory == null)
             {
@@ -40,10 +41,16 @@ namespace FindAndBook.Web.Controllers
                 throw new ArgumentNullException(nameof(addressService));
             }
 
+            if (bookingService == null)
+            {
+                throw new ArgumentNullException(nameof(bookingService));
+            }
+
             this.viewModelFactory = factory;
             this.authProvider = authProvider;
             this.placeService = placeService;
             this.addressService = addressService;
+            this.bookingService = bookingService;
         }
 
         public ActionResult Index()
@@ -126,6 +133,14 @@ namespace FindAndBook.Web.Controllers
             var currentUser = this.authProvider.CurrentUserId;
             var model = this.placeService.GetUserPlaces(currentUser).ToList();
             return View(model);
+        }
+
+        public ActionResult GetBookings(string id)
+        {
+            var idGuid = new Guid(id);
+            var bookings = this.bookingService.GetBookingsOfPlace(idGuid).ToList();
+
+            return PartialView("_PlaceBookings", bookings);
         }
     }
 }
