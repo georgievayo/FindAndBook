@@ -235,6 +235,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\BookingsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\NavigationController.cs" />
     <Compile Include="Controllers\PlacesController.cs" />
@@ -249,6 +250,7 @@
     <Compile Include="Models\Account\RegisterViewModel.cs" />
     <Compile Include="Models\Home\HomeViewModel.cs" />
     <Compile Include="Models\Navigation\NavigationViewModel.cs" />
+    <Compile Include="Models\Places\BookingViewModel.cs" />
     <Compile Include="Models\Places\CreateViewModel.cs" />
     <Compile Include="Models\Places\DetailsViewModel.cs" />
     <Compile Include="Models\Places\PlaceShortViewModel.cs" />
@@ -333,6 +335,7 @@
     <Content Include="Views\Places\MyPlaces.cshtml" />
     <Content Include="Views\Shared\_PartialList.cshtml" />
     <Content Include="Views\Shared\_PlaceBookings.cshtml" />
+    <Content Include="Views\Shared\_BookingDateTimeForm.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

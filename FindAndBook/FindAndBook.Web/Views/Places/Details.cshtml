@@ -35,12 +35,20 @@
                     <h6 class="price"><strong>Weekends: </strong><span>@Model.WeekendHours</span></h6>
                     <div class="action">
                         <button class="add-to-cart btn btn-default" type="button">Show reviews</button>
+                        @Ajax.ActionLink("Book a table", "GetBookingForm", new {controller="Bookings"},
+                       new AjaxOptions
+                        {
+                            UpdateTargetId = "book-form",
+                            InsertionMode = InsertionMode.Replace,
+                        },
+                            new { @class= "add-to-cart btn btn-default" })
                         <button class="like btn btn-default" type="button"><span class="glyphicon glyphicon-bookmark"></span></button>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+    <div id="book-form"></div>
 </div>
 @section scripts {
     <script>

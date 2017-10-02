@@ -35,14 +35,14 @@
                     <td class="text-center">
                         <a href="#" class="btn btn-warning btn-xs"><span class="glyphicon glyphicon-edit"></span> Edit</a>
                         @Ajax.ActionLink("Bookings", "GetBookings", new
-                        {
-                            id = @place.Id
+                   {
+                       id = @place.Id
 
-                        }, new AjaxOptions
-                        {
-                            UpdateTargetId = "bookings",
-                            InsertionMode = InsertionMode.Replace,
-                        },
+                   }, new AjaxOptions
+                   {
+                       UpdateTargetId = "bookings",
+                       InsertionMode = InsertionMode.Replace,
+                   },
                         new { @class="btn btn-info btn-xs" })
                         
                     </td>
