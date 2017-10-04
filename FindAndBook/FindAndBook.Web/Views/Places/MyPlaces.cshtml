@@ -36,6 +36,7 @@
                         <a href="#" class="btn btn-warning btn-xs"><span class="glyphicon glyphicon-edit"></span> Edit</a>
                         @Ajax.ActionLink("Bookings", "GetBookings", new
                    {
+                       controller="Bookings",
                        id = @place.Id
 
                    }, new AjaxOptions

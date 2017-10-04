@@ -32,6 +32,9 @@ namespace FindAndBook.Data
 
         public DbSet<Table> Tables { get; set; }
 
+        public DbSet<BookedTables> BookedTables { get; set; }
+
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Configurations.Add(new AddressMap());

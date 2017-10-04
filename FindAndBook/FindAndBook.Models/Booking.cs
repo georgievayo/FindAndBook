@@ -8,10 +8,12 @@ namespace FindAndBook.Models
     {
         public Booking()
         {
-            
+            this.Tables = new HashSet<BookedTables>();
+            this.Consumables = new HashSet<Consumable>();
         }
 
         public Booking(Guid? placeId, string userId, DateTime dateTime)
+            : this()
         {
             PlaceId = placeId;
             UserId = userId;
@@ -32,7 +34,7 @@ namespace FindAndBook.Models
 
         public int NumberOfPeople { get; set; }
 
-        public virtual ICollection<Table> Tables { get; set; }
+        public virtual ICollection<BookedTables> Tables { get; set; }
 
         public virtual ICollection<Consumable> Consumables { get; set; }
     }

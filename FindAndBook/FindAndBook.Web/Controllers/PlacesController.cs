@@ -16,10 +16,10 @@ namespace FindAndBook.Web.Controllers
         private readonly IAuthenticationProvider authProvider;
         private readonly IPlaceService placeService;
         private readonly IAddressService addressService;
-        private readonly IBookingService bookingService;
+        private readonly ITablesService tablesService;
 
         public PlacesController(IAuthenticationProvider authProvider, IViewModelFactory factory,
-            IPlaceService placeService, IAddressService addressService, IBookingService bookingService)
+            IPlaceService placeService, IAddressService addressService, ITablesService tablesService)
         {
             if (factory == null)
             {
@@ -41,16 +41,16 @@ namespace FindAndBook.Web.Controllers
                 throw new ArgumentNullException(nameof(addressService));
             }
 
-            if (bookingService == null)
+            if (tablesService == null)
             {
-                throw new ArgumentNullException(nameof(bookingService));
+                throw new ArgumentNullException(nameof(tablesService));
             }
 
             this.viewModelFactory = factory;
             this.authProvider = authProvider;
             this.placeService = placeService;
             this.addressService = addressService;
-            this.bookingService = bookingService;
+            this.tablesService = tablesService;
         }
 
         public ActionResult Index()
@@ -99,6 +99,9 @@ namespace FindAndBook.Web.Controllers
                 model.Number);
             var place = this.placeService.CreatePlace(model.Name, model.Types, model.Contact, model.WeekendHours, model.WeekdayHours,
                 model.Description, model.AverageBill, userId, address);
+            var tablesWithTwoPeople = this.tablesService.CreateTableType(place.Id, 2, model.TwoPeopleCount);
+            var tablesWithFourPeople = this.tablesService.CreateTableType(place.Id, 4, model.FourPeopleCount);
+            var tablesWithSixPeople = this.tablesService.CreateTableType(place.Id, 6, model.SixPeopleCount);
 
             return this.RedirectToAction("Details", new { id = place.Id });
         }
@@ -135,12 +138,6 @@ namespace FindAndBook.Web.Controllers
             return View(model);
         }
 
-        public ActionResult GetBookings(string id)
-        {
-            var idGuid = new Guid(id);
-            var bookings = this.bookingService.GetBookingsOfPlace(idGuid).ToList();
 
-            return PartialView("_PlaceBookings", bookings);
-        }
     }
 }

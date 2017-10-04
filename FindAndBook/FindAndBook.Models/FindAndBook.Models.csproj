@@ -58,6 +58,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Address.cs" />
+    <Compile Include="BookedTables.cs" />
     <Compile Include="Booking.cs" />
     <Compile Include="Enumerations\RoleType.cs" />
     <Compile Include="Consumable.cs" />

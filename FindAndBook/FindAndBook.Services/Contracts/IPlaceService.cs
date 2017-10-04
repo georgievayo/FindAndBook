@@ -18,11 +18,5 @@ namespace FindAndBook.Services.Contracts
         IQueryable<Place> GetUserPlaces(string userId);
 
         IQueryable<Place> GetPlacesByCategory(string category);
-
-        int GetTwoPeopleTablesCount(Guid? id);
-
-        int GetFourPeopleTablesCount(Guid? id);
-
-        int GetSixPeopleTablesCount(Guid? id);
     }
 }

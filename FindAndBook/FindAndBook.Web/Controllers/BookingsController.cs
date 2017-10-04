@@ -16,10 +16,13 @@ namespace FindAndBook.Web.Controllers
         private readonly IBookingService bookingService;
         private readonly IViewModelFactory factory;
         private readonly IConsumableService consumableService;
+        private readonly IBookedTablesService bookedTablesService;
+        private readonly ITablesService tablesService;
 
         public BookingsController(IAuthenticationProvider authProvider,
-            IPlaceService placeService, IBookingService bookingService, 
-            IViewModelFactory factory, IConsumableService consumableService)
+            IPlaceService placeService, IBookingService bookingService,
+            IViewModelFactory factory, IConsumableService consumableService,
+            IBookedTablesService bookedTablesService, ITablesService tablesService)
         {
             if (authProvider == null)
             {
@@ -46,11 +49,23 @@ namespace FindAndBook.Web.Controllers
                 throw new ArgumentNullException(nameof(consumableService));
             }
 
+            if (bookedTablesService == null)
+            {
+                throw new ArgumentNullException(nameof(bookedTablesService));
+            }
+
+            if (tablesService == null)
+            {
+                throw new ArgumentNullException(nameof(tablesService));
+            }
+
             this.authProvider = authProvider;
             this.placeService = placeService;
             this.bookingService = bookingService;
             this.factory = factory;
             this.consumableService = consumableService;
+            this.bookedTablesService = bookedTablesService;
+            this.tablesService = tablesService;
         }
 
         public ActionResult GetBookingForm(Guid? id)
@@ -67,50 +82,51 @@ namespace FindAndBook.Web.Controllers
         }
 
 
-        [HttpPost]
-        public ActionResult GetAvailableTables(BookingViewModel model)
-        {
-            var bookings = this.bookingService
-                .FindAllOn(model.DateTime, model.PlaceId).ToList();
+        //[HttpPost]
+        //public ActionResult GetAvailableTables(BookingViewModel model)
+        //{
+        //    var bookings = this.bookingService
+        //        .FindAllOn(model.DateTime, model.PlaceId).ToList();
 
-            var reservedTwoPeopleTables = 0;
-            var reservedFourPeopleTables = 0;
-            var reservedSixPeopleTables = 0;
+        //    var reservedTwoPeopleTables = 0;
+        //    var reservedFourPeopleTables = 0;
+        //    var reservedSixPeopleTables = 0;
 
-            foreach (var booking in bookings)
-            {
-                foreach (var table in booking.Tables)
-                {
-                    if (table.NumberOfPeople == 2)
-                    {
-                        reservedTwoPeopleTables += table.NumberOfTables;
-                    }
-                    else if (table.NumberOfPeople == 4)
-                    {
-                        reservedFourPeopleTables += table.NumberOfTables;
-                    }
-                    else
-                    {
-                        reservedSixPeopleTables += table.NumberOfTables;
-                    }
-                }
-            }
+        //    foreach (var booking in bookings)
+        //    {
+        //        this.bookedTablesService.GetBookedTablesCount()
+        //        foreach (var table in booking.Tables)
+        //        {
+        //            if (table. == 2)
+        //            {
+        //                reservedTwoPeopleTables += table.NumberOfTables;
+        //            }
+        //            else if (table.NumberOfPeople == 4)
+        //            {
+        //                reservedFourPeopleTables += table.NumberOfTables;
+        //            }
+        //            else
+        //            {
+        //                reservedSixPeopleTables += table.NumberOfTables;
+        //            }
+        //        }
+        //    }
 
-            var allTablesTwoPeople = this.placeService.GetTwoPeopleTablesCount(model.PlaceId);
-            var availableTwoPeople = allTablesTwoPeople - reservedTwoPeopleTables;
+        //    var allTables = this.tablesService.GetTablesCount(model.PlaceId, 2);
+        //    var availableTwoPeople = allTables - reservedTwoPeopleTables;
 
-            var allTablesFourPeople = this.placeService.GetFourPeopleTablesCount(model.PlaceId);
-            var availableFourPeople = allTablesFourPeople - reservedFourPeopleTables;
+        //    allTables = this.tablesService.GetTablesCount(model.PlaceId, 4);
+        //    var availableFourPeople = allTables - reservedFourPeopleTables;
 
-            var allTablesSixPeople = this.placeService.GetSixPeopleTablesCount(model.PlaceId);
-            var availableSixPeople = allTablesSixPeople - reservedSixPeopleTables;
+        //    allTables = this.tablesService.GetTablesCount(model.PlaceId, 6);
+        //    var availableSixPeople = allTables - reservedSixPeopleTables;
 
-            var availableTablesModel =
-                this.factory.CreateBookingFormViewModel(availableTwoPeople, availableFourPeople,
-                    availableSixPeople, model.PlaceId, model.DateTime);
+        //    var availableTablesModel =
+        //        this.factory.CreateBookingFormViewModel(availableTwoPeople, availableFourPeople,
+        //            availableSixPeople, model.PlaceId, model.DateTime);
 
-            return PartialView("_AvailableTables", availableTablesModel);
-        }
+        //    return PartialView("_AvailableTables", availableTablesModel);
+        //}
 
         [HttpPost]
         public ActionResult BookTables(BookingFormViewModel model)
@@ -118,6 +134,22 @@ namespace FindAndBook.Web.Controllers
             var currentUserId = this.authProvider.CurrentUserId;
             var booking = this.bookingService.CreateBooking(model.PlaceId, currentUserId, model.DateTime);
             model.BookingId = booking.Id;
+            if (model.TwoPeopleInput > 0)
+            {
+                var table = this.tablesService.GetByPlaceAndNumberOfPeople(model.PlaceId, 2);
+                this.bookedTablesService.AddBookedTables(booking.Id, table.Id, model.TwoPeopleInput);
+            }
+            if (model.FourPeopleInput > 0)
+            {
+                var bookedTable = this.tablesService.GetByPlaceAndNumberOfPeople(model.PlaceId, 4);
+                this.bookedTablesService.AddBookedTables(booking.Id, bookedTable.Id, model.FourPeopleInput);
+            }
+            if (model.SixPeopleInput > 0)
+            {
+                var bookedTable = this.tablesService.GetByPlaceAndNumberOfPeople(model.PlaceId, 6);
+                this.bookedTablesService.AddBookedTables(booking.Id, bookedTable.Id, model.SixPeopleInput);
+            }
+
             return PartialView("_SuccessfullBooking", model);
         }
 
@@ -145,6 +177,14 @@ namespace FindAndBook.Web.Controllers
             }
 
             return View(model);
+        }
+
+        public ActionResult GetBookings(string id)
+        {
+            var idGuid = new Guid(id);
+            var bookings = this.bookingService.GetBookingsOfPlace(idGuid).ToList();
+
+            return PartialView("_PlaceBookings", bookings);
         }
     }
 }
