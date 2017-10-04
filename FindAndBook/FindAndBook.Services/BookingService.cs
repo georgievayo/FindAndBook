@@ -53,6 +53,11 @@ namespace FindAndBook.Services
                 .Include(x => x.Tables);
         }
 
+        public Booking GetById(Guid? id)
+        {
+            return this.bookingRepository.GetById(id);
+        }
+
         public Booking CreateBooking(Guid? placeId, string userId, DateTime dateTime)
         {
             var booking = this.factory.CreateBooking(placeId, userId, dateTime);

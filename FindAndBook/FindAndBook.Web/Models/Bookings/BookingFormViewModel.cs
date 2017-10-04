@@ -19,6 +19,8 @@ namespace FindAndBook.Web.Models.Places
             SixPeopleTablesCount = six;
         }
 
+        public Guid? BookingId { get; set; }
+
         public Guid? PlaceId { get; set; }
 
         public DateTime DateTime { get; set; }

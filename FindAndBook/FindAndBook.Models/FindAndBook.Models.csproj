@@ -61,7 +61,6 @@
     <Compile Include="Booking.cs" />
     <Compile Include="Enumerations\RoleType.cs" />
     <Compile Include="Consumable.cs" />
-    <Compile Include="Order.cs" />
     <Compile Include="Place.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Review.cs" />

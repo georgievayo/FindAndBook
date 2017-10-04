@@ -26,8 +26,6 @@ namespace FindAndBook.Data
 
         public DbSet<Consumable> Consumables { get; set; }
 
-        public DbSet<Order> Orders { get; set; }
-
         public DbSet<Place> Places { get; set; }
 
         public DbSet<Review> Reviews { get; set; }
@@ -39,7 +37,6 @@ namespace FindAndBook.Data
             modelBuilder.Configurations.Add(new AddressMap());
             modelBuilder.Configurations.Add(new BookingMap());
             modelBuilder.Configurations.Add(new ConsumableMap());
-            modelBuilder.Configurations.Add(new OrderMap());
             modelBuilder.Configurations.Add(new PlaceMap());
             modelBuilder.Configurations.Add(new ReviewMap());
             modelBuilder.Configurations.Add(new TableMap());

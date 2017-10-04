@@ -10,6 +10,7 @@ namespace FindAndBook.Models
         {
             
         }
+
         public Booking(Guid? placeId, string userId, DateTime dateTime)
         {
             PlaceId = placeId;
@@ -32,5 +33,7 @@ namespace FindAndBook.Models
         public int NumberOfPeople { get; set; }
 
         public virtual ICollection<Table> Tables { get; set; }
+
+        public virtual ICollection<Consumable> Consumables { get; set; }
     }
 }

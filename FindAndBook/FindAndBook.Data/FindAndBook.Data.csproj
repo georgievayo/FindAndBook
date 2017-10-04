@@ -70,12 +70,15 @@
     <Compile Include="Migrations\201710030836544_AddTablesCount.Designer.cs">
       <DependentUpon>201710030836544_AddTablesCount.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201710041519539_RemoveOrderTable.cs" />
+    <Compile Include="Migrations\201710041519539_RemoveOrderTable.Designer.cs">
+      <DependentUpon>201710041519539_RemoveOrderTable.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="FindAndBookContext.cs" />
     <Compile Include="Mapping\AddressMap.cs" />
     <Compile Include="Mapping\BookingMap.cs" />
     <Compile Include="Mapping\ConsumableMap.cs" />
-    <Compile Include="Mapping\OrderMap.cs" />
     <Compile Include="Mapping\PlaceMap.cs" />
     <Compile Include="Mapping\ReviewMap.cs" />
     <Compile Include="Mapping\TableMap.cs" />
@@ -98,6 +101,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201710030836544_AddTablesCount.resx">
       <DependentUpon>201710030836544_AddTablesCount.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710041519539_RemoveOrderTable.resx">
+      <DependentUpon>201710041519539_RemoveOrderTable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

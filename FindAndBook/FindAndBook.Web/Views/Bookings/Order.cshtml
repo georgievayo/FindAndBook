@@ -1,0 +1,20 @@
+﻿@model FindAndBook.Web.Models.Bookings.OrderFormViewModel
+<div class="container" id="content">
+    <fieldset>
+        <legend>Menu</legend>
+        @using (Ajax.BeginForm("Order", new { controller = "Bookings" },
+                new AjaxOptions { UpdateTargetId = "content", InsertionMode = InsertionMode.Replace, HttpMethod = "POST" }))
+        {
+            @Html.HiddenFor(x => x.BookingId)
+            foreach (var consumable in Model.PlaceMenu)
+            {
+                <div>
+                    <input type="checkbox" id=@consumable.Name name="consumable" value="@consumable.Name">
+                    <label for=@consumable.Name>@consumable.Name</label>
+                </div>
+            }
+            <input type="submit" value="Submit" />
+        }
+
+    </fieldset>
+</div>

@@ -4,6 +4,7 @@ using System.Web.Mvc;
 using FindAndBook.Authentication.Contracts;
 using FindAndBook.Services.Contracts;
 using FindAndBook.Web.Factories;
+using FindAndBook.Web.Models.Bookings;
 using FindAndBook.Web.Models.Places;
 
 namespace FindAndBook.Web.Controllers
@@ -14,9 +15,11 @@ namespace FindAndBook.Web.Controllers
         private readonly IPlaceService placeService;
         private readonly IBookingService bookingService;
         private readonly IViewModelFactory factory;
+        private readonly IConsumableService consumableService;
 
         public BookingsController(IAuthenticationProvider authProvider,
-            IPlaceService placeService, IBookingService bookingService, IViewModelFactory factory)
+            IPlaceService placeService, IBookingService bookingService, 
+            IViewModelFactory factory, IConsumableService consumableService)
         {
             if (authProvider == null)
             {
@@ -38,10 +41,16 @@ namespace FindAndBook.Web.Controllers
                 throw new ArgumentNullException(nameof(factory));
             }
 
+            if (consumableService == null)
+            {
+                throw new ArgumentNullException(nameof(consumableService));
+            }
+
             this.authProvider = authProvider;
             this.placeService = placeService;
             this.bookingService = bookingService;
             this.factory = factory;
+            this.consumableService = consumableService;
         }
 
         public ActionResult GetBookingForm(Guid? id)
@@ -108,7 +117,34 @@ namespace FindAndBook.Web.Controllers
         {
             var currentUserId = this.authProvider.CurrentUserId;
             var booking = this.bookingService.CreateBooking(model.PlaceId, currentUserId, model.DateTime);
-            return Content(booking.Id.ToString());
+            model.BookingId = booking.Id;
+            return PartialView("_SuccessfullBooking", model);
+        }
+
+        [HttpGet]
+        public ActionResult Order(Guid? id, Guid? bookingId)
+        {
+            var menu = this.consumableService.GetAllConsumablesOf(id).ToList();
+
+            var model = this.factory.CreateOrderFormViewModel(bookingId, menu);
+
+            return View(model);
+        }
+
+        [HttpPost]
+        public ActionResult Order(OrderFormViewModel model)
+        {
+            string selected = Request.Form["consumable"];
+            string[] selectedList = selected.Split(',');
+
+            foreach (var select in selectedList)
+            {
+                var consumable = this.consumableService.GetByName(select);
+                var booking = this.bookingService.GetById(model.BookingId);
+                this.consumableService.AddBooking(consumable, booking);
+            }
+
+            return View(model);
         }
     }
 }
