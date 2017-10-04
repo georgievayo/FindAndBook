@@ -5,14 +5,10 @@ using System.Text;
 using System.Threading.Tasks;
 using FindAndBook.Models;
 
-namespace FindAndBook.Services.Contracts
+namespace FindAndBook.Factories
 {
-    public interface IBookingService
+    public interface IBookingFactory
     {
-        IQueryable<Booking> GetBookingsOfPlace(Guid placeId);
-
-        IQueryable<Booking> FindAllOn(DateTime dateTime, Guid? placeId);
-
         Booking CreateBooking(Guid? placeId, string userId, DateTime dateTime);
     }
 }

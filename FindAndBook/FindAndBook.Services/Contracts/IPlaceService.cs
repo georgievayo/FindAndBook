@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using FindAndBook.Models;
 using System.Linq;
 
@@ -20,5 +19,10 @@ namespace FindAndBook.Services.Contracts
 
         IQueryable<Place> GetPlacesByCategory(string category);
 
+        int GetTwoPeopleTablesCount(Guid? id);
+
+        int GetFourPeopleTablesCount(Guid? id);
+
+        int GetSixPeopleTablesCount(Guid? id);
     }
 }

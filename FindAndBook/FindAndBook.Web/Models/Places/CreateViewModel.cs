@@ -67,6 +67,21 @@ namespace FindAndBook.Web.Models.Places
         [AllowHtml]
         public int? AverageBill { get; set; }
 
+        [Required]
+        [Display(Name = "Tables for 2 people")]
+        [AllowHtml]
+        public int TwoPeopleCount { get; set; }
+
+        [Required]
+        [Display(Name = "Tables for 4 people")]
+        [AllowHtml]
+        public int FourPeopleCount { get; set; }
+
+        [Required]
+        [Display(Name = "Tables for 6 people")]
+        [AllowHtml]
+        public int SixPeopleCount { get; set; }
+
         public IEnumerable<SelectListItem> TypeList => new List<SelectListItem>
         {
             new SelectListItem { Text = "Restaurant", Value = "Restaurant"},

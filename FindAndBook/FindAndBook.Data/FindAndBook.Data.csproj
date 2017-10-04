@@ -66,6 +66,10 @@
     <Compile Include="Migrations\201709281950261_Initial.Designer.cs">
       <DependentUpon>201709281950261_Initial.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201710030836544_AddTablesCount.cs" />
+    <Compile Include="Migrations\201710030836544_AddTablesCount.Designer.cs">
+      <DependentUpon>201710030836544_AddTablesCount.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="FindAndBookContext.cs" />
     <Compile Include="Mapping\AddressMap.cs" />
@@ -91,6 +95,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201709281950261_Initial.resx">
       <DependentUpon>201709281950261_Initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710030836544_AddTablesCount.resx">
+      <DependentUpon>201710030836544_AddTablesCount.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

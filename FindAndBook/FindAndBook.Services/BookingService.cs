@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Data.Entity;
 using System.Linq;
 using FindAndBook.Data.Contracts;
+using FindAndBook.Factories;
 using FindAndBook.Models;
 using FindAndBook.Services.Contracts;
 
@@ -8,15 +10,17 @@ namespace FindAndBook.Services
 {
     public class BookingService : IBookingService
     {
-        private readonly IRepository<Booking> placeRepository;
+        private readonly IRepository<Booking> bookingRepository;
 
         private readonly IUnitOfWork unitOfWork;
 
-        public BookingService(IRepository<Booking> placeRepository, IUnitOfWork unitOfWork)
+        private readonly IBookingFactory factory;
+
+        public BookingService(IRepository<Booking> bookingRepository, IUnitOfWork unitOfWork, IBookingFactory factory)
         {
-            if (placeRepository == null)
+            if (bookingRepository == null)
             {
-                throw new ArgumentNullException(nameof(placeRepository));
+                throw new ArgumentNullException(nameof(bookingRepository));
             }
 
             if (unitOfWork == null)
@@ -24,15 +28,37 @@ namespace FindAndBook.Services
                 throw new ArgumentNullException(nameof(unitOfWork));
             }
 
-            this.placeRepository = placeRepository;
+            if (factory == null)
+            {
+                throw new ArgumentNullException(nameof(factory));
+            }
+
+            this.bookingRepository = bookingRepository;
             this.unitOfWork = unitOfWork;
+            this.factory = factory;
         }
 
         public IQueryable<Booking> GetBookingsOfPlace(Guid placeId)
         {
-            return this.placeRepository
+            return this.bookingRepository
                 .All
                 .Where(x => x.PlaceId == placeId);
+        }
+
+        public IQueryable<Booking> FindAllOn(DateTime dateTime, Guid? placeId)
+        {
+            return this.bookingRepository
+                .All
+                .Where(x => x.DateTime == dateTime && x.PlaceId == placeId)
+                .Include(x => x.Tables);
+        }
+
+        public Booking CreateBooking(Guid? placeId, string userId, DateTime dateTime)
+        {
+            var booking = this.factory.CreateBooking(placeId, userId, dateTime);
+            this.bookingRepository.Add(booking);
+            this.unitOfWork.Commit();
+            return booking;
         }
     }
 }

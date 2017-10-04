@@ -1,0 +1,14 @@
+﻿@model FindAndBook.Web.Models.Places.BookingFormViewModel
+@using (Ajax.BeginForm("BookTables", new { controller = "Bookings" },
+                new AjaxOptions { UpdateTargetId = "book-form", InsertionMode = InsertionMode.Replace }))
+{
+    @Html.HiddenFor(x => x.PlaceId)
+    @Html.HiddenFor(x => x.DateTime)
+    <p>Two people: @Model.TwoPeopleTablesCount</p>
+    @Html.EditorFor(x => x.TwoPeopleInput, new { htmlAttributes = new { type = "number", min = 0, max = Model.TwoPeopleTablesCount } })
+    <p>Four people: @Model.FourPeopleTablesCount</p>
+    @Html.EditorFor(x => x.FourPeopleInput, new { htmlAttributes= new { type="number", min=0, max=Model.FourPeopleTablesCount } })
+    <p>Six people: @Model.SixPeopleTablesCount</p>
+    @Html.EditorFor(x => x.SixPeopleInput, new { htmlAttributes= new { type="number", min=0, max=Model.SixPeopleTablesCount } })
+    <input type="submit" value="Submit"/>
+}

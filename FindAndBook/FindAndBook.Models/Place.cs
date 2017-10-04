@@ -54,6 +54,12 @@ namespace FindAndBook.Models
 
         public int? AverageBill { get; set; }
 
+        public int TwoPeopleCount { get; set; }
+
+        public int FourPeopleCount { get; set; }
+
+        public int SixPeopleCount { get; set; }
+
         public virtual ICollection<Review> Reviews { get; set; }
 
         public virtual ICollection<Booking> Bookings { get; set; }

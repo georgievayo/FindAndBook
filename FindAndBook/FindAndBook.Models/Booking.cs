@@ -6,6 +6,17 @@ namespace FindAndBook.Models
 {
     public partial class Booking
     {
+        public Booking()
+        {
+            
+        }
+        public Booking(Guid? placeId, string userId, DateTime dateTime)
+        {
+            PlaceId = placeId;
+            UserId = userId;
+            DateTime = dateTime;
+        }
+
         public Guid Id { get; set; }
 
         public Guid? PlaceId { get; set; }

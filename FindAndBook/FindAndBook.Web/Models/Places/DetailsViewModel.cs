@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using AutoMapper;
 using FindAndBook.Models;
@@ -8,6 +9,8 @@ namespace FindAndBook.Web.Models.Places
 {
     public class DetailsViewModel : IMapFrom<Place>, ICustomMap
     {
+        public Guid Id { get; set; }
+
         public string Name { get; set; }
 
         public Address Address { get; set; }
@@ -31,6 +34,8 @@ namespace FindAndBook.Web.Models.Places
         public void CreateMappings(IMapperConfigurationExpression configuration)
         {
             configuration.CreateMap<Place, DetailsViewModel>()
+                .ForMember(detailsViewModel => detailsViewModel.Id,
+                    cfg => cfg.MapFrom(place => place.Id))
                 .ForMember(detailsViewModel => detailsViewModel.Name,
                     cfg => cfg.MapFrom(place => place.Name))
                 .ForMember(detailsViewModel => detailsViewModel.PhotoUrl,

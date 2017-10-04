@@ -6,6 +6,7 @@
     <title>@ViewBag.Title - FindAndBook</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.css" rel="stylesheet">
     @Styles.Render("~/Content/navigation.css")
+    @Styles.Render("~/Content/jquery.datetimepicker.css")
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 </head>
@@ -17,6 +18,7 @@
         @RenderBody()
     </div>
     @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jquery-datetimepicker")
     @Scripts.Render("~/bundles/bootstrap")
     @Scripts.Render("~/bundles/unobtrusive")
     @RenderSection("scripts", required: false)

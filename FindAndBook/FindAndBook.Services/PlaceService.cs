@@ -98,5 +98,20 @@ namespace FindAndBook.Services
                 .Include(x => x.Address)
                 .Include(x => x.Reviews);
         }
+
+        public int GetTwoPeopleTablesCount(Guid? id)
+        {
+            return this.placeRepository.GetById(id).TwoPeopleCount;
+        }
+
+        public int GetFourPeopleTablesCount(Guid? id)
+        {
+            return this.placeRepository.GetById(id).FourPeopleCount;
+        }
+
+        public int GetSixPeopleTablesCount(Guid? id)
+        {
+            return this.placeRepository.GetById(id).SixPeopleCount;
+        }
     }
 }

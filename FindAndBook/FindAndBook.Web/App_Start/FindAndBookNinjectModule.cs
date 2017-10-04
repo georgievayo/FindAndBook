@@ -29,6 +29,7 @@ namespace FindAndBook.Web
             this.Bind<IPlaceFactory>().ToFactory().InSingletonScope();
             this.Bind<IViewModelFactory>().ToFactory().InSingletonScope();
             this.Bind<IAddressFactory>().ToFactory().InSingletonScope();
+            this.Bind<IBookingFactory>().ToFactory().InSingletonScope();
 
             // Services
             this.Bind<IPlaceService>().To<PlaceService>().InRequestScope();

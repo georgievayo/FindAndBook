@@ -35,28 +35,33 @@
                     <h6 class="price"><strong>Weekends: </strong><span>@Model.WeekendHours</span></h6>
                     <div class="action">
                         <button class="add-to-cart btn btn-default" type="button">Show reviews</button>
-                        @Ajax.ActionLink("Book a table", "GetBookingForm", new {controller="Bookings"},
+                        @*@Ajax.ActionLink("Book a table", "GetBookingForm", new {controller="Bookings", id=@Model.Id},
                        new AjaxOptions
                         {
                             UpdateTargetId = "book-form",
                             InsertionMode = InsertionMode.Replace,
                         },
-                            new { @class= "add-to-cart btn btn-default" })
-                        <button class="like btn btn-default" type="button"><span class="glyphicon glyphicon-bookmark"></span></button>
+                            new { @class= "add-to-cart btn btn-default" })*@
+                        <button class="like btn btn-default" type="button" onclick="ShowBookingDateTimeForm()"><span class="glyphicon glyphicon-bookmark"></span></button>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <div id="book-form"></div>
+    <div id="book-form" class="hidden">
+        @Html.Action("GetBookingForm", new { controller="Bookings", id=@Model.Id})
+    </div>
 </div>
 @section scripts {
     <script>
         function SCRate() {
-            console.log('here');
             for (var i = 1; i <= @Model.Rating; i++) {
                 $("#sRate" + i).addClass('checked');
             }
+        }
+
+        function ShowBookingDateTimeForm() {
+            $('#book-form').removeClass('hidden');
         }
 
         SCRate();
