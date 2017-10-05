@@ -79,6 +79,11 @@ namespace FindAndBook.Web.Controllers
 
             var userId = this.authProvider.CurrentUserId;
             var isManager = this.authProvider.IsInRole(userId, "Manager");
+            if (!isManager)
+            {
+                return this.RedirectToAction("Index", "Home");
+            }
+
             var model = this.viewModelFactory.CreateCreateViewModel();
 
             return View(model);
@@ -104,6 +109,45 @@ namespace FindAndBook.Web.Controllers
             var tablesWithSixPeople = this.tablesService.CreateTableType(place.Id, 6, model.SixPeopleCount);
 
             return this.RedirectToAction("Details", new { id = place.Id });
+        }
+
+        [Authorize]
+        [HttpGet]
+        public ActionResult Edit(Guid id)
+        {
+            if (!this.authProvider.IsAuthenticated)
+            {
+                return this.RedirectToAction("Login", "Account");
+            }
+
+            var currentUserId = this.authProvider.CurrentUserId;
+            var place = this.placeService.GetPlaceById(id).FirstOrDefault();
+            if (place != null && currentUserId != place.ManagerId)
+            {
+                return this.RedirectToAction("Index", "Home");
+            }
+
+            var model = this.placeService.GetPlaceById(id)
+                .ProjectTo<EditViewModel>()
+                .FirstOrDefault();
+
+            return View("Edit", model);
+
+        }
+
+        public ActionResult Edit(EditViewModel model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(model);
+            }
+
+            var updatedPlace = this.placeService.EditPlace(model.Id, model.Contact, model.Description, model.PhotoUrl, model.WeekdayHours,
+                model.WeekendHours, model.AverageBill);
+            var updatedAddress = this.addressService.EditAddress(updatedPlace.AddressId, model.Country, model.City, model.Area,
+                model.Street, model.Number);
+
+            return this.RedirectToAction("Details", "Places", new {id = updatedPlace.Id});
         }
 
         [HttpGet]

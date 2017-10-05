@@ -8,5 +8,6 @@ namespace FindAndBook.Services.Contracts
         Address CreateAddress(string country, string city, string area, string street, int number);
 
         //Address GetAddressByPlaceId(Guid placeId);
+        Address EditAddress(Guid? placeId, string country, string city, string area, string street, int number);
     }
 }

@@ -99,19 +99,23 @@ namespace FindAndBook.Services
                 .Include(x => x.Reviews);
         }
 
-        public int GetTwoPeopleTablesCount(Guid? id)
+        public Place EditPlace(Guid? id, string contact, string description, 
+            string photoUrl, string weekdayHours, string weekendHours, int? averageBill)
         {
-            return this.placeRepository.GetById(id).TwoPeopleCount;
-        }
+            var place = this.placeRepository.GetById(id);
+            if (place != null)
+            {
+                place.Contact = contact;
+                place.Details = description;
+                place.PhotoUrl = photoUrl;
+                place.WeekdayHours = weekdayHours;
+                place.WeekendHours = weekendHours;
+                place.AverageBill = averageBill;
+                this.placeRepository.Update(place);
+                this.unitOfWork.Commit();
+            }
 
-        public int GetFourPeopleTablesCount(Guid? id)
-        {
-            return this.placeRepository.GetById(id).FourPeopleCount;
-        }
-
-        public int GetSixPeopleTablesCount(Guid? id)
-        {
-            return this.placeRepository.GetById(id).SixPeopleCount;
+            return place;
         }
     }
 }

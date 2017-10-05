@@ -3,7 +3,7 @@ using AutoMapper;
 using FindAndBook.Models;
 using FindAndBook.Web.Infrastructure;
 
-namespace FindAndBook.Web.Models.Places
+namespace FindAndBook.Web.Models.Reviews
 {
     public class SingleReviewViewModel : IMapFrom<Review>, ICustomMap
     {

@@ -18,5 +18,6 @@ namespace FindAndBook.Services.Contracts
         IQueryable<Place> GetUserPlaces(string userId);
 
         IQueryable<Place> GetPlacesByCategory(string category);
+        Place EditPlace(Guid? id, string contact, string description, string photoUrl, string weekdayHours, string weekendHours, int? averageBill);
     }
 }

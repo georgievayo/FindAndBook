@@ -47,6 +47,24 @@ namespace FindAndBook.Services
             return address;
         }
 
+        public Address EditAddress(Guid? id, string country, string city, string area, string street, int number)
+        {
+            var address = this.addressRepository.GetById(id);
+            if (address != null)
+            {
+                address.Country = country;
+                address.City = city;
+                address.Area = area;
+                address.Street = street;
+                address.Number = number;
+
+                this.addressRepository.Update(address);
+                this.unitOfWork.Commit();
+            }
+
+            return address;
+        }
+
         //public Address GetAddressByPlaceId(Guid placeId)
         //{
         //    return this.addressRepository.All
