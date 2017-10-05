@@ -15,7 +15,7 @@ namespace FindAndBook.Data.Migrations
                 "dbo.BookedTables",
                 c => new
                     {
-                        Id = c.Guid(nullable: false),
+                        Id = c.Guid(nullable: false, identity: true, defaultValueSql: "newsequentialid()"),
                         TableId = c.Guid(),
                         BookingId = c.Guid(),
                         TablesCount = c.Int(nullable: false),

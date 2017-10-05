@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -43,6 +44,14 @@ namespace FindAndBook.Services
             var bookedTable = this.factory.CreateBookedTable(bookingId, tableId, tablesCount);
             this.bookedTablesRepository.Add(bookedTable);
             this.unitOfWork.Commit();
+        }
+
+        public BookedTables GetBookedTable(Guid? bookingId)
+        {
+            return this.bookedTablesRepository
+                .All
+                .Include(x => x.Table)
+                .FirstOrDefault(x => x.BookingId == bookingId);
         }
     }
 }

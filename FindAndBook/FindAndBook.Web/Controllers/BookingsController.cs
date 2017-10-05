@@ -82,51 +82,49 @@ namespace FindAndBook.Web.Controllers
         }
 
 
-        //[HttpPost]
-        //public ActionResult GetAvailableTables(BookingViewModel model)
-        //{
-        //    var bookings = this.bookingService
-        //        .FindAllOn(model.DateTime, model.PlaceId).ToList();
+        [HttpPost]
+        public ActionResult GetAvailableTables(BookingViewModel model)
+        {
+            var bookings = this.bookingService
+                .FindAllOn(model.DateTime, model.PlaceId).ToList();
 
-        //    var reservedTwoPeopleTables = 0;
-        //    var reservedFourPeopleTables = 0;
-        //    var reservedSixPeopleTables = 0;
+            var reservedTwoPeopleTables = 0;
+            var reservedFourPeopleTables = 0;
+            var reservedSixPeopleTables = 0;
 
-        //    foreach (var booking in bookings)
-        //    {
-        //        this.bookedTablesService.GetBookedTablesCount()
-        //        foreach (var table in booking.Tables)
-        //        {
-        //            if (table. == 2)
-        //            {
-        //                reservedTwoPeopleTables += table.NumberOfTables;
-        //            }
-        //            else if (table.NumberOfPeople == 4)
-        //            {
-        //                reservedFourPeopleTables += table.NumberOfTables;
-        //            }
-        //            else
-        //            {
-        //                reservedSixPeopleTables += table.NumberOfTables;
-        //            }
-        //        }
-        //    }
+            foreach (var booking in bookings)
+            {
+                var bookedTables = this.bookedTablesService.GetBookedTable(booking.Id);
 
-        //    var allTables = this.tablesService.GetTablesCount(model.PlaceId, 2);
-        //    var availableTwoPeople = allTables - reservedTwoPeopleTables;
+                    if (bookedTables.Table.NumberOfPeople == 2)
+                    {
+                        reservedTwoPeopleTables += bookedTables.TablesCount;
+                    }
+                    else if (bookedTables.Table.NumberOfPeople == 4)
+                    {
+                        reservedFourPeopleTables += bookedTables.TablesCount;
+                    }
+                    else if(bookedTables.Table.NumberOfPeople == 6)
+                    {
+                        reservedSixPeopleTables += bookedTables.TablesCount;
+                    }
+            }
 
-        //    allTables = this.tablesService.GetTablesCount(model.PlaceId, 4);
-        //    var availableFourPeople = allTables - reservedFourPeopleTables;
+            var allTables = this.tablesService.GetTablesCount(model.PlaceId, 2);
+            var availableTwoPeople = allTables - reservedTwoPeopleTables;
 
-        //    allTables = this.tablesService.GetTablesCount(model.PlaceId, 6);
-        //    var availableSixPeople = allTables - reservedSixPeopleTables;
+            allTables = this.tablesService.GetTablesCount(model.PlaceId, 4);
+            var availableFourPeople = allTables - reservedFourPeopleTables;
 
-        //    var availableTablesModel =
-        //        this.factory.CreateBookingFormViewModel(availableTwoPeople, availableFourPeople,
-        //            availableSixPeople, model.PlaceId, model.DateTime);
+            allTables = this.tablesService.GetTablesCount(model.PlaceId, 6);
+            var availableSixPeople = allTables - reservedSixPeopleTables;
 
-        //    return PartialView("_AvailableTables", availableTablesModel);
-        //}
+            var availableTablesModel =
+                this.factory.CreateBookingFormViewModel(availableTwoPeople, availableFourPeople,
+                    availableSixPeople, model.PlaceId, model.DateTime);
+
+            return PartialView("_AvailableTables", availableTablesModel);
+        }
 
         [HttpPost]
         public ActionResult BookTables(BookingFormViewModel model)
