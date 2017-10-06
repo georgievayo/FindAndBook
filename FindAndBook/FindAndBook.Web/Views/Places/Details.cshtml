@@ -92,4 +92,13 @@
             $('#reviews').removeClass('hidden');
         }
     </script>
+    
+    <script>
+        function vote(rating) {
+            for (var i = 1; i <= rating; i++) {
+                $(`#star${i}`).removeClass('glyphicon-star-empty').addClass('glyphicon-star');
+                @Model.ReviewForm.Rating = rating;
+            }
+        }
+    </script>
 }

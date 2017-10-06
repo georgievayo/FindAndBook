@@ -13,10 +13,10 @@
         <div class="form-group">
             <div class="input-group-btn">
                 <div class="row">
-                    <div class="btn-group" data-toggle="buttons-radio">
-                        <button class="btn active">Restaurants</button>
-                        <button class="btn">Clubs</button>
-                        <button class="btn">Cafe</button>
+                    <div class="btn-group">                        
+                        @Html.RadioButtonFor(m => m.Category, "Restaurant")@Html.Label("Restaurant")
+                        @Html.RadioButtonFor(m => m.Category, "Club")@Html.Label("Club")
+                        @Html.RadioButtonFor(m => m.Category, "Cafe")@Html.Label("Cafe")
                     </div>
                     @Html.DropDownListFor(x => x.SearchBy, @Model.SearchByOptions)
                     @Html.EditorFor(x => x.Pattern, new { htmlAttributes = new { @class = "input form-control", placeholder = "Enter pattern..." } })
@@ -25,5 +25,4 @@
             </div>
         </div>
     }
-    <div id="result"></div>
 </div>

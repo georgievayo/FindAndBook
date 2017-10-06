@@ -304,6 +304,7 @@
     <Content Include="Scripts\navigation.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\review-form.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
@@ -342,7 +343,7 @@
     <Content Include="Views\Places\Create.cshtml" />
     <Content Include="Views\Navigation\Navigation.cshtml" />
     <Content Include="Views\Shared\_PlaceShort.cshtml" />
-    <Content Include="Views\Places\List.cshtml" />
+    <Content Include="Views\Shared\List.cshtml" />
     <Content Include="Views\Places\Details.cshtml" />
     <Content Include="Views\Account\Profile.cshtml" />
     <Content Include="Views\Shared\_Bookings.cshtml" />
