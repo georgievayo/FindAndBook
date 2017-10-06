@@ -170,6 +170,9 @@ namespace FindAndBook.Web.Controllers
                 .GetPlaceWithReviews(id)
                 .ProjectTo<DetailsViewModel>()
                 .FirstOrDefault();
+            var currentUser = this.authProvider.CurrentUserId;
+            var reviewForm = this.viewModelFactory.CreateReviewViewModel(model.Id, currentUser);
+            model.ReviewForm = reviewForm;
 
             return this.View(model);
         }

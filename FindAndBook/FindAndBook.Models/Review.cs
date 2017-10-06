@@ -6,6 +6,20 @@ namespace FindAndBook.Models
 {
     public partial class Review
     {
+        public Review()
+        {
+            
+        }
+
+        public Review(Guid? placeId, string userId, DateTime postedOn, string message, int rating)
+        {
+            this.PlaceId = placeId;
+            this.UserId = userId;
+            this.PostedOn = postedOn;
+            this.Message = message;
+            this.Rating = rating;
+        }
+
         public Guid Id { get; set; }
 
         public Guid? PlaceId { get; set; }

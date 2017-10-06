@@ -4,6 +4,7 @@ using System.Linq;
 using AutoMapper;
 using FindAndBook.Models;
 using FindAndBook.Web.Infrastructure;
+using FindAndBook.Web.Models.Reviews;
 
 namespace FindAndBook.Web.Models.Places
 {
@@ -30,6 +31,8 @@ namespace FindAndBook.Web.Models.Places
         public ICollection<Review> Reviews { get; set; }
 
         public double Rating { get; set; }
+
+        public SingleReviewViewModel ReviewForm { get; set; }
 
         public void CreateMappings(IMapperConfigurationExpression configuration)
         {

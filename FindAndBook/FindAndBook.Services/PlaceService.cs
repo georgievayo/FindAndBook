@@ -117,5 +117,35 @@ namespace FindAndBook.Services
 
             return place;
         }
+
+        public IQueryable<Place> FindInName(string category, string pattern)
+        {
+            return this.placeRepository
+                .All
+                .Where(x => x.Name.Contains(pattern) && x.Type == category);
+        }
+
+        public IQueryable<Place> FindInDescription(string category, string pattern)
+        {
+            return this.placeRepository
+                .All
+                .Where(x => x.Details.Contains(pattern) && x.Type == category);
+        }
+
+        public IQueryable<Place> FindInAddress(string category, string pattern)
+        {
+            return this.placeRepository
+                .All
+                .Where(x => (x.Address.Country.Contains(pattern) || 
+                x.Address.City.Contains(pattern) || x.Address.Area.Contains(pattern) ||
+                x.Address.Street.Contains(pattern)) && x.Type == category);
+        }
+
+        public IQueryable<Place> FindInBill(string category, string pattern)
+        {
+            return this.placeRepository
+                .All
+                .Where(x => x.AverageBill == int.Parse(pattern) && x.Type == category);
+        }
     }
 }

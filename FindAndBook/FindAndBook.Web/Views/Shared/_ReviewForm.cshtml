@@ -1,0 +1,40 @@
+﻿@model FindAndBook.Web.Models.Reviews.SingleReviewViewModel
+<div class="well well-sm">
+    <div class="row" id="post-review-box">
+        <div class="col-md-6 col-md-offset-3">
+            @using (Html.BeginForm("LeaveReview", "Reviews", FormMethod.Post))
+            {
+                @Html.HiddenFor(x => x.PlaceId)
+                @Html.HiddenFor(x => x.UserId)
+
+                <div class="col-md-12">
+                    @Html.TextAreaFor(x => x.Message, new { @class = "form-control animated", cols = 50, id = "new-review", name = "comment", placeholder = "Enter your review here...", rows = "5" })
+                </div>
+                <div class="text-right">
+                    <div class="stars starrr" data-rating="0">
+                        <span class="glyphicon glyphicon-star-empty" id="star1" onclick="vote(1)"></span>
+                        <span class="glyphicon glyphicon-star-empty" id="star2" onclick="vote(2)"></span>
+                        <span class="glyphicon glyphicon-star-empty" id="star3" onclick="vote(3)"></span>
+                        <span class="glyphicon glyphicon-star-empty" id="star4" onclick="vote(4)"></span>
+                        <span class="glyphicon glyphicon-star-empty" id="star5" onclick="vote(5)"></span>
+                    </div>
+                    <a class="btn btn-danger btn-sm" href="#" id="close-review-box" style="display: none; margin-right: 10px;">
+                        <span class="glyphicon glyphicon-remove"></span>Cancel
+                    </a>
+                    <button class="btn btn-success btn-lg" type="submit" id="send-review">Send</button>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+@section scripts {
+    <script>
+        function vote(rating) {
+            for (var i = 1; i <= rating; i++) {
+                $(`#star${i}`).removeClass('glyphicon-star-empty').addClass('glyphicon-star');
+                @Model.Rating = rating;
+            }
+        }
+    </script>
+}

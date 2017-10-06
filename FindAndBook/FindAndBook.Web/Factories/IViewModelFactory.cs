@@ -6,6 +6,8 @@ using FindAndBook.Web.Models.Consumables;
 using FindAndBook.Web.Models.Home;
 using FindAndBook.Web.Models.Navigation;
 using FindAndBook.Web.Models.Places;
+using FindAndBook.Web.Models.Reviews;
+using FindAndBook.Web.Models.Search;
 
 namespace FindAndBook.Web.Factories
 {
@@ -26,5 +28,9 @@ namespace FindAndBook.Web.Factories
         OrderFormViewModel CreateOrderFormViewModel(Guid? bookingId, ICollection<Consumable> placeMenu);
 
         CreateMenuViewModel CreateCreateMenuViewModel(Guid? id);
+
+        SingleReviewViewModel CreateReviewViewModel(Guid? placeId, string userId);
+
+        SearchViewModel CreateSearchViewModel();
     }
 }

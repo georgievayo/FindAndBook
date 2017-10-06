@@ -1,7 +1,10 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Web.Mvc;
+using FindAndBook.Models;
 using FindAndBook.Services.Contracts;
 using FindAndBook.Web.Factories;
+using FindAndBook.Web.Models.Consumables;
 
 namespace FindAndBook.Web.Controllers
 {
@@ -36,7 +39,17 @@ namespace FindAndBook.Web.Controllers
         public ActionResult Create(Guid? id)
         {
             var model = this.factory.CreateCreateMenuViewModel(id);
+            model.Menu = new List<Consumable>();
             return View("CreateMenu", model);
+        }
+
+        [HttpPost]
+        public ActionResult Create(CreateMenuViewModel model)
+        {
+
+            return null;
         }
     }
 }
+
+//name="@(Html.GetNameFor(m => m.TeacherInstructorCollection))[{{ $index }}]
