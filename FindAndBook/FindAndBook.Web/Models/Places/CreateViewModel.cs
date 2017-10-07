@@ -7,6 +7,7 @@ namespace FindAndBook.Web.Models.Places
     public class CreateViewModel
     {
         [Required]
+        [MinLength(4)]
         [Display(Name = "Name")]
         [AllowHtml]
         public string Name { get; set; }
@@ -17,28 +18,34 @@ namespace FindAndBook.Web.Models.Places
         public string Types { get; set; }
 
         [Required]
+        [Phone]
         [Display(Name = "Contact")]
         [AllowHtml]
         public string Contact { get; set; }
 
         [Required]
+        [MinLength(3)]
         [Display(Name = "Country")]
         [AllowHtml]
         public string Country { get; set; }
 
         [Required]
+        [MinLength(3)]
         [Display(Name = "City")]
         [AllowHtml]
         public string City { get; set; }
 
+        [MinLength(3)]
         [Display(Name = "Area")]
         [AllowHtml]
         public string Area { get; set; }
 
+        
         [Required]
         [Display(Name = "Street")]
         [AllowHtml]
         public string Street { get; set; }
+
 
         [Required]
         [Display(Name = "Number")]
@@ -53,16 +60,19 @@ namespace FindAndBook.Web.Models.Places
         public string Description { get; set; }
 
         [Required]
+        [RegularExpression("[0-9]{2}:[0-9]{2} - [0-9]{2}:[0-9]{2}")]
         [Display(Name = "Weekday hours")]
         [AllowHtml]
         public string WeekdayHours { get; set; }
 
         [Required]
+        [RegularExpression("[0-9]{2}:[0-9]{2} - [0-9]{2}:[0-9]{2}")]
         [Display(Name = "Weekend hours")]
         [AllowHtml]
         public string WeekendHours { get; set; }
 
         [Required]
+        [Range(1, 1000)]
         [Display(Name = "Average bill")]
         [AllowHtml]
         public int? AverageBill { get; set; }

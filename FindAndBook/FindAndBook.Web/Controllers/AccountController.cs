@@ -1,12 +1,8 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
 using AutoMapper.QueryableExtensions;
 using FindAndBook.Authentication.Contracts;
-using FindAndBook.Factories;
-using FindAndBook.Models;
 using FindAndBook.Services.Contracts;
 using FindAndBook.Web.Factories;
 using FindAndBook.Web.Models.Account;

@@ -7,6 +7,7 @@ using FindAndBook.Authentication.Contracts;
 using FindAndBook.Services.Contracts;
 using FindAndBook.Web.Factories;
 using FindAndBook.Web.Models.Places;
+using Microsoft.AspNet.Identity;
 
 namespace FindAndBook.Web.Controllers
 {
@@ -198,6 +199,14 @@ namespace FindAndBook.Web.Controllers
             }
 
             return View("Error");
+        }
+
+        private void AddErrors(IdentityResult result)
+        {
+            foreach (var error in result.Errors)
+            {
+                ModelState.AddModelError("", error);
+            }
         }
     }
 }
