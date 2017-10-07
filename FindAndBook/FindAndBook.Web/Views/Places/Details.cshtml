@@ -4,7 +4,7 @@
 }
 @Styles.Render("~/Content/details.css")
 <div class="container">
-    <div class="card">
+    <div class="card jumbotron">
         <div class="container-fliud">
             <div class="wrapper row">
                 <div class="preview col-md-6">
@@ -28,46 +28,54 @@
                     </div>
                     <p class="product-description">@Model.Details</p>
                     <p class="product-description"><strong><span class="glyphicon glyphicon-map-marker"></span> Find us at</strong> @Model.Address.City, @Model.Address.Area, @Model.Address.Street @Model.Address.Number</p>
-
+                    <h5 class="price"><span class="glyphicon glyphicon-phone-alt"></span> Contact: <span>@Model.Contact</span></h5>
                     <h5 class="price"><span class="glyphicon glyphicon-euro"></span> Average bill: <span>@Model.AverageBill</span></h5>
                     <h5 class="price"><span class="glyphicon glyphicon-time"></span> Opening hours</h5>
                     <h6 class="price"><strong>Weekdays: </strong><span>@Model.WeekdayHours</span></h6>
                     <h6 class="price"><strong>Weekends: </strong><span>@Model.WeekendHours</span></h6>
                     <div class="action">
-                        <button class="add-to-cart btn btn-default" type="button" id="show-reviews" onclick="showReviews()">Show reviews</button>
-                        <button class="like btn btn-default" type="button" onclick="ShowBookingDateTimeForm()"><span class="glyphicon glyphicon-bookmark"></span></button>
+                        <button class="add-to-cart btn btn-default" type="button" id="show-reviews">Show reviews</button>
+                        <button class="like btn btn-default" type="button" id="book-a-table"><span class="glyphicon glyphicon-bookmark"></span></button>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 
-    <div id="reviews" class="hidden col-md-12">
-        <section class="comments">
-            @foreach (var review in Model.Reviews)
-            {
-                <article class="comment">
-                    <a class="comment-img" href="#non">
-                        <img src="https://pbs.twimg.com/profile_images/444197466133385216/UA08zh-B.jpeg" alt="" width="50" height="50">
-                    </a>
-                    <div class="comment-body">
-                        <div class="text">
-                            <p>@review.Message</p>
-                        </div>
-                        <p class="attribution">
-                            by @review.User.UserName at @review.PostedOn
-                        </p>
-                    </div>
-                </article>
-            }
-        </section>      
-        <section>
-            @Html.Partial("_ReviewForm", Model.ReviewForm);
-        </section>
+    <div class="jumbotron col-md-12" id="booking-field">
+        <fieldset>
+            <legend><strong>Book a table</strong></legend>
+            <div class="row" id="book-form">
+                @Html.Action("GetBookingForm", new { controller = "Bookings", id = @Model.Id })
+            </div>
+        </fieldset>
     </div>
 
-    <div id="book-form" class="hidden">
-        @Html.Action("GetBookingForm", new { controller = "Bookings", id = @Model.Id })
+    <div id="reviews" class="col-md-12 jumbotron">
+        <fieldset>
+            <legend><strong>Reviews</strong></legend>
+            <section class="comments">
+                @foreach (var review in Model.Reviews)
+                {
+                    <article class="comment">
+                        <a class="comment-img" href="#non">
+                            <img src="https://pbs.twimg.com/profile_images/444197466133385216/UA08zh-B.jpeg" alt="" width="50" height="50">
+                        </a>
+                        <div class="comment-body">
+                            <div class="text">
+                                <p>@review.Message</p>
+                            </div>
+                            <p class="attribution">
+                                by @review.User.UserName at @review.PostedOn
+                            </p>
+                        </div>
+                    </article>
+                }
+            </section>
+            <section>
+                @Html.Partial("_ReviewForm", Model.ReviewForm)
+            </section>
+        </fieldset>
     </div>
 </div>
 
@@ -79,22 +87,27 @@
                 $("#sRate" + i).addClass('checked');
             }
         }
-
-        function ShowBookingDateTimeForm() {
-            $('#book-form').removeClass('hidden');
-        }
-
         SCRate();
     </script>
+
     <script type="text/javascript">
         $(function () {
             $('#datetimepicker1').datetimepicker();
         });
     </script>
+
     <script>
-        function showReviews() {
-            $('#reviews').removeClass('hidden');
-        }
+        $("#show-reviews").click(function() {
+            $('html,body').animate({
+                    scrollTop: $("#reviews").offset().top},
+                'slow');
+        });
+
+        $("#book-a-table").click(function() {
+            $('html,body').animate({
+                    scrollTop: $("#booking").offset().top},
+                'slow');
+        });
     </script>
     
     <script>

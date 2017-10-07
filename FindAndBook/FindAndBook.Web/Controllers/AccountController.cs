@@ -22,21 +22,15 @@ namespace FindAndBook.Web.Controllers
         private const string XsrfKey = "XsrfId";
 
         private readonly IAuthenticationProvider provider;
-        private readonly IUserFactory userFactory;
         private readonly IUserService userService;
         private readonly IViewModelFactory viewModelFactory;
 
-        public AccountController(IAuthenticationProvider provider, IUserFactory userFactory, 
+        public AccountController(IAuthenticationProvider provider,
             IUserService userService, IViewModelFactory viewModelFactory)
         {
             if (provider == null)
             {
                 throw new ArgumentNullException(nameof(provider));
-            }
-
-            if (userFactory == null)
-            {
-                throw new ArgumentNullException(nameof(userFactory));
             }
 
             if (userService == null)
@@ -50,7 +44,6 @@ namespace FindAndBook.Web.Controllers
             }
 
             this.provider = provider;
-            this.userFactory = userFactory;
             this.userService = userService;
             this.viewModelFactory = viewModelFactory;
         }
@@ -110,7 +103,7 @@ namespace FindAndBook.Web.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = this.userFactory.CreateUser(model.Username, model.Email, model.FirstName, model.LastName, model.PhoneNumber);
+                var user = this.userService.AddUser(model.Username, model.Email, model.FirstName, model.LastName, model.PhoneNumber);
                 var result = this.provider.RegisterAndLoginUser(user, model.Password, isPersistent: false, rememberBrowser: false);
                 var res = this.provider.AddToRole(user.Id, model.Role);
                 if (result.Succeeded)
@@ -149,6 +142,12 @@ namespace FindAndBook.Web.Controllers
                 .ToList()
                 .FirstOrDefault();
 
+            if (user == null)
+            {
+                return View("Error");
+            }
+
+            user.IsCurrentUser = this.provider.CurrentUserUsername == user.Username;
             return View(user);
         }
 

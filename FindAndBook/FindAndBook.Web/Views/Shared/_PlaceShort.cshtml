@@ -1,39 +1,17 @@
 ﻿@model FindAndBook.Web.Models.Places.PlaceShortViewModel
 @Styles.Render("~/Content/place-short.css")
-<div class="container">
-    <div class="col-md-4">
-        <div class="thumbnail">
-            <img src=@Model.PhotoUrl alt="" class="img-responsive img-thumbnail">
-            <div class="caption">
-                <h4 class="pull-right">@Model.Contact</h4>
-                <h4>@Html.ActionLink(@Model.Name, "Details", "Places", new {id = @Model.Id}, null)</h4>
-                <p><span class="glyphicon glyphicon-map-marker"></span>  You can find us at:</p>
-                <p>@Model.Address.Country, @Model.Address.City, @Model.Address.Area, @Model.Address.Street @Model.Address.Number</p>
-                <p><span class="glyphicon glyphicon-euro"></span>  Average Bill: @Model.AverageBill</p>
-            </div>
-            <div class="ratings">
-                <p>
-                    <span class="glyphicon glyphicon-star" id="sRate1"></span>
-                    <span class="glyphicon glyphicon-star" id="sRate2"></span>
-                    <span class="glyphicon glyphicon-star" id="sRate3"></span>
-                    <span class="glyphicon glyphicon-star" id="sRate4"></span>
-                    <span class="glyphicon glyphicon-star" id="sRate5"></span>
-                    (@Model.ReviewsCount reviews)
-                </p>
-            </div>
+<div class="col-md-4">
+    <div class="thumbnail">
+        <img src=@Model.PhotoUrl alt="" class="img-responsive img-thumbnail">
+        <div class="caption">
+            <h4 class="pull-right">@Model.Contact</h4>
+            <h4>@Html.ActionLink(@Model.Name, "Details", "Places", new { id = @Model.Id }, null)</h4>
+            <p><span class="glyphicon glyphicon-map-marker checked"></span>  You can find us at:</p>
+            <p>@Model.Address.Country, @Model.Address.City, @Model.Address.Area, @Model.Address.Street @Model.Address.Number</p>
+            <p><span class="glyphicon glyphicon-usd checked"></span>  Average Bill: @Model.AverageBill</p>
+            <p>
+                <span class="glyphicon glyphicon-star checked"></span> @Model.Rating    <span class="glyphicon glyphicon-comment checked"></span> @Model.ReviewsCount reviews
+            </p>
         </div>
     </div>
 </div>
-
-@section scripts {
-    <script>
-        function SCRate() {
-            console.log('here');
-            for (var i = 1; i <= @Model.Rating; i++) {
-                $("#sRate" + i).addClass('checked');
-            }
-        }
-
-        SCRate();
-    </script>
-}

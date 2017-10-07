@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Web.Mvc;
-using FindAndBook.Models;
 using FindAndBook.Services.Contracts;
 using FindAndBook.Web.Factories;
 using FindAndBook.Web.Models.Consumables;
@@ -38,6 +36,11 @@ namespace FindAndBook.Web.Controllers
         [HttpGet]
         public ActionResult Create(Guid? id)
         {
+            if (id == null)
+            {
+                return View("Error");
+            }
+
             var model = this.factory.CreateMenuViewModel(id);
             return View("CreateMenu", model);
         }
@@ -45,6 +48,11 @@ namespace FindAndBook.Web.Controllers
         [HttpPost]
         public ActionResult AddConsumable(ConsumableViewModel model)
         {
+            if (!ModelState.IsValid)
+            {
+                return PartialView("_ConsumableForm", model);
+            }
+
             var consumable = this.consumableService.AddConsumable(model.PlaceId, model.Name, 
                 model.Quantity, model.Price, model.Type, model.Ingredients);
 
@@ -53,10 +61,13 @@ namespace FindAndBook.Web.Controllers
 
         public ActionResult GetNewForm(Guid? id)
         {
+            if (id == null)
+            {
+                return View("Error");
+            }
+
             var model = this.factory.CreateConsumableViewModel(id);
             return PartialView("_ConsumableForm", model);
         }
     }
 }
-
-//name="@(Html.GetNameFor(m => m.TeacherInstructorCollection))[{{ $index }}]

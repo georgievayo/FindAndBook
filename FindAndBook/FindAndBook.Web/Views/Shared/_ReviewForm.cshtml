@@ -1,18 +1,19 @@
 ﻿@model FindAndBook.Web.Models.Reviews.SingleReviewViewModel
     @Scripts.Render("~Scripts/review-form.js")
-<div class="well well-sm">
+@if (Model.UserId != null)
+{
     <div class="row" id="post-review-box">
-        <div class="col-md-6 col-md-offset-3">
+        <div class="col-md-8 col-md-offset-2">
             @using (Html.BeginForm("LeaveReview", "Reviews", FormMethod.Post))
             {
                 @Html.HiddenFor(x => x.PlaceId)
                 @Html.HiddenFor(x => x.UserId)
                 @Html.HiddenFor(x => x.Rating, new {id= "selected-rating" })
 
-                <div class="col-md-12">
-                    @Html.TextAreaFor(x => x.Message, new { @class = "form-control animated", cols = 50, id = "new-review", name = "comment", placeholder = "Enter your review here...", rows = "5" })
+                <div class="row">
+                    @Html.TextAreaFor(x => x.Message, new { style = "min-width: 100%", @class = "form-control animated", name = "comment", placeholder = "Enter your review here..." })
                 </div>
-                <div class="text-right">
+                <div class="text-center row">
                     <div class="stars starrr" data-rating="0">
                         <span class="glyphicon glyphicon-star-empty" id="star1" onclick="vote(1)"></span>
                         <span class="glyphicon glyphicon-star-empty" id="star2" onclick="vote(2)"></span>
@@ -20,13 +21,12 @@
                         <span class="glyphicon glyphicon-star-empty" id="star4" onclick="vote(4)"></span>
                         <span class="glyphicon glyphicon-star-empty" id="star5" onclick="vote(5)"></span>
                         <input type="number" class="hidden" id="selected-rating"/>
+                        <button class="add-to-cart btn btn-default" type="submit" id="send-review">Send</button>
                     </div>
-                    <a class="btn btn-danger btn-sm" href="#" id="close-review-box" style="display: none; margin-right: 10px;">
-                        <span class="glyphicon glyphicon-remove"></span>Cancel
-                    </a>
-                    <button class="btn btn-success btn-lg" type="submit" id="send-review">Send</button>
                 </div>
             }
         </div>
     </div>
-</div>
+
+}
+   

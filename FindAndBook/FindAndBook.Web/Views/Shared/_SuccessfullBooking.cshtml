@@ -1,8 +1,9 @@
 ﻿@model FindAndBook.Web.Models.Places.BookingFormViewModel
-    
+<div class="text-center">
 <h1>You have made your booking successfully!</h1>
 
 <div class="container">
     <h2>Do you want to order?</h2>
     <h3>Click @Html.ActionLink("here", "Order", new { controller="Bookings", id=Model.PlaceId, bookingId=Model.BookingId})</h3>
 </div>
+</div>    

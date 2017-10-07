@@ -8,12 +8,21 @@
         <div class="row">
             <div class='col-sm-6'>
                 <div class="form-group">
-                    <div class='input-group date'>
-                        @Html.EditorFor(m => m.DateTime, new { htmlAttributes = new { @class = "form-control", id = "datetimepicker1", name="dateTime" } })
+                    <h5><span><i class="glyphicon glyphicon-calendar"></i></span> Select date and time if you want to see available tables</h5>
+                    <div class='input-group'>
+                        @Html.EditorFor(m => m.DateTime, new
+                        {
+                            htmlAttributes = new
+                            {
+                                @class = "form-control", id = "datetimepicker1", name = "dateTime"
+                            }
+                        })
+
                     </div>
                 </div>
+                <input type="submit" value="See available tables" class="add-to-cart btn btn-default" />
             </div>
-            <input type="submit" value="See available tables" />
+            
         </div>
     </div>
     <div class="container" id="book-tables"></div>

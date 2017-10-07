@@ -30,6 +30,11 @@ namespace FindAndBook.Web.Controllers
         [HttpPost]
         public ActionResult LeaveReview(SingleReviewViewModel model)
         {
+            if (!ModelState.IsValid)
+            {
+                return PartialView("_ReviewForm", model);
+            }
+
             var addedReview = this.reviewsService
                 .AddReview(model.PlaceId, model.UserId, DateTime.Now, model.Message, model.Rating);
 

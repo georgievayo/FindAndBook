@@ -12,12 +12,13 @@ namespace FindAndBook.Models
             this.Consumables = new HashSet<Consumable>();
         }
 
-        public Booking(Guid? placeId, string userId, DateTime dateTime)
+        public Booking(Guid? placeId, string userId, DateTime dateTime, int people)
             : this()
         {
             PlaceId = placeId;
             UserId = userId;
             DateTime = dateTime;
+            NumberOfPeople = people;
         }
 
         public Guid Id { get; set; }

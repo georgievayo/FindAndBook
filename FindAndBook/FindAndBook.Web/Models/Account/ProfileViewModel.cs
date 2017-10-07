@@ -15,6 +15,8 @@ namespace FindAndBook.Web.Models.Account
 
         public string PhoneNumber { get; set; }
 
+        public bool IsCurrentUser { get; set; }
+
         public ICollection<Booking> Bookings { get; set; }
 
         public void CreateMappings(IMapperConfigurationExpression configuration)

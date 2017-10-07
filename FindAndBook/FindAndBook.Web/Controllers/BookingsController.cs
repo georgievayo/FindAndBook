@@ -70,6 +70,11 @@ namespace FindAndBook.Web.Controllers
 
         public ActionResult GetBookingForm(Guid? id)
         {
+            if (id == null)
+            {
+                return View("Error");
+            }
+
             var model = this.factory.CreateBookingFormViewModel(id);
             if (authProvider.IsAuthenticated)
             {
@@ -77,7 +82,7 @@ namespace FindAndBook.Web.Controllers
             }
             else
             {
-                return PartialView("Error");
+                return View("Error");
             }
         }
 
@@ -85,6 +90,11 @@ namespace FindAndBook.Web.Controllers
         [HttpPost]
         public ActionResult GetAvailableTables(BookingViewModel model)
         {
+            if (!ModelState.IsValid)
+            {
+                return PartialView("_BookingDateTimeForm", model);
+            }
+
             var bookings = this.bookingService
                 .FindAllOn(model.DateTime, model.PlaceId).ToList();
 
@@ -129,9 +139,17 @@ namespace FindAndBook.Web.Controllers
         [HttpPost]
         public ActionResult BookTables(BookingFormViewModel model)
         {
+            if (!ModelState.IsValid)
+            {
+                return PartialView("_AvailableTables", model);
+            }
+
             var currentUserId = this.authProvider.CurrentUserId;
-            var booking = this.bookingService.CreateBooking(model.PlaceId, currentUserId, model.DateTime);
+            var peopleCount = 2 * model.TwoPeopleInput + 4 * model.FourPeopleInput + 6 * model.SixPeopleInput;
+
+            var booking = this.bookingService.CreateBooking(model.PlaceId, currentUserId, model.DateTime, peopleCount);
             model.BookingId = booking.Id;
+
             if (model.TwoPeopleInput > 0)
             {
                 var table = this.tablesService.GetByPlaceAndNumberOfPeople(model.PlaceId, 2);
@@ -148,6 +166,7 @@ namespace FindAndBook.Web.Controllers
                 this.bookedTablesService.AddBookedTables(booking.Id, bookedTable.Id, model.SixPeopleInput);
             }
 
+            
             return PartialView("_SuccessfullBooking", model);
         }
 
@@ -164,6 +183,11 @@ namespace FindAndBook.Web.Controllers
         [HttpPost]
         public ActionResult Order(OrderFormViewModel model)
         {
+            if (!ModelState.IsValid)
+            {
+                return View(model);
+            }
+
             string selected = Request.Form["consumable"];
             string[] selectedList = selected.Split(',');
 
@@ -187,6 +211,11 @@ namespace FindAndBook.Web.Controllers
 
         public ActionResult CancelBooking(Guid? id)
         {
+            if (id == null)
+            {
+                return View("Error");
+            }
+
             this.bookedTablesService.RemoveBookedTables(id);
             this.bookingService.RemoveBooking(id);
             return null;

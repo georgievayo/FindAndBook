@@ -58,9 +58,9 @@ namespace FindAndBook.Services
             return this.bookingRepository.GetById(id);
         }
 
-        public Booking CreateBooking(Guid? placeId, string userId, DateTime dateTime)
+        public Booking CreateBooking(Guid? placeId, string userId, DateTime dateTime, int people)
         {
-            var booking = this.factory.CreateBooking(placeId, userId, dateTime);
+            var booking = this.factory.CreateBooking(placeId, userId, dateTime, people);
             this.bookingRepository.Add(booking);
             this.unitOfWork.Commit();
             return booking;

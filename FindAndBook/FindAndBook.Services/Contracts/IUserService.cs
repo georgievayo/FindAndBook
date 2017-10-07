@@ -14,5 +14,7 @@ namespace FindAndBook.Services.Contracts
         IQueryable<User> GetUserByUsername(string username);
 
         User GetUserWithBookings(string id);
+
+        User AddUser(string username, string email, string firstName, string lastName, string phoneNumber);
     }
 }

@@ -19,6 +19,17 @@
     </div>
 </div>
 
-<div class="container">
-    @Html.Partial("_Bookings", @Model);
-</div>
+@if (Model.IsCurrentUser)
+{
+    if (Model.Bookings.Count > 0)
+    {
+        <div class="container">
+            @Html.Partial("_Bookings", Model)
+        </div>
+    }
+    else
+    {
+        <h3>You have no bookings yet!</h3>
+    }
+
+}

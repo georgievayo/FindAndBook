@@ -1,4 +1,7 @@
 ﻿@model FindAndBook.Web.Models.Bookings.OrderFormViewModel
+    @{
+        ViewBag.Title = "Menu";
+    }
 <div class="container" id="content">
     <fieldset>
         <legend>Menu</legend>
@@ -6,14 +9,21 @@
                 new AjaxOptions { UpdateTargetId = "content", InsertionMode = InsertionMode.Replace, HttpMethod = "POST" }))
         {
             @Html.HiddenFor(x => x.BookingId)
-            foreach (var consumable in Model.PlaceMenu)
+            if (Model.PlaceMenu.Count == 0)
             {
-                <div>
-                    <input type="checkbox" id=@consumable.Name name="consumable" value="@consumable.Name">
-                    <label for=@consumable.Name>@consumable.Name</label>
-                </div>
+                <h3>Sorry! This place does not offer online menu.</h3>
             }
-            <input type="submit" value="Submit" />
+            else
+            {
+                foreach (var consumable in Model.PlaceMenu)
+                {
+                    <div>
+                        <input type="checkbox" id=@consumable.Name name="consumable" value="@consumable.Name">
+                        <label for=@consumable.Name>@consumable.Name</label>
+                    </div>
+                }
+                <input type="submit" value="Submit"/>
+            }
         }
 
     </fieldset>

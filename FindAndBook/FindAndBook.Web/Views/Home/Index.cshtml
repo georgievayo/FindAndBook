@@ -4,23 +4,22 @@
 }
 
 <div class="container">
-    <div class="row">
-        <h3>Find your favourite place, book it and enjoy!</h3>
+    <div class="row text-center">
+        <h2>Find your favourite place, book it and enjoy!</h2>
+        <br />
+        <br />
     </div>
     @using (Html.BeginForm("Search", "Search"))
     {
         <div class="form-group">
             <div class="input-group-btn">
                 <div class="row">
-                    <div class="btn-group">
-                        @Html.RadioButtonFor(m => m.Category, "Restaurant")@Html.Label("Restaurant")
-                        @Html.RadioButtonFor(m => m.Category, "Club")@Html.Label("Club")
-                        @Html.RadioButtonFor(m => m.Category, "Cafe")@Html.Label("Cafe")
+                    <div class="input-group col-md-10 col-md-offset-1">
+                        @Html.DropDownListFor(x => x.Category, @Model.CategoryOptions, new { @class = "form-control col-md-3" })
+                        @Html.DropDownListFor(x => x.SearchBy, @Model.SearchByOptions, new {@class = "form-control col-md-3"})
+                        @Html.EditorFor(x => x.Pattern, new { htmlAttributes = new { @class = "input form-control col-md-3", placeholder = "Enter pattern..." } })
+                        <button type="submit" class="btn btn-success col-md-1"><span class="glyphicon glyphicon-search"></span> Go</button>
                     </div>
-                    @Html.DropDownListFor(x => x.SearchBy, @Model.SearchByOptions)
-                    @Html.EditorFor(x => x.Pattern, new {htmlAttributes = new {@class = "input form-control", placeholder = "Enter pattern..."}})
-                    <input type="submit" class="btn btn-success" value="Searh"/>
-
                 </div>
             </div>
         </div>

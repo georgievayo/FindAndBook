@@ -60,6 +60,11 @@ namespace FindAndBook.Web.Controllers
 
         public ActionResult GetPlacesByCategory([Bind(Prefix = "category")] string category)
         {
+            if (category == null)
+            {
+                return View("Error");
+            }
+
             var places = this.placeService
                 .GetPlacesByCategory(category)
                 .ProjectTo<PlaceShortViewModel>()
@@ -81,7 +86,7 @@ namespace FindAndBook.Web.Controllers
             var isManager = this.authProvider.IsInRole(userId, "Manager");
             if (!isManager)
             {
-                return this.RedirectToAction("Index", "Home");
+                return View("Error");
             }
 
             var model = this.viewModelFactory.CreateCreateViewModel();
@@ -122,9 +127,9 @@ namespace FindAndBook.Web.Controllers
 
             var currentUserId = this.authProvider.CurrentUserId;
             var place = this.placeService.GetPlaceById(id).FirstOrDefault();
-            if (place != null && currentUserId != place.ManagerId)
+            if (place == null || (place != null && currentUserId != place.ManagerId))
             {
-                return this.RedirectToAction("Index", "Home");
+                return View("Error");
             }
 
             var model = this.placeService.GetPlaceById(id)
@@ -170,6 +175,11 @@ namespace FindAndBook.Web.Controllers
                 .GetPlaceWithReviews(id)
                 .ProjectTo<DetailsViewModel>()
                 .FirstOrDefault();
+            if (model == null)
+            {
+                return View("Error");
+            }
+
             var currentUser = this.authProvider.CurrentUserId;
             var reviewForm = this.viewModelFactory.CreateReviewViewModel(model.Id, currentUser);
             model.ReviewForm = reviewForm;
@@ -178,13 +188,16 @@ namespace FindAndBook.Web.Controllers
         }
 
         [HttpGet]
-        public ActionResult MyPlaces(string id)
+        public ActionResult MyPlaces()
         {
             var currentUser = this.authProvider.CurrentUserId;
-            var model = this.placeService.GetUserPlaces(currentUser).ToList();
-            return View(model);
+            if (this.authProvider.IsInRole(currentUser, "Manager"))
+            {
+                var model = this.placeService.GetUserPlaces(currentUser).ToList();
+                return View(model);
+            }
+
+            return View("Error");
         }
-
-
     }
 }

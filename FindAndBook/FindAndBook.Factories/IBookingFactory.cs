@@ -9,6 +9,6 @@ namespace FindAndBook.Factories
 {
     public interface IBookingFactory
     {
-        Booking CreateBooking(Guid? placeId, string userId, DateTime dateTime);
+        Booking CreateBooking(Guid? placeId, string userId, DateTime dateTime, int people);
     }
 }

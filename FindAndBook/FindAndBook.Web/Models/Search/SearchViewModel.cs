@@ -12,6 +12,12 @@ namespace FindAndBook.Web.Models.Search
             this.SearchByOptions.Add(new SelectListItem { Text = "Description", Value = "Description" });
             this.SearchByOptions.Add(new SelectListItem { Text = "Address", Value = "Address" });
             this.SearchByOptions.Add(new SelectListItem { Text = "Average bill", Value = "Average bill" });
+
+            this.CategoryOptions = new List<SelectListItem>();
+            this.CategoryOptions.Add(new SelectListItem {Text = "Restaurant", Value = "Restaurant"});
+            this.CategoryOptions.Add(new SelectListItem { Text = "Club", Value = "Club" });
+            this.CategoryOptions.Add(new SelectListItem { Text = "Cafe", Value = "Cafe" });
+
         }
 
         public string Category { get; set; }
@@ -21,5 +27,8 @@ namespace FindAndBook.Web.Models.Search
         public string Pattern { get; set; }
 
         public List<SelectListItem> SearchByOptions { get; set; }
+
+        public List<SelectListItem> CategoryOptions { get; set; }
+
     }
 }
