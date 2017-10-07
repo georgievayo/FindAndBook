@@ -8,5 +8,7 @@ namespace FindAndBook.Services.Contracts
         void AddBookedTables(Guid? bookingId, Guid? tableId, int tablesCount);
 
         BookedTables GetBookedTable(Guid? bookingId);
+
+        void RemoveBookedTables(Guid? bookingId);
     }
 }

@@ -86,7 +86,11 @@
 
         SCRate();
     </script>
-
+    <script type="text/javascript">
+        $(function () {
+            $('#datetimepicker1').datetimepicker();
+        });
+    </script>
     <script>
         function showReviews() {
             $('#reviews').removeClass('hidden');
@@ -94,11 +98,12 @@
     </script>
     
     <script>
-        function vote(rating) {
+        function vote(rating) {        
             for (var i = 1; i <= rating; i++) {
                 $(`#star${i}`).removeClass('glyphicon-star-empty').addClass('glyphicon-star');
-                @Model.ReviewForm.Rating = rating;
             }
+
+            $('#selected-rating').val(rating);
         }
     </script>
 }

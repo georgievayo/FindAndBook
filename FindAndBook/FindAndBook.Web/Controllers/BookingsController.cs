@@ -184,5 +184,12 @@ namespace FindAndBook.Web.Controllers
 
             return PartialView("_PlaceBookings", bookings);
         }
+
+        public ActionResult CancelBooking(Guid? id)
+        {
+            this.bookedTablesService.RemoveBookedTables(id);
+            this.bookingService.RemoveBooking(id);
+            return null;
+        }
     }
 }

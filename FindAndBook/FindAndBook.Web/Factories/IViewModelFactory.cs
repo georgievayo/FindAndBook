@@ -32,5 +32,9 @@ namespace FindAndBook.Web.Factories
         SingleReviewViewModel CreateReviewViewModel(Guid? placeId, string userId);
 
         SearchViewModel CreateSearchViewModel();
+
+        ConsumableViewModel CreateConsumableViewModel(Guid? id);
+
+        CreateMenuViewModel CreateMenuViewModel(Guid? id);
     }
 }

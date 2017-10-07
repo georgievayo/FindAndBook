@@ -38,16 +38,23 @@ namespace FindAndBook.Web.Controllers
         [HttpGet]
         public ActionResult Create(Guid? id)
         {
-            var model = this.factory.CreateCreateMenuViewModel(id);
-            model.Menu = new List<Consumable>();
+            var model = this.factory.CreateMenuViewModel(id);
             return View("CreateMenu", model);
         }
 
         [HttpPost]
-        public ActionResult Create(CreateMenuViewModel model)
+        public ActionResult AddConsumable(ConsumableViewModel model)
         {
+            var consumable = this.consumableService.AddConsumable(model.PlaceId, model.Name, 
+                model.Quantity, model.Price, model.Type, model.Ingredients);
 
             return null;
+        }
+
+        public ActionResult GetNewForm(Guid? id)
+        {
+            var model = this.factory.CreateConsumableViewModel(id);
+            return PartialView("_ConsumableForm", model);
         }
     }
 }

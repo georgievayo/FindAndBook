@@ -13,5 +13,7 @@ namespace FindAndBook.Services.Contracts
         Booking GetById(Guid? id);
 
         Booking CreateBooking(Guid? placeId, string userId, DateTime dateTime);
+
+        void RemoveBooking(Guid? id);
     }
 }

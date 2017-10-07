@@ -1,0 +1,24 @@
+﻿@model FindAndBook.Web.Models.Consumables.ConsumableViewModel
+
+<div class="container">
+    @using (Ajax.BeginForm("AddConsumable", new { id = Model.PlaceId, controller = "Consumables" }, new AjaxOptions
+    {
+        UpdateTargetId = "menu",
+        InsertionMode = InsertionMode.Replace
+    }))
+    {
+        @Html.HiddenFor(m => m.PlaceId)
+
+        @Html.TextBoxFor(x => x.Name, new { placeholder = "Name", @class = "form-control"})
+
+        @Html.TextBoxFor(x => x.Type, new { placeholder = "Type", @class = "form-control"})
+        
+        @Html.TextBoxFor(x => x.Quantity, new { placeholder = "Quantity", @class = "form-control"})
+
+        @Html.TextBoxFor(x => x.Price, new { placeholder = "Price", @class = "form-control" })
+
+        @Html.TextAreaFor(x => x.Ingredients, new { placeholder = "Ingredients", @class = "form-control"})
+        <input type="submit" value="Submit" class="btn btn-success"/>
+
+    }
+</div>

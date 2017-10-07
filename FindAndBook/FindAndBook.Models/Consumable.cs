@@ -6,6 +6,22 @@ namespace FindAndBook.Models
 {
     public partial class Consumable
     {
+        public Consumable()
+        {
+            
+        }
+
+        public Consumable(Guid? placeId, string name, string type, 
+            decimal? price, int? quantity, string ingredients)
+        {
+            PlaceId = placeId;
+            Name = name;
+            Type = type;
+            Price = price;
+            Quantity = quantity;
+            Ingredients = ingredients;
+        }
+
         public Guid Id { get; set; }
 
         public Guid? PlaceId { get; set; }

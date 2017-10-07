@@ -53,5 +53,15 @@ namespace FindAndBook.Services
                 .Include(x => x.Table)
                 .FirstOrDefault(x => x.BookingId == bookingId);
         }
+
+        public void RemoveBookedTables(Guid? bookingId)
+        {
+            var bookedTables = this.bookedTablesRepository.All.Where(x => x.BookingId == bookingId).ToList();
+            foreach (var bookedTable in bookedTables)
+            {
+                this.bookedTablesRepository.Delete(bookedTable);
+                this.unitOfWork.Commit();
+            }
+        }
     }
 }

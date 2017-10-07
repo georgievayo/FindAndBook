@@ -65,5 +65,12 @@ namespace FindAndBook.Services
             this.unitOfWork.Commit();
             return booking;
         }
+
+        public void RemoveBooking(Guid? id)
+        {
+            var booking = this.bookingRepository.GetById(id);
+            this.bookingRepository.Delete(booking);
+            this.unitOfWork.Commit();
+        }
     }
 }

@@ -7,7 +7,7 @@
             {
                 @Html.HiddenFor(x => x.PlaceId)
                 @Html.HiddenFor(x => x.UserId)
-                @Html.HiddenFor(x => x.Rating)
+                @Html.HiddenFor(x => x.Rating, new {id= "selected-rating" })
 
                 <div class="col-md-12">
                     @Html.TextAreaFor(x => x.Message, new { @class = "form-control animated", cols = 50, id = "new-review", name = "comment", placeholder = "Enter your review here...", rows = "5" })
@@ -19,6 +19,7 @@
                         <span class="glyphicon glyphicon-star-empty" id="star3" onclick="vote(3)"></span>
                         <span class="glyphicon glyphicon-star-empty" id="star4" onclick="vote(4)"></span>
                         <span class="glyphicon glyphicon-star-empty" id="star5" onclick="vote(5)"></span>
+                        <input type="number" class="hidden" id="selected-rating"/>
                     </div>
                     <a class="btn btn-danger btn-sm" href="#" id="close-review-box" style="display: none; margin-right: 10px;">
                         <span class="glyphicon glyphicon-remove"></span>Cancel

@@ -11,5 +11,8 @@ namespace FindAndBook.Services.Contracts
         Consumable GetByName(string name);
 
         void AddBooking(Consumable consumable, Booking booking);
+
+        Consumable AddConsumable(Guid? placeId, string name, int quantity, 
+            decimal? price, string type, string ingredients);
     }
 }

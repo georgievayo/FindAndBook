@@ -33,6 +33,7 @@ namespace FindAndBook.Web
             this.Bind<ITablesFactory>().ToFactory().InSingletonScope();
             this.Bind<IBookedTablesFactory>().ToFactory().InSingletonScope();
             this.Bind<IReviewsFactory>().ToFactory().InSingletonScope();
+            this.Bind<IConsumableFactory>().ToFactory().InSingletonScope();
 
             // Services
             this.Bind<IPlaceService>().To<PlaceService>().InRequestScope();

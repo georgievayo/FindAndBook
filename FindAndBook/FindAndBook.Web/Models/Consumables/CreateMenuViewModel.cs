@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using FindAndBook.Models;
 
 namespace FindAndBook.Web.Models.Consumables
 {
@@ -17,8 +16,5 @@ namespace FindAndBook.Web.Models.Consumables
         }
 
         public Guid? PlaceId { get; set; }
-
-        public ICollection<Consumable> Menu { get; set; }
-       
     }
 }
