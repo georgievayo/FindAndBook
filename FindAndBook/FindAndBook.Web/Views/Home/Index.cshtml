@@ -9,18 +9,18 @@
     </div>
     @using (Html.BeginForm("Search", "Search"))
     {
-        @Html.AntiForgeryToken()
         <div class="form-group">
             <div class="input-group-btn">
                 <div class="row">
-                    <div class="btn-group">                        
+                    <div class="btn-group">
                         @Html.RadioButtonFor(m => m.Category, "Restaurant")@Html.Label("Restaurant")
                         @Html.RadioButtonFor(m => m.Category, "Club")@Html.Label("Club")
                         @Html.RadioButtonFor(m => m.Category, "Cafe")@Html.Label("Cafe")
                     </div>
                     @Html.DropDownListFor(x => x.SearchBy, @Model.SearchByOptions)
-                    @Html.EditorFor(x => x.Pattern, new { htmlAttributes = new { @class = "input form-control", placeholder = "Enter pattern..." } })
-                    <input type="submit" value="Search" class="btn btn-success" />
+                    @Html.EditorFor(x => x.Pattern, new {htmlAttributes = new {@class = "input form-control", placeholder = "Enter pattern..."}})
+                    <input type="submit" class="btn btn-success" value="Searh"/>
+
                 </div>
             </div>
         </div>

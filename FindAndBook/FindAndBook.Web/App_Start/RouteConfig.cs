@@ -17,7 +17,7 @@ namespace FindAndBook.Web
             routes.MapRoute(
                 name: "Order",
                 url: "{controller}/{action}/{id}/{bookingId}",
-                defaults: new { controller = "Bookings", action = "Order", id = UrlParameter.Optional, bookingId = UrlParameter.Optional }
+                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional, bookingId = UrlParameter.Optional }
             );
 
             routes.MapRoute(

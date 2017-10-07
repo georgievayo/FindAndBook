@@ -2,13 +2,12 @@
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 using FindAndBook.Services.Contracts;
-using FindAndBook.Web.Models.Search;
 using AutoMapper.QueryableExtensions;
 using FindAndBook.Web.Factories;
 using FindAndBook.Web.Models.Places;
+using FindAndBook.Web.Models.Search;
 
 namespace FindAndBook.Web.Controllers
 {
@@ -27,17 +26,24 @@ namespace FindAndBook.Web.Controllers
             this.searchService = searchService;
         }
 
-        [HttpPost]
-        public ActionResult Search(SearchViewModel model)
+        [HttpGet]
+        public ActionResult Search([Bind(Prefix = "category")] string category, 
+            [Bind(Prefix = "searchBy")] string searchBy, [Bind(Prefix = "pattern")] string pattern)
         {
             var found = this.searchService
-                .FindBy(model.Category, model.SearchBy, model.Pattern)
+                .FindBy(category, searchBy, pattern)
                 .Include(p => p.Reviews)
                 .Include(p => p.Address)
                 .ProjectTo<PlaceShortViewModel>()
                 .ToList();
 
             return View("List", found);
+        }
+
+        [HttpPost]
+        public ActionResult Search(SearchViewModel model)
+        {
+            return RedirectToAction("Search", new { category = model.Category, searchBy = model.SearchBy, pattern = model.Pattern });
         }
     }
 }
