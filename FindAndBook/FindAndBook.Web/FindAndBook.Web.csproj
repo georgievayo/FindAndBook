@@ -236,6 +236,8 @@
     <Compile Include="App_Start\NinjectWeb.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="Areas\Administration\AdministrationAreaRegistration.cs" />
+    <Compile Include="Areas\Administration\Controllers\AdministrationController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BookingsController.cs" />
     <Compile Include="Controllers\ConsumablesController.cs" />
@@ -290,6 +292,8 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Areas\Administration\Views\web.config" />
+    <Content Include="Areas\Administration\Views\Administration\Index.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -334,7 +338,7 @@
     <Content Include="Views\Places\Create.cshtml" />
     <Content Include="Views\Navigation\Navigation.cshtml" />
     <Content Include="Views\Shared\_PlaceShort.cshtml" />
-    <Content Include="Views\Places\List.cshtml" />
+    <Content Include="Views\Shared\List.cshtml" />
     <Content Include="Views\Places\Details.cshtml" />
     <Content Include="Views\Account\Profile.cshtml" />
     <Content Include="Views\Shared\_Bookings.cshtml" />
@@ -388,6 +392,8 @@
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Areas\Administration\Models\" />
+    <Folder Include="Areas\Administration\Views\Shared\" />
     <Folder Include="Views\Reviews\" />
   </ItemGroup>
   <PropertyGroup>

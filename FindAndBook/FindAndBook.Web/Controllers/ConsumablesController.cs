@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Web.Mvc;
 using FindAndBook.Services.Contracts;
 using FindAndBook.Web.Factories;
@@ -41,7 +42,8 @@ namespace FindAndBook.Web.Controllers
                 return View("Error");
             }
 
-            var model = this.factory.CreateMenuViewModel(id);
+            var menu = this.consumableService.GetAllConsumablesOf(id).ToList();
+            var model = this.factory.CreateMenuViewModel(id, menu);
             return View("CreateMenu", model);
         }
 

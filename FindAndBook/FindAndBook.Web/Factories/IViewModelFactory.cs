@@ -35,6 +35,6 @@ namespace FindAndBook.Web.Factories
 
         ConsumableViewModel CreateConsumableViewModel(Guid? id);
 
-        CreateMenuViewModel CreateMenuViewModel(Guid? id);
+        CreateMenuViewModel CreateMenuViewModel(Guid? id, ICollection<Consumable> menu);
     }
 }

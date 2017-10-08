@@ -1,28 +1,42 @@
 ﻿@model FindAndBook.Web.Models.Consumables.CreateMenuViewModel
-    @{
-        ViewBag.Title = "Add menu";
-    }
-    @Styles.Render("~/Content/create-menu.css")
-    <fieldset class="col-md-10 col-md-offset-1">
-        <legend>Add menu</legend>
-        @Html.HiddenFor(x => x.PlaceId)
-        <div class="container">
-            <div class="row clearfix">
-                <div class="form-group">
-                    <div class="col-md-10" id="menu">
-
-                    </div>
-                </div>
-            </div>
-            @Ajax.ActionLink("Add consumable", "GetNewForm", new { id = Model.PlaceId }, new AjaxOptions
-  {
-      UpdateTargetId = "menu",
-      InsertionMode = InsertionMode.Replace
-  })
+@{
+    ViewBag.Title = "Add menu";
+}
+@Styles.Render("~/Content/create-menu.css")
+<fieldset class="col-md-10 col-md-offset-1">
+    <legend>Add menu</legend>
+    @Html.HiddenFor(x => x.PlaceId)
+    <div class="container">
+    <div class="col-md-12">
+        <table class="table table-list-search">
+            <thead>
+            <tr>
+                <th>Name</th>
+                <th>Ingredients</th>
+                <th>Quantity</th>
+                <th>Price</th>
+            </tr>
+            </thead>
+            <tbody>
+            @foreach (var consumable in Model.Menu)
+            {
+                <tr>
+                    <td>@consumable.Name</td>
+                    <td>@consumable.Ingredients</td>
+                    <td>@consumable.Quantity gr</td>
+                    <td>@consumable.Price lv</td>
+                </tr>
+            }
+            </tbody>
+        </table>
+        <div class="container" id="menu">
+            
         </div>
-    </fieldset>
-
-    @section scripts {
-        <script>
-        </script>
-    }
+        </div>
+        @Ajax.ActionLink("Add consumable", "GetNewForm", new { id = Model.PlaceId }, new AjaxOptions
+       {
+           UpdateTargetId = "menu",
+           InsertionMode = InsertionMode.Replace
+       }, new {@class="btn btn-default"})
+    </div>
+</fieldset>
