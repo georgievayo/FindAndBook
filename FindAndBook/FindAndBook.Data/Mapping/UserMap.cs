@@ -7,6 +7,15 @@ namespace FindAndBook.Data.Mapping
     {
         public UserMap()
         {
+            this.HasMany(x => x.Bookings)
+                .WithRequired(x => x.User)
+                .WillCascadeOnDelete();
+            this.HasMany(x => x.Reviews)
+                .WithRequired(x => x.User)
+                .WillCascadeOnDelete();
+            this.HasMany(x => x.Places)
+                .WithRequired(x => x.Manager)
+                .WillCascadeOnDelete();
         }
     }
 }

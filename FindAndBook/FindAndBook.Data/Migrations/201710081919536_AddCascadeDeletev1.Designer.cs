@@ -7,13 +7,13 @@ namespace FindAndBook.Data.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class RemoveOrderTable : IMigrationMetadata
+    public sealed partial class AddCascadeDeletev1 : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(RemoveOrderTable));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(AddCascadeDeletev1));
         
         string IMigrationMetadata.Id
         {
-            get { return "201710041519539_RemoveOrderTable"; }
+            get { return "201710081919536_AddCascadeDeletev1"; }
         }
         
         string IMigrationMetadata.Source

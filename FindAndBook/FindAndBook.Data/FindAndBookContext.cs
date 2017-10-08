@@ -1,6 +1,4 @@
 using System.Data.Entity;
-using System.Data.Entity.Infrastructure;
-using FindAndBook.Data.Mapping;
 using FindAndBook.Data.Mapping;
 using FindAndBook.Models;
 using Microsoft.AspNet.Identity.EntityFramework;

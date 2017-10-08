@@ -62,21 +62,21 @@
     <Compile Include="EFRepository.cs" />
     <Compile Include="Contracts\IRepository.cs" />
     <Compile Include="Mapping\UserMap.cs" />
-    <Compile Include="Migrations\201709281950261_Initial.cs" />
-    <Compile Include="Migrations\201709281950261_Initial.Designer.cs">
-      <DependentUpon>201709281950261_Initial.cs</DependentUpon>
+    <Compile Include="Migrations\201710081847226_Initial.cs" />
+    <Compile Include="Migrations\201710081847226_Initial.Designer.cs">
+      <DependentUpon>201710081847226_Initial.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201710030836544_AddTablesCount.cs" />
-    <Compile Include="Migrations\201710030836544_AddTablesCount.Designer.cs">
-      <DependentUpon>201710030836544_AddTablesCount.cs</DependentUpon>
+    <Compile Include="Migrations\201710081919536_AddCascadeDeletev1.cs" />
+    <Compile Include="Migrations\201710081919536_AddCascadeDeletev1.Designer.cs">
+      <DependentUpon>201710081919536_AddCascadeDeletev1.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201710041519539_RemoveOrderTable.cs" />
-    <Compile Include="Migrations\201710041519539_RemoveOrderTable.Designer.cs">
-      <DependentUpon>201710041519539_RemoveOrderTable.cs</DependentUpon>
+    <Compile Include="Migrations\201710081924595_AddCascadeDeletev2.cs" />
+    <Compile Include="Migrations\201710081924595_AddCascadeDeletev2.Designer.cs">
+      <DependentUpon>201710081924595_AddCascadeDeletev2.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201710041925070_AddBookedTables.cs" />
-    <Compile Include="Migrations\201710041925070_AddBookedTables.Designer.cs">
-      <DependentUpon>201710041925070_AddBookedTables.cs</DependentUpon>
+    <Compile Include="Migrations\201710081932597_AddCascadeDeletev3.cs" />
+    <Compile Include="Migrations\201710081932597_AddCascadeDeletev3.Designer.cs">
+      <DependentUpon>201710081932597_AddCascadeDeletev3.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="FindAndBookContext.cs" />
@@ -100,17 +100,17 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201709281950261_Initial.resx">
-      <DependentUpon>201709281950261_Initial.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201710081847226_Initial.resx">
+      <DependentUpon>201710081847226_Initial.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201710030836544_AddTablesCount.resx">
-      <DependentUpon>201710030836544_AddTablesCount.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201710081919536_AddCascadeDeletev1.resx">
+      <DependentUpon>201710081919536_AddCascadeDeletev1.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201710041519539_RemoveOrderTable.resx">
-      <DependentUpon>201710041519539_RemoveOrderTable.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201710081924595_AddCascadeDeletev2.resx">
+      <DependentUpon>201710081924595_AddCascadeDeletev2.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201710041925070_AddBookedTables.resx">
-      <DependentUpon>201710041925070_AddBookedTables.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201710081932597_AddCascadeDeletev3.resx">
+      <DependentUpon>201710081932597_AddCascadeDeletev3.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

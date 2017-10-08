@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using FindAndBook.Models;
+using FindAndBook.Web.Areas.Administration.Models;
 using FindAndBook.Web.Models.Bookings;
 using FindAndBook.Web.Models.Consumables;
 using FindAndBook.Web.Models.Home;
@@ -36,5 +37,8 @@ namespace FindAndBook.Web.Factories
         ConsumableViewModel CreateConsumableViewModel(Guid? id);
 
         CreateMenuViewModel CreateMenuViewModel(Guid? id, ICollection<Consumable> menu);
+
+        AllInformationViewModel CreateAllInformationViewModel(ICollection<User> users, ICollection<Review> reviews,
+            ICollection<Place> places);
     }
 }

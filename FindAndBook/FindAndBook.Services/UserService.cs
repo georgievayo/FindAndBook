@@ -68,5 +68,10 @@ namespace FindAndBook.Services
 
             return user;
         }
+
+        public IQueryable<User> GetAll()
+        {
+            return this.userRepository.All;
+        }
     }
 }

@@ -7,13 +7,13 @@ namespace FindAndBook.Data.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class AddTablesCount : IMigrationMetadata
+    public sealed partial class AddCascadeDeletev3 : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(AddTablesCount));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(AddCascadeDeletev3));
         
         string IMigrationMetadata.Id
         {
-            get { return "201710030836544_AddTablesCount"; }
+            get { return "201710081932597_AddCascadeDeletev3"; }
         }
         
         string IMigrationMetadata.Source

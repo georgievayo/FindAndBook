@@ -11,6 +11,10 @@ namespace FindAndBook.Data.Mapping
         {
             this.Property(x => x.Id)
                 .HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
+
+            this.HasMany(x => x.Tables)
+                .WithRequired(x => x.Booking)
+                .WillCascadeOnDelete();
         }
     }
 }

@@ -11,7 +11,7 @@ namespace FindAndBook.Data.Migrations
                 "dbo.Addresses",
                 c => new
                     {
-                        Id = c.Guid(nullable: false, identity: true, defaultValueSql: "newsequentialid()"),
+                        Id = c.Guid(nullable: false, identity: true),
                         Country = c.String(),
                         City = c.String(),
                         Area = c.String(),
@@ -21,10 +21,25 @@ namespace FindAndBook.Data.Migrations
                 .PrimaryKey(t => t.Id);
             
             CreateTable(
+                "dbo.BookedTables",
+                c => new
+                    {
+                        Id = c.Guid(nullable: false),
+                        TableId = c.Guid(),
+                        BookingId = c.Guid(),
+                        TablesCount = c.Int(nullable: false),
+                    })
+                .PrimaryKey(t => t.Id)
+                .ForeignKey("dbo.Bookings", t => t.BookingId)
+                .ForeignKey("dbo.Tables", t => t.TableId)
+                .Index(t => t.TableId)
+                .Index(t => t.BookingId);
+            
+            CreateTable(
                 "dbo.Bookings",
                 c => new
                     {
-                        Id = c.Guid(nullable: false, identity: true, defaultValueSql: "newsequentialid()"),
+                        Id = c.Guid(nullable: false, identity: true),
                         PlaceId = c.Guid(),
                         UserId = c.String(maxLength: 128),
                         DateTime = c.DateTime(nullable: false),
@@ -37,10 +52,26 @@ namespace FindAndBook.Data.Migrations
                 .Index(t => t.UserId);
             
             CreateTable(
+                "dbo.Consumables",
+                c => new
+                    {
+                        Id = c.Guid(nullable: false, identity: true),
+                        PlaceId = c.Guid(),
+                        Name = c.String(),
+                        Type = c.String(),
+                        Price = c.Decimal(precision: 18, scale: 2),
+                        Quantity = c.Int(),
+                        Ingredients = c.String(),
+                    })
+                .PrimaryKey(t => t.Id)
+                .ForeignKey("dbo.Places", t => t.PlaceId)
+                .Index(t => t.PlaceId);
+            
+            CreateTable(
                 "dbo.Places",
                 c => new
                     {
-                        Id = c.Guid(nullable: false, identity: true, defaultValueSql: "newsequentialid()"),
+                        Id = c.Guid(nullable: false, identity: true),
                         AddressId = c.Guid(),
                         ManagerId = c.String(maxLength: 128),
                         Name = c.String(),
@@ -57,34 +88,6 @@ namespace FindAndBook.Data.Migrations
                 .ForeignKey("dbo.AspNetUsers", t => t.ManagerId)
                 .Index(t => t.AddressId)
                 .Index(t => t.ManagerId);
-            
-            CreateTable(
-                "dbo.Consumables",
-                c => new
-                    {
-                        Id = c.Guid(nullable: false, identity: true, defaultValueSql: "newsequentialid()"),
-                        PlaceId = c.Guid(),
-                        Name = c.String(),
-                        Type = c.String(),
-                        Price = c.Decimal(precision: 18, scale: 2),
-                        Quantity = c.Int(),
-                        Ingredients = c.String(),
-                    })
-                .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.Places", t => t.PlaceId)
-                .Index(t => t.PlaceId);
-            
-            CreateTable(
-                "dbo.Orders",
-                c => new
-                    {
-                        Id = c.Guid(nullable: false, identity: true, defaultValueSql: "newsequentialid()"),
-                        BookingId = c.Guid(),
-                        Quantity = c.Int(nullable: false),
-                    })
-                .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.Bookings", t => t.BookingId)
-                .Index(t => t.BookingId);
             
             CreateTable(
                 "dbo.AspNetUsers",
@@ -137,7 +140,7 @@ namespace FindAndBook.Data.Migrations
                 "dbo.Reviews",
                 c => new
                     {
-                        Id = c.Guid(nullable: false, identity: true, defaultValueSql: "newsequentialid()"),
+                        Id = c.Guid(nullable: false, identity: true),
                         PlaceId = c.Guid(),
                         UserId = c.String(maxLength: 128),
                         Message = c.String(),
@@ -167,7 +170,7 @@ namespace FindAndBook.Data.Migrations
                 "dbo.Tables",
                 c => new
                     {
-                        Id = c.Guid(nullable: false, identity: true, defaultValueSql: "newsequentialid()"),
+                        Id = c.Guid(nullable: false, identity: true),
                         PlaceId = c.Guid(),
                         NumberOfPeople = c.Int(nullable: false),
                         NumberOfTables = c.Int(nullable: false),
@@ -187,29 +190,16 @@ namespace FindAndBook.Data.Migrations
                 .Index(t => t.Name, unique: true, name: "RoleNameIndex");
             
             CreateTable(
-                "dbo.OrderConsumables",
+                "dbo.ConsumableBookings",
                 c => new
                     {
-                        Order_Id = c.Guid(nullable: false),
                         Consumable_Id = c.Guid(nullable: false),
-                    })
-                .PrimaryKey(t => new { t.Order_Id, t.Consumable_Id })
-                .ForeignKey("dbo.Orders", t => t.Order_Id, cascadeDelete: true)
-                .ForeignKey("dbo.Consumables", t => t.Consumable_Id, cascadeDelete: true)
-                .Index(t => t.Order_Id)
-                .Index(t => t.Consumable_Id);
-            
-            CreateTable(
-                "dbo.TableBookings",
-                c => new
-                    {
-                        Table_Id = c.Guid(nullable: false),
                         Booking_Id = c.Guid(nullable: false),
                     })
-                .PrimaryKey(t => new { t.Table_Id, t.Booking_Id })
-                .ForeignKey("dbo.Tables", t => t.Table_Id, cascadeDelete: true)
+                .PrimaryKey(t => new { t.Consumable_Id, t.Booking_Id })
+                .ForeignKey("dbo.Consumables", t => t.Consumable_Id, cascadeDelete: true)
                 .ForeignKey("dbo.Bookings", t => t.Booking_Id, cascadeDelete: true)
-                .Index(t => t.Table_Id)
+                .Index(t => t.Consumable_Id)
                 .Index(t => t.Booking_Id);
             
         }
@@ -218,8 +208,8 @@ namespace FindAndBook.Data.Migrations
         {
             DropForeignKey("dbo.AspNetUserRoles", "RoleId", "dbo.AspNetRoles");
             DropForeignKey("dbo.Tables", "PlaceId", "dbo.Places");
-            DropForeignKey("dbo.TableBookings", "Booking_Id", "dbo.Bookings");
-            DropForeignKey("dbo.TableBookings", "Table_Id", "dbo.Tables");
+            DropForeignKey("dbo.BookedTables", "TableId", "dbo.Tables");
+            DropForeignKey("dbo.BookedTables", "BookingId", "dbo.Bookings");
             DropForeignKey("dbo.AspNetUserRoles", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.Reviews", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.Reviews", "PlaceId", "dbo.Places");
@@ -228,15 +218,12 @@ namespace FindAndBook.Data.Migrations
             DropForeignKey("dbo.AspNetUserClaims", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.Bookings", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.Consumables", "PlaceId", "dbo.Places");
-            DropForeignKey("dbo.OrderConsumables", "Consumable_Id", "dbo.Consumables");
-            DropForeignKey("dbo.OrderConsumables", "Order_Id", "dbo.Orders");
-            DropForeignKey("dbo.Orders", "BookingId", "dbo.Bookings");
             DropForeignKey("dbo.Bookings", "PlaceId", "dbo.Places");
             DropForeignKey("dbo.Places", "AddressId", "dbo.Addresses");
-            DropIndex("dbo.TableBookings", new[] { "Booking_Id" });
-            DropIndex("dbo.TableBookings", new[] { "Table_Id" });
-            DropIndex("dbo.OrderConsumables", new[] { "Consumable_Id" });
-            DropIndex("dbo.OrderConsumables", new[] { "Order_Id" });
+            DropForeignKey("dbo.ConsumableBookings", "Booking_Id", "dbo.Bookings");
+            DropForeignKey("dbo.ConsumableBookings", "Consumable_Id", "dbo.Consumables");
+            DropIndex("dbo.ConsumableBookings", new[] { "Booking_Id" });
+            DropIndex("dbo.ConsumableBookings", new[] { "Consumable_Id" });
             DropIndex("dbo.AspNetRoles", "RoleNameIndex");
             DropIndex("dbo.Tables", new[] { "PlaceId" });
             DropIndex("dbo.AspNetUserRoles", new[] { "RoleId" });
@@ -246,14 +233,14 @@ namespace FindAndBook.Data.Migrations
             DropIndex("dbo.AspNetUserLogins", new[] { "UserId" });
             DropIndex("dbo.AspNetUserClaims", new[] { "UserId" });
             DropIndex("dbo.AspNetUsers", "UserNameIndex");
-            DropIndex("dbo.Orders", new[] { "BookingId" });
-            DropIndex("dbo.Consumables", new[] { "PlaceId" });
             DropIndex("dbo.Places", new[] { "ManagerId" });
             DropIndex("dbo.Places", new[] { "AddressId" });
+            DropIndex("dbo.Consumables", new[] { "PlaceId" });
             DropIndex("dbo.Bookings", new[] { "UserId" });
             DropIndex("dbo.Bookings", new[] { "PlaceId" });
-            DropTable("dbo.TableBookings");
-            DropTable("dbo.OrderConsumables");
+            DropIndex("dbo.BookedTables", new[] { "BookingId" });
+            DropIndex("dbo.BookedTables", new[] { "TableId" });
+            DropTable("dbo.ConsumableBookings");
             DropTable("dbo.AspNetRoles");
             DropTable("dbo.Tables");
             DropTable("dbo.AspNetUserRoles");
@@ -261,10 +248,10 @@ namespace FindAndBook.Data.Migrations
             DropTable("dbo.AspNetUserLogins");
             DropTable("dbo.AspNetUserClaims");
             DropTable("dbo.AspNetUsers");
-            DropTable("dbo.Orders");
-            DropTable("dbo.Consumables");
             DropTable("dbo.Places");
+            DropTable("dbo.Consumables");
             DropTable("dbo.Bookings");
+            DropTable("dbo.BookedTables");
             DropTable("dbo.Addresses");
         }
     }

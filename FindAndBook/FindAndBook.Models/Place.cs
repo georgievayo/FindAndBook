@@ -11,6 +11,7 @@ namespace FindAndBook.Models
             this.Reviews = new HashSet<Review>();
             this.Consumables = new HashSet<Consumable>();
             this.Bookings = new HashSet<Booking>();
+            this.Tables = new HashSet<Table>();
         }
         public Place(string name, string type, string contact, string weekendHours,
             string weekdaayHours, string details, int? averageBill, User manager, Address address)
@@ -60,6 +61,6 @@ namespace FindAndBook.Models
 
         public virtual ICollection<Consumable> Consumables { get; set; }
 
-
+        public virtual ICollection<Table> Tables { get; set; }
     }
 }

@@ -29,5 +29,7 @@ namespace FindAndBook.Services.Contracts
         IQueryable<Place> FindInAddress(string category, string pattern);
 
         IQueryable<Place> FindInBill(string category, string pattern);
+
+        void DeletePlace(Guid? id);
     }
 }

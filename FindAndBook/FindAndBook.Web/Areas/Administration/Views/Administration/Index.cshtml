@@ -1,1 +1,105 @@
-﻿
+﻿@model FindAndBook.Web.Areas.Administration.Models.AllInformationViewModel
+@{
+    ViewBag.Title = "Administration";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@Styles.Render("~/Content/tabs.css")
+<div class="tabbable col-md-10 col-md-offset-1">
+    <ul class="nav nav-tabs">
+        <li class="active"><a href="#places" data-toggle="tab">Places</a></li>
+        <li><a href="#reviews" data-toggle="tab">Reviews</a></li>
+        <li><a href="#users" data-toggle="tab">Users</a></li>
+    </ul>
+    <div class="tab-content">
+        <div class="tab-pane active" id="places">
+            <table class="table table-striped custab">
+                <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Manager</th>
+                    <th>Address</th>
+                    <th>Type</th>
+                    <th>Contact</th>
+                    <th>Average bill</th>
+                    <th>Details</th>
+                    <th>Weekday hours</th>
+                    <th>Weekend hours</th>
+                    <th class="text-center">Action</th>
+                </tr>
+                </thead>
+                @foreach (var place in Model.Places)
+                {
+                    <tr>
+                        @Html.Hidden(@place.Id.ToString())
+                        <td>@place.Name</td>
+                        <td>@place.Manager.FirstName @place.Manager.LastName</td>
+                        <td>@place.Address.Country, @place.Address.City, @place.Address.Area, @place.Address.Street @place.Address.Number</td>
+                        <td>@place.Type</td>
+                        <td>@place.Contact</td>
+                        <td>@place.AverageBill</td>
+                        <td>@place.Details</td>
+                        <td>@place.WeekdayHours</td>
+                        <td>@place.WeekendHours</td>
+                        
+                        <td class="text-center">
+                            @Ajax.ActionLink("Delete", "DeletePlace", new {id = @place.Id},
+                                     new AjaxOptions
+                                     {
+                                         UpdateTargetId = "notification",
+                                         InsertionMode = InsertionMode.Replace
+                                     })
+                        </td>
+                    </tr>
+                }
+            </table>
+        </div>
+        <div class="tab-pane" id="reviews">
+            <table class="table table-striped custab">
+                <thead>
+                    <tr>
+                        <th>Place</th>
+                        <th>User</th>
+                        <th>Message</th>
+                        <th class="text-center">Action</th>
+                    </tr>
+                </thead>
+                @foreach (var review in Model.Reviews)
+                {
+                    <tr>
+                        <td>@review.Place.Name</td>
+                        <td>@review.User.FirstName @review.User.LastName</td>
+                        <td>@review.Message</td>
+                        <td class="text-center"><a class='btn btn-info btn-xs' href="#"><span class="glyphicon glyphicon-edit"></span> Edit</a> <a href="#" class="btn btn-danger btn-xs"><span class="glyphicon glyphicon-remove"></span> Del</a></td>
+                    </tr>
+                }
+            </table>
+        </div>
+        <div class="tab-pane" id="users">
+            <table class="table table-striped custab">
+                <thead>
+                <tr>
+                    <th>Username</th>
+                    <th>First name</th>
+                    <th>Last name</th>
+                    <th>Email</th>
+                    <th>Phone number</th>
+                    <th class="text-center">Action</th>
+                </tr>
+                </thead>
+                @foreach (var user in Model.Users)
+                {
+                    <tr>
+                        <td>@user.UserName</td>
+                        <td>@user.FirstName</td>
+                        <td>@user.LastName</td>
+                        <td>@user.Email</td>
+                        <td>@user.PhoneNumber</td>
+                        <td class="text-center"><a class='btn btn-info btn-xs' href="#"><span class="glyphicon glyphicon-edit"></span> Edit</a> <a href="#" class="btn btn-danger btn-xs"><span class="glyphicon glyphicon-remove"></span> Del</a></td>
+                    </tr>
+                }
+            </table>
+        </div>
+    </div>
+</div>
+

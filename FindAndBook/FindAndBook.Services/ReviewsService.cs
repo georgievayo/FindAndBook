@@ -35,11 +35,6 @@ namespace FindAndBook.Services
             this.factory = factory;
         }
 
-        public IQueryable<Review> GetAllByPlace(Guid? placeId)
-        {
-            throw new NotImplementedException();
-        }
-
         public Review AddReview(Guid? placeId, string userId, DateTime postedOn, string message, int rating)
         {
             var review = this.factory.CreateReview(placeId, userId, postedOn, message, rating);
@@ -47,6 +42,22 @@ namespace FindAndBook.Services
             this.unitOfWork.Commit();
 
             return review;
+        }
+
+        public IQueryable<Review> GetAll()
+        {
+            return this.reviewsRepository.All;
+        }
+
+        public void DeleteAll(Guid? placeId)
+        {
+            var reviews = this.reviewsRepository.All.Where(x => x.PlaceId == placeId).ToList();
+
+            foreach (var review in reviews)
+            {
+                this.reviewsRepository.Delete(review);
+                this.unitOfWork.Commit();
+            }
         }
     }
 }

@@ -65,7 +65,7 @@ namespace FindAndBook.Services
 
         public IQueryable<Place> GetAll()
         {
-            return this.placeRepository.All.Include(p => p.Reviews);
+            return this.placeRepository.All.Include(p => p.Reviews).Include(p => p.Address);
         }
 
         public IQueryable<Place> GetPlaceById(Guid id)
@@ -146,6 +146,13 @@ namespace FindAndBook.Services
             return this.placeRepository
                 .All
                 .Where(x => x.AverageBill == int.Parse(pattern) && x.Type == category);
+        }
+
+        public void DeletePlace(Guid? id)
+        {
+            var place = this.placeRepository.GetById(id);
+            this.placeRepository.Delete(place);
+            this.unitOfWork.Commit();
         }
     }
 }

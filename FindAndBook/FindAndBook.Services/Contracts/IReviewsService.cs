@@ -9,8 +9,10 @@ namespace FindAndBook.Services.Contracts
 {
     public interface IReviewsService
     {
-        IQueryable<Review> GetAllByPlace(Guid? placeId);
-
         Review AddReview(Guid? placeId, string userId, DateTime postedOn, string message, int rating);
+
+        IQueryable<Review> GetAll();
+
+        void DeleteAll(Guid? placeId);
     }
 }

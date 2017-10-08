@@ -72,5 +72,19 @@ namespace FindAndBook.Services
             this.bookingRepository.Delete(booking);
             this.unitOfWork.Commit();
         }
+
+        public void DeleteAll(Guid? placeId)
+        {
+            var bookings = this.bookingRepository
+                .All
+                .Where(x => x.PlaceId == placeId)
+                .ToList();
+
+            foreach (var booking in bookings)
+            {
+                this.bookingRepository.Delete(booking);
+                this.unitOfWork.Commit();
+            }
+        }
     }
 }
