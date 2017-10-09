@@ -74,7 +74,7 @@
             </section>
             @if (Model.CanLeaveReview)
             {
-                <section>
+                <section id="review-form">
                     @Html.Partial("_ReviewForm", Model.ReviewForm)
                 </section>
             }
@@ -122,4 +122,11 @@
             $('#selected-rating').val(rating);
         }
     </script>
+    
+<script>
+    $("#send-review").click(function() {
+        $('#review-form').addClass('hidden');
+    });
+        
+</script>
 }

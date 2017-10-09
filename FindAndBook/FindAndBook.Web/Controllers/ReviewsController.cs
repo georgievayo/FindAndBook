@@ -44,7 +44,7 @@ namespace FindAndBook.Web.Controllers
 
             var addedReview = this.reviewsService
                 .AddReview(model.PlaceId, model.UserId, DateTime.Now, model.Message, model.Rating);
-            
+            model.PostedOn = addedReview.PostedOn;
 
             //return RedirectToAction("Details", new {controller = "Places", id = model.PlaceId});
             return PartialView("_Review", model);
