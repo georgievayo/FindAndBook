@@ -1,7 +1,11 @@
-﻿@model ICollection<FindAndBook.Web.Models.Places.PlaceShortViewModel>
+﻿@using PagedList.Mvc
+@model  PagedList.IPagedList< FindAndBook.Web.Models.Places.PlaceShortViewModel>
+    
+@using PagedList.Mvc
 @{
     ViewBag.Title = "List";
 }
+<div class="row">
 <div class="col-md-10 col-md-offset-1">
     @if (Model.Count > 0)
     {
@@ -14,4 +18,21 @@
     {
         <h2>There is no places to show.</h2>
     }
+</div>
+</div>
+<div class="row">
+    <br />
+    <div class="col-md-offset-5 col-md-2">
+    
+
+    @Html.PagedListPager(Model, page =>Url.Action("List", "Places",
+        new { page = page }), PagedListRenderOptions.EnableUnobtrusiveAjaxReplacing(
+            new AjaxOptions()
+            {
+                HttpMethod = "GET",
+                UpdateTargetId = "list",
+                InsertionMode = InsertionMode.Replace
+            }))
+        Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+    </div>
 </div>

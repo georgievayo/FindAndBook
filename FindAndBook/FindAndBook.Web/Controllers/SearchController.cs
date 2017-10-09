@@ -7,6 +7,7 @@ using AutoMapper.QueryableExtensions;
 using FindAndBook.Web.Factories;
 using FindAndBook.Web.Models.Places;
 using FindAndBook.Web.Models.Search;
+using PagedList;
 
 namespace FindAndBook.Web.Controllers
 {
@@ -27,7 +28,7 @@ namespace FindAndBook.Web.Controllers
 
         [HttpGet]
         public ActionResult Search([Bind(Prefix = "category")] string category, 
-            [Bind(Prefix = "searchBy")] string searchBy, [Bind(Prefix = "pattern")] string pattern)
+            [Bind(Prefix = "searchBy")] string searchBy, [Bind(Prefix = "pattern")] string pattern, int count = 10, int page =1)
         {
             var found = this.searchService
                 .FindBy(category, searchBy, pattern)
@@ -36,7 +37,8 @@ namespace FindAndBook.Web.Controllers
                 .ProjectTo<PlaceShortViewModel>()
                 .ToList();
 
-            return View("List", found);
+            var model = found.ToPagedList(page, count);
+            return View("List", model);
         }
 
         [HttpPost]

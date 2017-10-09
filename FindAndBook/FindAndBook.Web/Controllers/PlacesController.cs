@@ -8,6 +8,7 @@ using FindAndBook.Services.Contracts;
 using FindAndBook.Web.Factories;
 using FindAndBook.Web.Models.Places;
 using Microsoft.AspNet.Identity;
+using PagedList;
 
 namespace FindAndBook.Web.Controllers
 {
@@ -68,7 +69,7 @@ namespace FindAndBook.Web.Controllers
             return View();
         }
 
-        public ActionResult GetPlacesByCategory([Bind(Prefix = "category")] string category)
+        public ActionResult GetPlacesByCategory([Bind(Prefix = "category")] string category, int count = 10, int page = 1)
         {
             if (category == null)
             {
@@ -80,7 +81,9 @@ namespace FindAndBook.Web.Controllers
                 .ProjectTo<PlaceShortViewModel>()
                 .ToList();
 
-            return this.PartialView("_PartialList", places);
+            var model = places.ToPagedList(page, count);
+
+            return this.PartialView("_PartialList", model);
         }
 
         [Authorize]
@@ -172,7 +175,7 @@ namespace FindAndBook.Web.Controllers
         }
 
         [HttpGet]
-        public ActionResult List()
+        public ActionResult List(int count = 10, int page = 1)
         {
             var places = this.placeService
                 .GetAll()
@@ -180,8 +183,10 @@ namespace FindAndBook.Web.Controllers
                 .Include(p => p.Address)
                 .ProjectTo<PlaceShortViewModel>()
                 .ToList();
-           
-            return View(places);
+
+            var model = places.ToPagedList(page, count);
+
+            return View(model);
         }
 
         [HttpGet]
