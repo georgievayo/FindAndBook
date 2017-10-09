@@ -34,6 +34,8 @@ namespace FindAndBook.Web.Models.Places
 
         public SingleReviewViewModel ReviewForm { get; set; }
 
+        public bool CanLeaveReview { get; set; }
+
         public void CreateMappings(IMapperConfigurationExpression configuration)
         {
             configuration.CreateMap<Place, DetailsViewModel>()

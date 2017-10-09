@@ -54,7 +54,7 @@
     <div id="reviews" class="col-md-12 jumbotron">
         <fieldset>
             <legend><strong>Reviews</strong></legend>
-            <section class="comments">
+            <section class="comments" id="reviews-list">
                 @foreach (var review in Model.Reviews)
                 {
                     <article class="comment">
@@ -72,9 +72,12 @@
                     </article>
                 }
             </section>
-            <section>
-                @Html.Partial("_ReviewForm", Model.ReviewForm)
-            </section>
+            @if (Model.CanLeaveReview)
+            {
+                <section>
+                    @Html.Partial("_ReviewForm", Model.ReviewForm)
+                </section>
+            }
         </fieldset>
     </div>
 </div>
@@ -99,7 +102,7 @@
     <script>
         $("#show-reviews").click(function() {
             $('html,body').animate({
-                    scrollTop: $("#reviews").offset().top},
+                scrollTop: $("#reviews").offset().top},
                 'slow');
         });
 
@@ -109,9 +112,9 @@
                 'slow');
         });
     </script>
-    
+
     <script>
-        function vote(rating) {        
+        function vote(rating) {
             for (var i = 1; i <= rating; i++) {
                 $(`#star${i}`).removeClass('glyphicon-star-empty').addClass('glyphicon-star');
             }

@@ -355,6 +355,8 @@
     <Content Include="Views\Places\Edit.cshtml" />
     <Content Include="Views\Shared\_ReviewForm.cshtml" />
     <Content Include="Views\Consumables\_ConsumableForm.cshtml" />
+    <Content Include="Views\Shared\_LoginMessage.cshtml" />
+    <Content Include="Views\Shared\_Review.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

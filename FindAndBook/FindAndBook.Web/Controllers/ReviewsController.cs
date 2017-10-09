@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Web.Mvc;
 using FindAndBook.Services.Contracts;
 using FindAndBook.Web.Models.Reviews;
@@ -35,10 +36,18 @@ namespace FindAndBook.Web.Controllers
                 return PartialView("_ReviewForm", model);
             }
 
+            var reviewsOfUser = this.reviewsService.GetByUserAndPlace(model.PlaceId, model.UserId).ToList();
+            if (reviewsOfUser.Count > 0)
+            {
+                return Json("You have already left a review for this place!");
+            }
+
             var addedReview = this.reviewsService
                 .AddReview(model.PlaceId, model.UserId, DateTime.Now, model.Message, model.Rating);
+            
 
-            return RedirectToAction("Details", new {controller = "Places", id = model.PlaceId});
+            //return RedirectToAction("Details", new {controller = "Places", id = model.PlaceId});
+            return PartialView("_Review", model);
         }
     }
 }

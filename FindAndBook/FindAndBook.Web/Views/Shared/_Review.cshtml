@@ -1,0 +1,15 @@
+﻿@model FindAndBook.Web.Models.Reviews.SingleReviewViewModel
+    
+<article class="comment">
+    <a class="comment-img" href="#non">
+        <img src="https://pbs.twimg.com/profile_images/444197466133385216/UA08zh-B.jpeg" alt="" width="50" height="50">
+    </a>
+    <div class="comment-body">
+        <div class="text">
+            <p>@Model.Message</p>
+        </div>
+        <p class="attribution">
+            by @Model.Username at @Model.PostedOn
+        </p>
+    </div>
+</article>

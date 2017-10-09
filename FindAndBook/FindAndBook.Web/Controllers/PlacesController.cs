@@ -18,9 +18,12 @@ namespace FindAndBook.Web.Controllers
         private readonly IPlaceService placeService;
         private readonly IAddressService addressService;
         private readonly ITablesService tablesService;
+        private readonly IReviewsService reviewsService;
+
 
         public PlacesController(IAuthenticationProvider authProvider, IViewModelFactory factory,
-            IPlaceService placeService, IAddressService addressService, ITablesService tablesService)
+            IPlaceService placeService, IAddressService addressService, ITablesService tablesService, 
+            IReviewsService reviewsService)
         {
             if (factory == null)
             {
@@ -47,11 +50,17 @@ namespace FindAndBook.Web.Controllers
                 throw new ArgumentNullException(nameof(tablesService));
             }
 
+            if (reviewsService == null)
+            {
+                throw new ArgumentNullException(nameof(reviewsService));
+            }
+
             this.viewModelFactory = factory;
             this.authProvider = authProvider;
             this.placeService = placeService;
             this.addressService = addressService;
             this.tablesService = tablesService;
+            this.reviewsService = reviewsService;
         }
 
         public ActionResult Index()
@@ -181,9 +190,16 @@ namespace FindAndBook.Web.Controllers
                 return View("Error");
             }
 
-            var currentUser = this.authProvider.CurrentUserId;
-            var reviewForm = this.viewModelFactory.CreateReviewViewModel(model.Id, currentUser);
+            var currentUserId = this.authProvider.CurrentUserId;
+            var currentUserUsername = this.authProvider.CurrentUserUsername;
+            var canVote = this.reviewsService
+                .GetByUserAndPlace(id, currentUserId)
+                .ToList()
+                .Count <= 0;
+
+            var reviewForm = this.viewModelFactory.CreateReviewViewModel(model.Id, currentUserId, currentUserUsername);
             model.ReviewForm = reviewForm;
+            model.CanLeaveReview = canVote;
 
             return this.View(model);
         }

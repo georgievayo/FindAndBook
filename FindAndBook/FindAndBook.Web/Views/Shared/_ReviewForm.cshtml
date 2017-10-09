@@ -4,10 +4,15 @@
 {
     <div class="row" id="post-review-box">
         <div class="col-md-8 col-md-offset-2">
-            @using (Html.BeginForm("LeaveReview", "Reviews", FormMethod.Post))
+            @using (Ajax.BeginForm("LeaveReview", "Reviews", new AjaxOptions
+       {
+           UpdateTargetId = "reviews-list",
+           InsertionMode = InsertionMode.InsertAfter
+       }))
             {
                 @Html.HiddenFor(x => x.PlaceId)
                 @Html.HiddenFor(x => x.UserId)
+                @Html.HiddenFor(x => x.Username)
                 @Html.HiddenFor(x => x.Rating, new {id= "selected-rating" })
 
                 <div class="row">

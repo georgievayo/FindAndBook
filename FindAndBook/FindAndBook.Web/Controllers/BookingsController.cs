@@ -82,7 +82,7 @@ namespace FindAndBook.Web.Controllers
             }
             else
             {
-                return View("Error");
+                return PartialView("_LoginMessage");
             }
         }
 
