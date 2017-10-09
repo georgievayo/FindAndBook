@@ -51,6 +51,7 @@ namespace FindAndBook.Web.Areas.Administration.Controllers
             this.factory = factory;
         }
 
+        [Authorize(Roles = "Admin")]
         public ActionResult Index()
         {
             var places = this.placeService
@@ -70,18 +71,21 @@ namespace FindAndBook.Web.Areas.Administration.Controllers
             return View(model);
         }
 
+        [Authorize(Roles = "Admin")]
         public ActionResult DeletePlace(Guid? id)
         {
             this.placeService.DeletePlace(id);
             return Json("Success");
         }
 
+        [Authorize(Roles = "Admin")]
         public ActionResult DeleteUser(string id)
         {
             this.userService.DeleteUser(id);
             return Json("Success");
         }
 
+        [Authorize(Roles = "Admin")]
         public ActionResult DeleteReview(Guid? id)
         {
             this.reviewService.DeleteReview(id);

@@ -131,6 +131,7 @@ namespace FindAndBook.Web.Controllers
         }
 
         [HttpGet]
+        [Authorize]
         public ActionResult Profile(string username)
         {
             var user = this.userService.GetUserByUsername(username)
@@ -148,6 +149,7 @@ namespace FindAndBook.Web.Controllers
         }
 
         [ChildActionOnly]
+        [Authorize]
         public ActionResult Bookings(ProfileViewModel model)
         {
             return this.PartialView("_Bookings", model);

@@ -407,6 +407,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Areas\Administration\Views\Shared\" />
+    <Folder Include="Content\Images\" />
     <Folder Include="Views\Reviews\" />
   </ItemGroup>
   <PropertyGroup>

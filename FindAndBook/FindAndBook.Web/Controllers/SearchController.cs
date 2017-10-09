@@ -42,6 +42,7 @@ namespace FindAndBook.Web.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Search(SearchViewModel model)
         {
             return RedirectToAction("Search", new { category = model.Category, searchBy = model.SearchBy, pattern = model.Pattern });

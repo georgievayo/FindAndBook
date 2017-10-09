@@ -86,8 +86,8 @@ namespace FindAndBook.Web.Controllers
             return this.PartialView("_PartialList", model);
         }
 
-        [Authorize]
         [HttpGet]
+        [Authorize(Roles = "Manager")]
         public ActionResult Create()
         {
             if (!this.authProvider.IsAuthenticated)
@@ -107,8 +107,8 @@ namespace FindAndBook.Web.Controllers
             return View(model);
         }
 
-        [Authorize]
         [HttpPost]
+        [Authorize(Roles = "Manager")]
         [ValidateAntiForgeryToken]
         public ActionResult Create(CreateViewModel model)
         {
@@ -135,8 +135,8 @@ namespace FindAndBook.Web.Controllers
             return this.RedirectToAction("Details", new { id = place.Id });
         }
 
-        [Authorize]
         [HttpGet]
+        [Authorize(Roles = "Manager")]
         public ActionResult Edit(Guid id)
         {
             if (!this.authProvider.IsAuthenticated)
@@ -159,6 +159,10 @@ namespace FindAndBook.Web.Controllers
 
         }
 
+        
+        [HttpPost]
+        [Authorize(Roles = "Manager")]
+        [ValidateAntiForgeryToken]
         public ActionResult Edit(EditViewModel model)
         {
             if (!ModelState.IsValid)
@@ -222,6 +226,7 @@ namespace FindAndBook.Web.Controllers
         }
 
         [HttpGet]
+        [Authorize(Roles = "Manager")]
         public ActionResult MyPlaces()
         {
             var currentUser = this.authProvider.CurrentUserId;

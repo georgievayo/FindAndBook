@@ -68,6 +68,8 @@ namespace FindAndBook.Web.Controllers
             this.tablesService = tablesService;
         }
 
+        [Authorize]
+        [HttpGet]
         public ActionResult GetBookingForm(Guid? id)
         {
             if (id == null)
@@ -88,6 +90,7 @@ namespace FindAndBook.Web.Controllers
 
 
         [HttpPost]
+        [Authorize]
         public ActionResult GetAvailableTables(BookingViewModel model)
         {
             if (!ModelState.IsValid)
@@ -137,6 +140,7 @@ namespace FindAndBook.Web.Controllers
         }
 
         [HttpPost]
+        [Authorize]
         public ActionResult BookTables(BookingFormViewModel model)
         {
             if (!ModelState.IsValid)
@@ -171,6 +175,7 @@ namespace FindAndBook.Web.Controllers
         }
 
         [HttpGet]
+        [Authorize]
         public ActionResult Order(Guid? id, Guid? bookingId)
         {
             var menu = this.consumableService.GetAllConsumablesOf(id).ToList();
@@ -181,6 +186,7 @@ namespace FindAndBook.Web.Controllers
         }
 
         [HttpPost]
+        [Authorize]
         public ActionResult Order(OrderFormViewModel model)
         {
             if (!ModelState.IsValid)
@@ -201,6 +207,7 @@ namespace FindAndBook.Web.Controllers
             return View(model);
         }
 
+        [Authorize]
         public ActionResult GetBookings(string id)
         {
             var idGuid = new Guid(id);
@@ -209,6 +216,7 @@ namespace FindAndBook.Web.Controllers
             return PartialView("_PlaceBookings", bookings);
         }
 
+        [Authorize]
         public ActionResult CancelBooking(Guid? id)
         {
             if (id == null)
