@@ -1,0 +1,71 @@
+﻿@model FindAndBook.Web.Models.Bookings.OrderFormViewModel
+@{
+    ViewBag.Title = "Menu";
+}
+<div class="container" id="content">
+    <fieldset>
+        <legend>Menu</legend>
+        @using (Ajax.BeginForm("Order", new { controller = "Bookings" },
+                    new AjaxOptions { UpdateTargetId = "content", InsertionMode = InsertionMode.Replace, HttpMethod = "POST" }))
+        {
+            @Html.HiddenFor(x => x.BookingId)
+            if (Model.PlaceMenu.Count == 0)
+            {
+                <h3>Sorry! This place does not offer online menu.</h3>
+            }
+            else
+            {
+                <div class="table-container">
+                    <table class="table table-filter">
+                        <thead>
+                        <th>
+                            
+                        </th>
+                        <th>
+                            
+                        </th>
+                        <th>
+                            gr
+                        </th>
+                        <th>
+                            lv
+                        </th>
+                        </thead>
+                        <tbody>
+                        @foreach (var consumable in Model.PlaceMenu)
+                        {
+                            <tr data-status="pagado">
+                                <td>
+                                    <div class="ckbox">
+                                        <input type="checkbox" id=@consumable.Name name="consumable" value="@consumable.Name">
+                                    </div>
+                                </td>
+                                <td>
+                                    <div>
+                                        <label for=@consumable.Name>@consumable.Name</label>
+                                        <div class="row">
+                                            (@consumable.Ingredients)
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div>
+                                        @consumable.Quantity
+                                    </div>
+                                </td>
+                                <td>
+                                    <div>
+                                        @consumable.Price
+                                    </div>
+                                </td>
+                            </tr>
+                        }
+                        </tbody>
+                    </table>
+                </div>
+                <input type="submit" value="Submit" />
+            }
+        }
+
+    </fieldset>
+</div>

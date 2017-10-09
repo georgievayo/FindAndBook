@@ -1,5 +1,6 @@
-using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity.ModelConfiguration;
+
 using FindAndBook.Models;
 
 namespace FindAndBook.Data.Mapping
@@ -7,38 +8,25 @@ namespace FindAndBook.Data.Mapping
     public class PlaceMap : EntityTypeConfiguration<Place>
     {
         public PlaceMap()
-        {
-            // Primary Key
-            this.HasKey(t => new { t.Id, t.Name });
-
-            // Properties
-            this.Property(t => t.Id)
-                .IsRequired()
-                .IsFixedLength()
-                .HasMaxLength(10);
-
-            this.Property(t => t.Name)
-                .IsRequired()
-                .HasMaxLength(30);
-
-            this.Property(t => t.Contact)
-                .HasMaxLength(10);
-
-            this.Property(t => t.WeekendHours)
-                .HasMaxLength(20);
-
-            this.Property(t => t.WeekdayHours)
-                .HasMaxLength(20);
-
-            // Table & Column Mappings
-            this.ToTable("Places");
-            this.Property(t => t.Id).HasColumnName("Id");
-            this.Property(t => t.Name).HasColumnName("Name");
-            this.Property(t => t.Contact).HasColumnName("Contact");
-            this.Property(t => t.WeekendHours).HasColumnName("WeekendHours");
-            this.Property(t => t.WeekdayHours).HasColumnName("WeekdayHours");
-            this.Property(t => t.Details).HasColumnName("Details");
-            this.Property(t => t.AverageBill).HasColumnName("AverageBill");
+        {            
+            this.Property(x => x.Id)
+                .HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
+            this.HasOptional(x => x.Address);
+            this.HasMany(x => x.Bookings)
+                .WithRequired(x => x.Place)          
+                .WillCascadeOnDelete();
+            this.HasMany(x => x.Reviews)
+                .WithRequired(x => x.Place)
+                .WillCascadeOnDelete();
+            this.HasMany(x => x.Tables)
+                .WithRequired(x => x.Place)
+                .WillCascadeOnDelete();
+            this.HasMany(x => x.Consumables)
+                .WithRequired(x => x.Place)
+                .WillCascadeOnDelete();
+            this.HasRequired(x => x.Manager)
+                .WithMany(x => x.Places)
+                .WillCascadeOnDelete();
         }
     }
 }

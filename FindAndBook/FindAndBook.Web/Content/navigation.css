@@ -10,6 +10,7 @@
   -moz-transition: all ease-in-out 0.4s;
   -o-transition: all ease-in-out 0.4s;
   transition: all ease-in-out 0.4s;
+    list-style: none;
 }
 .navbar-default .navbar-nav > li > a:hover {
   color: #fff;
@@ -55,3 +56,8 @@
   }
 }
   
+#radio-categories {
+    text-align: center;
+    font-size: 12pt;
+    font-weight: 100;
+}

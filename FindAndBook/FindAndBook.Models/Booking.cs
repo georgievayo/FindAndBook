@@ -1,15 +1,42 @@
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace FindAndBook.Models
 {
     public partial class Booking
     {
-        public string Id { get; set; }
-        public string PlaceId { get; set; }
+        public Booking()
+        {
+            this.Tables = new HashSet<BookedTables>();
+            this.Consumables = new HashSet<Consumable>();
+        }
+
+        public Booking(Guid? placeId, string userId, DateTime dateTime, int people)
+            : this()
+        {
+            PlaceId = placeId;
+            UserId = userId;
+            DateTime = dateTime;
+            NumberOfPeople = people;
+        }
+
+        public Guid Id { get; set; }
+
+        public Guid? PlaceId { get; set; }
+
+        public virtual Place Place { get; set; }
+
         public string UserId { get; set; }
-        public string Date { get; set; }
-        public string Time { get; set; }
+
+        public virtual User User { get; set; }
+
+        public DateTime DateTime { get; set; }
+
         public int NumberOfPeople { get; set; }
+
+        public virtual ICollection<BookedTables> Tables { get; set; }
+
+        public virtual ICollection<Consumable> Consumables { get; set; }
     }
 }

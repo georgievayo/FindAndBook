@@ -1,7 +1,16 @@
 ﻿#categories {
-    list-style: none;
+    list-style-type: none;
 }
 
 li {
-    display: inline;
+    display: inline-block;
+    padding-right: 20px;
 }
+
+#categories>li>a>img {
+    height: 60px;
+    width: 60px;
+    /*display: inline-block;
+    position: center;*/
+}
+

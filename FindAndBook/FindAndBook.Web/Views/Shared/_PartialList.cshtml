@@ -1,0 +1,24 @@
+﻿@using PagedList.Mvc
+@model  PagedList.IPagedList<FindAndBook.Web.Models.Places.PlaceShortViewModel>
+<div class="row">
+    @foreach (var place in @Model)
+    {
+        @Html.Partial("_PlaceShort", place)
+    }
+</div>  
+<div class="row">
+    <br />
+    <div class="col-md-offset-5 col-md-2">
+    
+
+        @Html.PagedListPager(Model, page =>Url.Action("List", "Places",
+            new { page = page }), PagedListRenderOptions.EnableUnobtrusiveAjaxReplacing(
+                new AjaxOptions()
+                {
+                    HttpMethod = "GET",
+                    UpdateTargetId = "list",
+                    InsertionMode = InsertionMode.Replace
+                }))
+        Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+    </div>
+</div>

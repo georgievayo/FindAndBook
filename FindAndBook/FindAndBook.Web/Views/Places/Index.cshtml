@@ -1,66 +1,61 @@
 ﻿
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Categories";
 }
 @Styles.Render("~/Content/categories.css")
-<section class="wrapper mtop2 ptop">
-    <h2 class="ui header">
-        <span class="sub header">
-            <span class="segment_sub_heading">
+<section class="wrapper col-md-10 col-md-offset-1">
+    <h2>
+        <span >
                 Discover places by type
-            </span>
         </span>
     </h2>
     <ul id="categories">
         <li>
-            <a href="https://www.zomato.com/hyderabad/delivery" class="column ta-center start-categories-item">
-                <img class="ui middle aligned mini image mb5" src="https://b.zmtcdn.com/images/search_tokens/app_icons/category_1.png" data-original="https://b.zmtcdn.com/images/search_tokens/app_icons/category_1.png" style="height: 48px; width: 48px; display: inline-block;">
-                <div>Delivery</div>
-            </a>
+                <img src="https://b.zmtcdn.com/images/search_tokens/app_icons/category_8.png" data-original="https://b.zmtcdn.com/images/search_tokens/app_icons/category_8.png">
+                @Ajax.ActionLink("Breakfast", "GetPlacesByCategory", new { category = "Restaurant"}, new AjaxOptions
+                {
+                    UpdateTargetId = "places",
+                    InsertionMode = InsertionMode.Replace,
+                })
         </li>
         <li>
-            <a href="https://www.zomato.com/hyderabad/breakfast" class="column ta-center start-categories-item">
-                <img class="ui middle aligned mini image mb5" src="https://b.zmtcdn.com/images/search_tokens/app_icons/category_8.png" data-original="https://b.zmtcdn.com/images/search_tokens/app_icons/category_8.png" style="height: 48px; width: 48px; display: inline-block;">
-                <div>Breakfast</div>
-            </a>
+                <img src="https://b.zmtcdn.com/images/search_tokens/app_icons/category_9.png" data-original="https://b.zmtcdn.com/images/search_tokens/app_icons/category_9.png">
+                @Ajax.ActionLink("Lunch", "GetPlacesByCategory", new { category = "Restaurant"}, new AjaxOptions
+                {
+                    UpdateTargetId = "places",
+                    InsertionMode = InsertionMode.Replace,
+                })
         </li>
         <li>
-            <a href="https://www.zomato.com/hyderabad/lunch" class="column ta-center start-categories-item">
-                <img class="ui middle aligned mini image mb5" src="https://b.zmtcdn.com/images/search_tokens/app_icons/category_9.png" data-original="https://b.zmtcdn.com/images/search_tokens/app_icons/category_9.png" style="height: 48px; width: 48px; display: inline-block;">
-                <div>Lunch</div>
-            </a>
+                <img src="https://b.zmtcdn.com/images/search_tokens/app_icons/category_10.png" data-original="https://b.zmtcdn.com/images/search_tokens/app_icons/category_10.png">
+            @Ajax.ActionLink("Dinner", "GetPlacesByCategory", new { category = "Restaurant"}, new AjaxOptions
+            {
+                UpdateTargetId = "places",
+                InsertionMode = InsertionMode.Replace,
+            })
         </li>
         <li>
-            <a href="https://www.zomato.com/hyderabad/dinner" class="column ta-center start-categories-item">
-                <img class="ui middle aligned mini image mb5" src="https://b.zmtcdn.com/images/search_tokens/app_icons/category_10.png" data-original="https://b.zmtcdn.com/images/search_tokens/app_icons/category_10.png" style="height: 48px; width: 48px; display: inline-block;">
-                <div>Dinner</div>
-            </a>
+                <img src="https://b.zmtcdn.com/images/search_tokens/app_icons/category_3.png" data-original="https://b.zmtcdn.com/images/search_tokens/app_icons/category_3.png">
+                @Ajax.ActionLink("Nightlife", "GetPlacesByCategory", new { category = "Club"}, new AjaxOptions
+                {
+                    UpdateTargetId = "places",
+                    InsertionMode = InsertionMode.Replace,
+                })
         </li>
         <li>
-            <a href="https://www.zomato.com/hyderabad/drinks-and-nightlife" class="column ta-center start-categories-item">
-                <img class="ui middle aligned mini image mb5" src="https://b.zmtcdn.com/images/search_tokens/app_icons/category_3.png" data-original="https://b.zmtcdn.com/images/search_tokens/app_icons/category_3.png" style="height: 48px; width: 48px; display: inline-block;">
-                <div>Drinks &amp; Nightlife</div>
-            </a>
-        </li>
-        <li>
-            <a href="https://www.zomato.com/hyderabad/cafés" class="column ta-center start-categories-item">
-                <img class="ui middle aligned mini image mb5" src="https://b.zmtcdn.com/images/search_tokens/app_icons/category_6.png" data-original="https://b.zmtcdn.com/images/search_tokens/app_icons/category_6.png" style="height: 48px; width: 48px; display: inline-block;">
-                <div>Cafés</div>
-            </a>
-        </li>
-        <li>
-            <a href="https://www.zomato.com/hyderabad/restaurants?category=13" class="column ta-center start-categories-item">
-                <img class="ui middle aligned mini image mb5" src="https://b.zmtcdn.com/images/search_tokens/app_icons/category_13.png" data-original="https://b.zmtcdn.com/images/search_tokens/app_icons/category_13.png" style="height: 48px; width: 48px; display: inline-block;">
-                <div>Pocket-Friendly Delivery</div>
-            </a>
-        </li>
-        <li>
-            <a href="https://www.zomato.com/hyderabad/restaurants?luxury-dining=1" class="column ta-center start-categories-item">
-                <img class="ui middle aligned mini image mb5" src="https://b.zmtcdn.com/images/search_tokens/app_icons/special_23.png" data-original="https://b.zmtcdn.com/images/search_tokens/app_icons/special_23.png" style="height: 48px; width: 48px; display: inline-block;">
-                <div>Luxury Dining</div>
-            </a>
+                <img src="https://b.zmtcdn.com/images/search_tokens/app_icons/category_6.png" data-original="https://b.zmtcdn.com/images/search_tokens/app_icons/category_6.png">
+                @Ajax.ActionLink("Cafe", "GetPlacesByCategory", new { category = "Cafe"}, new AjaxOptions
+                {
+                    UpdateTargetId = "places",
+                    InsertionMode = InsertionMode.Replace,
+                })
         </li>
     </ul>
+</section>
+<section>
+    <div class="container" id="places">
+        
+    </div>
 </section>
 
 

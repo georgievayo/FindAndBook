@@ -40,6 +40,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IAddressFactory.cs" />
+    <Compile Include="IBookedTablesFactory.cs" />
+    <Compile Include="IBookingFactory.cs" />
+    <Compile Include="IConsumableFactory.cs" />
+    <Compile Include="IPlaceFactory.cs" />
+    <Compile Include="IReviewsFactory.cs" />
+    <Compile Include="ITablesFactory.cs" />
     <Compile Include="IUserFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

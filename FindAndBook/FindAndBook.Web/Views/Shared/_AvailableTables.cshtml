@@ -1,0 +1,41 @@
+﻿@model FindAndBook.Web.Models.Places.BookingFormViewModel
+<div class="jumbotron">
+    @if (Model.TwoPeopleTablesCount == 0 && Model.FourPeopleTablesCount == 0 && Model.SixPeopleTablesCount == 0)
+    {
+        <h3>Sorry! There is no available tables.</h3>
+    }
+    else
+    {
+        <h3>Select type and number of tables that you want...</h3>
+        using (Ajax.BeginForm("BookTables", new { controller = "Bookings" },
+             new AjaxOptions { UpdateTargetId = "book-form", InsertionMode = InsertionMode.Replace }))
+        {
+            @Html.HiddenFor(x => x.PlaceId)
+            @Html.HiddenFor(x => x.DateTime)
+            if (Model.TwoPeopleTablesCount > 0)
+            {
+                <p><i class="glyphicon glyphicon-user"></i> Tables for two people: @Model.TwoPeopleTablesCount </p>
+                   @Html.EditorFor(x => x.TwoPeopleInput, 
+                  new { htmlAttributes = new { @class="form-control", type = "number", min = 0, max = Model.TwoPeopleTablesCount } })
+            }
+
+            if (Model.FourPeopleTablesCount > 0)
+            {
+                <br/>
+                <p><i class="glyphicon glyphicon-user"></i> Tables for four people: @Model.FourPeopleTablesCount </p>
+                   @Html.EditorFor(x => x.FourPeopleInput,
+                  new { htmlAttributes = new { @class = "form-control", type = "number", min = 0, max = Model.FourPeopleTablesCount } })
+            }
+
+            if (Model.SixPeopleTablesCount > 0)
+            {
+                <br />
+                <p><i class="glyphicon glyphicon-user"></i> Tables for six people: @Model.SixPeopleTablesCount </p>
+                   @Html.EditorFor(x => x.SixPeopleInput,
+                  new { htmlAttributes = new { @class = "form-control", type = "number", min = 0, max = Model.SixPeopleTablesCount } })
+            }
+            <br />
+            <input type = "submit" value = "Submit" class="add-to-cart btn btn-warning" />
+        }
+    }
+</div>

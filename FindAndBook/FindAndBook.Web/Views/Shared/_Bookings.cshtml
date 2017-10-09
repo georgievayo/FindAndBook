@@ -1,0 +1,55 @@
+﻿@model FindAndBook.Web.Models.Account.ProfileViewModel
+@Styles.Render("~/Content/bookings.css")
+<div class="container">
+    <div class="row col-md-12 custyle">
+        <table class="table table-striped custab">
+            <thead>
+                <tr>
+                    <th>Where?</th>
+                    <th>When?</th>
+                    <th>How many people?</th>
+                    <th>Order</th>
+                    <th class="text-center">Action</th>
+                </tr>
+            </thead>
+            @foreach (var booking in @Model.Bookings)
+            {
+                using (Ajax.BeginForm("CancelBooking", new
+                {
+                    controller = "Bookings",
+                    id = @booking.Id
+
+                }, new AjaxOptions
+                {
+                    UpdateTargetId = @booking.Id.ToString(),
+                    InsertionMode = InsertionMode.Replace,
+                },
+                     new { @class = "btn btn-info btn-xs" }))
+                {
+                    <tr id=@booking.Id>
+                        <td>@booking.Place.Name</td>
+                        <td>@booking.DateTime</td>
+                        <td>@booking.NumberOfPeople</td>
+                        <td>
+                            @if (@booking.Consumables.Count > 0)
+                            {
+                                foreach (var order in @booking.Consumables)
+                                {
+                                    <p>@order.Name, @order.Price</p>
+                                }
+                            }
+                            else
+                            {
+                                <p>There is no order for this booking.</p>
+                            }
+
+                        </td>
+                        <td class="text-center">
+                            <input type="submit" class="btn btn-danger btn-xs" value="Cancel">
+                        </td>
+                    </tr>
+                }
+            }
+        </table>
+    </div>
+</div>

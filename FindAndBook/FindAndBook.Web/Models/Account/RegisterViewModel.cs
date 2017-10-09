@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace FindAndBook.Web.Models.Account
 {
@@ -26,14 +27,20 @@ namespace FindAndBook.Web.Models.Account
         public string ConfirmPassword { get; set; }
 
         [Required]
-        [EmailAddress]
-        [Display(Name = "FirstName")]
+        [Display(Name = "First Name")]
         public string FirstName { get; set; }
 
         [Required]
-        [EmailAddress]
-        [Display(Name = "LastName")]
+        [Display(Name = "Last Name")]
         public string LastName { get; set; }
+
+        [Required]
+        [Display(Name ="Phone number")]
+        public string PhoneNumber { get; set; }
+
+        [Required]
+        [Display(Name = "Type of account")]
+        public string Role { get; set; }
     }
 
 }

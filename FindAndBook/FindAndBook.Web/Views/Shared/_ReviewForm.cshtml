@@ -1,0 +1,37 @@
+﻿@model FindAndBook.Web.Models.Reviews.SingleReviewViewModel
+    @Scripts.Render("~Scripts/review-form.js")
+@if (Model.UserId != null)
+{
+    <div class="row" id="post-review-box">
+        <div class="col-md-8 col-md-offset-2">
+            @using (Ajax.BeginForm("LeaveReview", "Reviews", new AjaxOptions
+       {
+           UpdateTargetId = "reviews-list",
+           InsertionMode = InsertionMode.InsertAfter
+       }))
+            {
+                @Html.HiddenFor(x => x.PlaceId)
+                @Html.HiddenFor(x => x.UserId)
+                @Html.HiddenFor(x => x.Username)
+                @Html.HiddenFor(x => x.Rating, new {id= "selected-rating" })
+
+                <div class="row">
+                    @Html.TextAreaFor(x => x.Message, new { style = "min-width: 100%", @class = "form-control animated", name = "comment", placeholder = "Enter your review here..." })
+                </div>
+                <div class="text-center row">
+                    <div class="stars starrr" data-rating="0">
+                        <span class="glyphicon glyphicon-star-empty" id="star1" onclick="vote(1)"></span>
+                        <span class="glyphicon glyphicon-star-empty" id="star2" onclick="vote(2)"></span>
+                        <span class="glyphicon glyphicon-star-empty" id="star3" onclick="vote(3)"></span>
+                        <span class="glyphicon glyphicon-star-empty" id="star4" onclick="vote(4)"></span>
+                        <span class="glyphicon glyphicon-star-empty" id="star5" onclick="vote(5)"></span>
+                        <input type="number" class="hidden" id="selected-rating"/>
+                        <button class="add-to-cart btn btn-default" type="submit" id="send-review">Send</button>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+
+}
+   

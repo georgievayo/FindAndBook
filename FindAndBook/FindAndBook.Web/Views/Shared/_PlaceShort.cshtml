@@ -1,0 +1,17 @@
+﻿@model FindAndBook.Web.Models.Places.PlaceShortViewModel
+@Styles.Render("~/Content/place-short.css")
+<div class="col-md-4">
+    <div class="thumbnail">
+        <img src=@Model.PhotoUrl alt="" class="img-responsive img-thumbnail">
+        <div class="caption">
+            <h4 class="pull-right">@Model.Contact</h4>
+            <h4>@Html.ActionLink(@Model.Name, "Details", "Places", new { id = @Model.Id }, null)</h4>
+            <p><span class="glyphicon glyphicon-map-marker checked"></span>  You can find us at:</p>
+            <p>@Model.Address.Country, @Model.Address.City, @Model.Address.Area, @Model.Address.Street @Model.Address.Number</p>
+            <p><span class="glyphicon glyphicon-usd checked"></span>  Average Bill: @Model.AverageBill</p>
+            <p>
+                <span class="glyphicon glyphicon-star checked"></span> @Model.Rating    <span class="glyphicon glyphicon-comment checked"></span> @Model.ReviewsCount reviews
+            </p>
+        </div>
+    </div>
+</div>

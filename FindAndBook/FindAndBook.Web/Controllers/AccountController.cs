@@ -1,7 +1,10 @@
 ﻿using System;
+using System.Linq;
 using System.Web.Mvc;
+using AutoMapper.QueryableExtensions;
 using FindAndBook.Authentication.Contracts;
-using FindAndBook.Factories;
+using FindAndBook.Services.Contracts;
+using FindAndBook.Web.Factories;
 using FindAndBook.Web.Models.Account;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
@@ -15,22 +18,30 @@ namespace FindAndBook.Web.Controllers
         private const string XsrfKey = "XsrfId";
 
         private readonly IAuthenticationProvider provider;
-        private readonly IUserFactory userFactory;
+        private readonly IUserService userService;
+        private readonly IViewModelFactory viewModelFactory;
 
-        public AccountController(IAuthenticationProvider provider, IUserFactory userFactory)
+        public AccountController(IAuthenticationProvider provider,
+            IUserService userService, IViewModelFactory viewModelFactory)
         {
             if (provider == null)
             {
                 throw new ArgumentNullException(nameof(provider));
             }
 
-            if (userFactory == null)
+            if (userService == null)
             {
-                throw new ArgumentNullException(nameof(userFactory));
+                throw new ArgumentNullException(nameof(userService));
+            }
+
+            if (viewModelFactory == null)
+            {
+                throw new ArgumentNullException(nameof(viewModelFactory));
             }
 
             this.provider = provider;
-            this.userFactory = userFactory;
+            this.userService = userService;
+            this.viewModelFactory = viewModelFactory;
         }
 
         // GET: /Account/Login
@@ -88,9 +99,9 @@ namespace FindAndBook.Web.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = this.userFactory.CreateUser(model.Username, model.Email);
+                var user = this.userService.AddUser(model.Username, model.Email, model.FirstName, model.LastName, model.PhoneNumber);
                 var result = this.provider.RegisterAndLoginUser(user, model.Password, isPersistent: false, rememberBrowser: false);
-
+                var res = this.provider.AddToRole(user.Id, model.Role);
                 if (result.Succeeded)
                 {
                     return RedirectToAction("Index", "Home");
@@ -117,6 +128,29 @@ namespace FindAndBook.Web.Controllers
             this.provider.SignOut();
 
             return this.RedirectToAction("Index", "Home");
+        }
+
+        [HttpGet]
+        public ActionResult Profile(string username)
+        {
+            var user = this.userService.GetUserByUsername(username)
+                .ProjectTo<ProfileViewModel>()
+                .ToList()
+                .FirstOrDefault();
+
+            if (user == null)
+            {
+                return View("Error");
+            }
+
+            user.IsCurrentUser = this.provider.CurrentUserUsername == user.Username;
+            return View(user);
+        }
+
+        [ChildActionOnly]
+        public ActionResult Bookings(ProfileViewModel model)
+        {
+            return this.PartialView("_Bookings", model);
         }
 
         private void AddErrors(IdentityResult result)
