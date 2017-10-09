@@ -58,7 +58,7 @@ namespace FindAndBook.Web.Controllers
             var consumable = this.consumableService.AddConsumable(model.PlaceId, model.Name, 
                 model.Quantity, model.Price, model.Type, model.Ingredients);
 
-            return null;
+            return PartialView("_Consumable", model);
         }
 
         public ActionResult GetNewForm(Guid? id)

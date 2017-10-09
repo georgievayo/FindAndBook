@@ -1,24 +1,44 @@
 ﻿@model FindAndBook.Web.Models.Consumables.ConsumableViewModel
 
-<div class="container">
-    @using (Ajax.BeginForm("AddConsumable", new { id = Model.PlaceId, controller = "Consumables" }, new AjaxOptions
-    {
-        UpdateTargetId = "menu",
-        InsertionMode = InsertionMode.Replace
-    }))
-    {
-        @Html.HiddenFor(m => m.PlaceId)
-
-        @Html.TextBoxFor(x => x.Name, new { placeholder = "Name", @class = "form-control"})
-
-        @Html.TextBoxFor(x => x.Type, new { placeholder = "Type", @class = "form-control"})
+@using (Ajax.BeginForm("AddConsumable", new { id = Model.PlaceId, controller = "Consumables" }, new AjaxOptions
+{
+    UpdateTargetId = "current-menu",
+    InsertionMode = InsertionMode.InsertAfter
+}))
+{
+    @Html.HiddenFor(m => m.PlaceId)
+    <div id="consumable-form">
+        <div class="col-md-2">
+            @Html.TextBoxFor(x => x.Name, new { placeholder = "Name", @class = "form-control" })
+        </div>
         
-        @Html.TextBoxFor(x => x.Quantity, new { placeholder = "Quantity", @class = "form-control"})
+        <div class="col-md-2">
+            @Html.TextBoxFor(x => x.Type, new { placeholder = "Type", @class = "form-control" })
+        </div>
+        
+        <div class="col-md-2">
+            @Html.TextAreaFor(x => x.Ingredients, new { placeholder = "Ingredients", @class = "form-control" })
+        </div>
+        
+        <div class="col-md-2">
+            @Html.TextBoxFor(x => x.Quantity, new { placeholder = "Quantity", @class = "form-control" })
+        </div>
+        
+        <div class="col-md-2">
+            @Html.TextBoxFor(x => x.Price, new {placeholder = "Price", @class = "form-control"})
+        </div>
+       
+        <div class="col-md-2">
+            <input type="submit" value="Submit" class="btn btn-success" id="submit-consumable" />
+        </div>
+    </div>
+    <script>
+        $(document).ready(function () {
+            $('#submit-consumable').click(function () {
+                $('#consumable-form').addClass('hidden');
+            });
+        });
 
-        @Html.TextBoxFor(x => x.Price, new { placeholder = "Price", @class = "form-control" })
+    </script>
+}
 
-        @Html.TextAreaFor(x => x.Ingredients, new { placeholder = "Ingredients", @class = "form-control"})
-        <input type="submit" value="Submit" class="btn btn-success"/>
-
-    }
-</div>

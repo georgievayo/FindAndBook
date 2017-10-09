@@ -7,36 +7,43 @@
     <legend>Add menu</legend>
     @Html.HiddenFor(x => x.PlaceId)
     <div class="container">
-    <div class="col-md-12">
-        <table class="table table-list-search">
-            <thead>
-            <tr>
-                <th>Name</th>
-                <th>Ingredients</th>
-                <th>Quantity</th>
-                <th>Price</th>
-            </tr>
-            </thead>
-            <tbody>
-            @foreach (var consumable in Model.Menu)
-            {
-                <tr>
-                    <td>@consumable.Name</td>
-                    <td>@consumable.Ingredients</td>
-                    <td>@consumable.Quantity gr</td>
-                    <td>@consumable.Price lv</td>
-                </tr>
-            }
-            </tbody>
-        </table>
-        <div class="container" id="menu">
-            
+        <div class="col-md-12">
+            <table class="table table-list-search">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Type</th>
+                        <th>Ingredients</th>
+                        <th>Quantity</th>
+                        <th>Price</th>
+                    </tr>
+                </thead>
+                <tbody id="current-menu">
+                    @foreach (var consumable in Model.Menu)
+                    {
+                        <tr>
+                            <td>@consumable.Name</td>
+                            <td>@consumable.Type</td>
+                            <td>@consumable.Ingredients</td>
+                            <td>@consumable.Quantity gr</td>
+                            <td>@consumable.Price lv</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
         </div>
+        <div class="row">
+            <div class="col-md-12" id="new-form">
+
+            </div>
         </div>
-        @Ajax.ActionLink("Add consumable", "GetNewForm", new { id = Model.PlaceId }, new AjaxOptions
+
+        <div class="row">
+            @Ajax.ActionLink("Add consumable", "GetNewForm", new { id = Model.PlaceId }, new AjaxOptions
        {
-           UpdateTargetId = "menu",
+           UpdateTargetId = "new-form",
            InsertionMode = InsertionMode.Replace
-       }, new {@class="btn btn-default"})
+       }, new { @class = "btn btn-default", id = "add-consumable" })
+        </div>
     </div>
 </fieldset>

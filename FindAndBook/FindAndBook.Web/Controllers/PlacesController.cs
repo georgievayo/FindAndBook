@@ -115,10 +115,16 @@ namespace FindAndBook.Web.Controllers
             }
 
             var userId = this.authProvider.CurrentUserId;
+
+            // Create address
             var address = this.addressService.CreateAddress(model.Country, model.City, model.Area, model.Street,
                 model.Number);
+
+            //Create place
             var place = this.placeService.CreatePlace(model.Name, model.Types, model.Contact, model.WeekendHours, model.WeekdayHours,
                 model.Description, model.AverageBill, userId, address);
+
+            // Create all types of tables
             var tablesWithTwoPeople = this.tablesService.CreateTableType(place.Id, 2, model.TwoPeopleCount);
             var tablesWithFourPeople = this.tablesService.CreateTableType(place.Id, 4, model.FourPeopleCount);
             var tablesWithSixPeople = this.tablesService.CreateTableType(place.Id, 6, model.SixPeopleCount);
@@ -179,12 +185,18 @@ namespace FindAndBook.Web.Controllers
         }
 
         [HttpGet]
-        public ActionResult Details(Guid id)
+        public ActionResult Details(Guid? id)
         {
+            if (id == null)
+            {
+                return View("Error");
+            }
+
             var model = this.placeService
                 .GetPlaceWithReviews(id)
                 .ProjectTo<DetailsViewModel>()
                 .FirstOrDefault();
+
             if (model == null)
             {
                 return View("Error");
