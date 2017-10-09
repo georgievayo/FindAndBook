@@ -18,5 +18,7 @@ namespace FindAndBook.Services.Contracts
         User AddUser(string username, string email, string firstName, string lastName, string phoneNumber);
 
         IQueryable<User> GetAll();
+
+        void DeleteUser(string id);
     }
 }

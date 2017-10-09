@@ -59,5 +59,19 @@ namespace FindAndBook.Services
                 this.unitOfWork.Commit();
             }
         }
+
+        public void DeleteReview(Guid? id)
+        {
+            var review = this.reviewsRepository.GetById(id);
+            this.reviewsRepository.Delete(review);
+            this.unitOfWork.Commit();
+        }
+
+        public IQueryable<Review> GetByUserAndPlace(Guid? placeId, string userId)
+        {
+            return this.reviewsRepository
+                .All
+                .Where(x => x.PlaceId == placeId && x.UserId == userId);
+        }
     }
 }

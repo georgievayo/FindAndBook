@@ -14,5 +14,9 @@ namespace FindAndBook.Services.Contracts
         IQueryable<Review> GetAll();
 
         void DeleteAll(Guid? placeId);
+
+        void DeleteReview(Guid? id);
+
+        IQueryable<Review> GetByUserAndPlace(Guid? placeId, string userId);
     }
 }

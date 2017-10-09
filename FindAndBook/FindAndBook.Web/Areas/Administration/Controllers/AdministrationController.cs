@@ -76,6 +76,16 @@ namespace FindAndBook.Web.Areas.Administration.Controllers
             return Json("Success");
         }
 
+        public ActionResult DeleteUser(string id)
+        {
+            this.userService.DeleteUser(id);
+            return Json("Success");
+        }
 
+        public ActionResult DeleteReview(Guid? id)
+        {
+            this.reviewService.DeleteReview(id);
+            return Json("Success");
+        }
     }
 }

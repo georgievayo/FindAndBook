@@ -73,5 +73,12 @@ namespace FindAndBook.Services
         {
             return this.userRepository.All;
         }
+
+        public void DeleteUser(string id)
+        {
+            var user = this.userRepository.GetById(id);
+            this.userRepository.Delete(user);
+            this.unitOfWork.Commit();
+        }
     }
 }

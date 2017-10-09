@@ -24,6 +24,9 @@ namespace FindAndBook.Data.Mapping
             this.HasMany(x => x.Consumables)
                 .WithRequired(x => x.Place)
                 .WillCascadeOnDelete();
+            this.HasRequired(x => x.Manager)
+                .WithMany(x => x.Places)
+                .WillCascadeOnDelete();
         }
     }
 }
