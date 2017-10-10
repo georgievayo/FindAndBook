@@ -1,0 +1,27 @@
+﻿.btn {
+    background-color: rgba(127, 59, 79, 0.9);
+    color: white;
+    border: none;
+}
+
+.btn:hover {
+    background-color: white;
+    color: rgba(127, 59, 79, 0.9);
+    border: none;
+}
+
+#register-link {
+    color: rgba(127, 59, 79, 0.9);
+    font-size: 14pt;    
+}
+
+.control-label {
+    color: rgba(127, 59, 79, 0.9);
+    font-size: 12pt;
+}
+
+legend {
+    color: rgba(127, 59, 79, 0.9);
+    font-size: 20pt;
+    margin: unset;
+}

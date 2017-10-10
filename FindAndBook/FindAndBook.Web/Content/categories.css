@@ -10,6 +10,7 @@
 #categories li a {
     color: rgba(127, 59, 79, 0.9) !important;
     font-size: 14pt !important;
+    font-weight: bold;
 }
 
 #categories>li>a>img {

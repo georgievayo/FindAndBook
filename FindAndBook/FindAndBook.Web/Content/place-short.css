@@ -1,3 +1,12 @@
 ﻿.checked {
-    color: #ff9f1a; 
+    color: rgba(127, 59, 79, 0.9); 
+}
+
+.thumbnail h4 a {
+    color: rgba(127, 59, 79, 0.9);
+    font-weight: bold;
+}
+
+.thumbnail {
+    background-color: white;
 }

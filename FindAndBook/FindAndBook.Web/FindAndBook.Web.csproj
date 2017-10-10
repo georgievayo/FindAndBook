@@ -284,6 +284,8 @@
   <ItemGroup>
     <Content Include="Content\booking-datetime-form.css" />
     <Content Include="Content\home.css" />
+    <Content Include="Content\list.css" />
+    <Content Include="Content\login.css" />
     <Content Include="Content\PagedList.css" />
     <Content Include="Content\tabs.css" />
     <Content Include="Content\bookings.css" />
@@ -409,7 +411,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Areas\Administration\Views\Shared\" />
-    <Folder Include="Content\Images\" />
     <Folder Include="Views\Reviews\" />
   </ItemGroup>
   <PropertyGroup>
