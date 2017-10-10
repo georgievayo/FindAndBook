@@ -8,7 +8,6 @@
     @Html.AntiForgeryToken()
     <fieldset class="col-md-6 col-md-offset-3">
         <legend>Edit place</legend>
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group row">
             <label class="col-md-offset-1 text-center col-md-2 control-label">Address</label>
                     @Html.EditorFor(model => model.Country, new { htmlAttributes = new { @class = "col-md-7 form-control", placeholder = "Country" } })
@@ -25,35 +24,58 @@
                     <br />
                     @Html.EditorFor(model => model.Number, new { htmlAttributes = new { @class = "col-md-offset-3 col-md-7 form-control", placeholder = "Number" } })
                     @Html.ValidationMessageFor(model => model.Number, "", new { @class = "text-danger" })
+            <div class="">
+                @Html.ValidationMessageFor(model => model.Country, null, new { @class = "text-danger" })
+                <br />
+                @Html.ValidationMessageFor(model => model.City, null, new { @class = "text-danger" })
+                <br />
+                @Html.ValidationMessageFor(model => model.Area, null, new { @class = "text-danger" })
+                <br />
+                @Html.ValidationMessageFor(model => model.Street, null, new { @class = "text-danger" })
+                <br />
+                @Html.ValidationMessageFor(model => model.Number, null, new { @class = "text-danger" })   
+            </div>
         </div>
         <div class="form-group row">
             @Html.LabelFor(model => model.PhotoUrl, htmlAttributes: new { @class = "col-md-offset-1 text-center col-md-2 control-label" })
-            @Html.EditorFor(model => model.PhotoUrl, new { htmlAttributes = new { @class = "col-md-7 form-control" } })
+            @Html.EditorFor(model => model.PhotoUrl, new { htmlAttributes = new { @class = "col-md-7 form-control" } }) 
+        </div>
+        <div class="col-md-offset-2">
             @Html.ValidationMessageFor(model => model.PhotoUrl, "", new { @class = "text-danger" })
         </div>
         <div class="form-group row">
             @Html.LabelFor(model => model.Contact, htmlAttributes: new { @class = "col-md-offset-1 text-center col-md-2 control-label" })
             @Html.EditorFor(model => model.Contact, new { htmlAttributes = new { @class = "col-md-7 form-control" } })
+        </div>
+        <div class="col-md-offset-2">
             @Html.ValidationMessageFor(model => model.Contact, "", new { @class = "text-danger" })
         </div>
         <div class="form-group row">
             @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "col-md-offset-1 text-center col-md-2 control-label" })
             @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "col-md-7 form-control ", rows = "10" } })
-            @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+        </div>
+        <div class="col-md-offset-2">
+            @Html.ValidationMessageFor(model => model.Description, "", new {@class = "text-danger"})
         </div>
         <div class="form-group row">
             @Html.LabelFor(model => model.WeekdayHours, htmlAttributes: new { @class = "col-md-offset-1 text-center col-md-2 control-label" })
             @Html.EditorFor(model => model.WeekdayHours, new { htmlAttributes = new { @class = "col-md-7 form-control" } })
+        </div>
+        <div class="col-md-offset-2">
             @Html.ValidationMessageFor(model => model.WeekdayHours, "", new { @class = "text-danger" })
         </div>
         <div class="form-group row">
             @Html.LabelFor(model => model.WeekendHours, htmlAttributes: new { @class = "col-md-offset-1 text-center col-md-2 control-label" })
             @Html.EditorFor(model => model.WeekendHours, new { htmlAttributes = new { @class = "col-md-7 form-control" } })
+        </div>
+        <div class="col-md-offset-2">
             @Html.ValidationMessageFor(model => model.WeekendHours, "", new { @class = "text-danger" })
         </div>
         <div class="form-group row">
             @Html.LabelFor(model => model.AverageBill, htmlAttributes: new { @class = "col-md-offset-1 text-center col-md-2 control-label" })
             @Html.EditorFor(model => model.AverageBill, new { htmlAttributes = new { @class = "col-md-7 form-control" } })
+        </div>
+        <div class="col-md-offset-2">
             @Html.ValidationMessageFor(model => model.AverageBill, "", new { @class = "text-danger" })
         </div>
         <div class="form-group">
