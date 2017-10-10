@@ -15,6 +15,10 @@
             <li>@Html.ActionLink("Home", "Index", "Home")</li>
             <li>@Html.ActionLink("Places", "Index", "Places")</li>
             <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+            @if (Model.IsAdmin)
+            {
+                <li>@Html.ActionLink("Admin panel", "Index", "Administration", new { Area = "Administration" }, null)</li>
+               }
             @if (Model.IsManager)
             {
                 <li>@Html.ActionLink("Add new place", "Create", "Places")</li>
