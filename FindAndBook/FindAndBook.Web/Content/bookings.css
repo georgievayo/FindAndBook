@@ -21,6 +21,16 @@ img {
     border: unset;
 }
 
+.btn:hover {
+    color: rgba(127, 59, 79, 0.7);
+    background-color: white;
+    border: unset;
+}
+
 th {
     color: white;
+}
+
+tr td a, tr td a:hover {
+    color: rgba(127, 59, 79, 0.7);
 }

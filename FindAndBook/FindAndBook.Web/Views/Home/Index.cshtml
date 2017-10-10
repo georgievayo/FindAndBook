@@ -8,9 +8,11 @@
         <h2>Find your favourite place, book it and enjoy!</h2>
         <br />
         <br />
+        <br />
     </div>
     @using (Html.BeginForm("Search", "Search"))
     {
+        @Html.AntiForgeryToken()
         <div class="form-group">
             <div class="input-group-btn">
                 <div class="row">
