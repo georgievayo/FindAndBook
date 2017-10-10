@@ -1,4 +1,5 @@
 ﻿@model FindAndBook.Web.Models.Places.BookingViewModel
+    @Styles.Render("~/Content/booking-datetime-form.css")
 @using (Ajax.BeginForm("GetAvailableTables", new { controller = "Bookings" },
                 new AjaxOptions { UpdateTargetId = "book-form", InsertionMode = InsertionMode.Replace }))
 {

@@ -3,7 +3,9 @@
   width: 100%;
   top: 0px;
   margin-bottom: 0px;
-  background-color: rgba(82, 54,31, 0.5)  !important;
+    border-radius: unset !important;
+    background-color: rgba(127, 59, 79, 0.7) !important;
+  /*background-color: rgba(82, 54,31, 0.7)  !important;*/
     border-color: transparent !important;
   -webkit-transition: all ease-in-out 0.4s;
   -moz-transition: all ease-in-out 0.4s;
