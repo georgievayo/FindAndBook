@@ -4,53 +4,51 @@
 }
 @Styles.Render("~/Content/categories.css")
 <section class="wrapper col-md-10 col-md-offset-1">
-    <h2>
-        <span >
-                Discover places by type
-        </span>
-    </h2>
-    <ul id="categories">
-        <li>
+    <fieldset>
+        <legend>Discover places by type</legend>
+        <ul id="categories">
+            <li>
                 <img src="https://b.zmtcdn.com/images/search_tokens/app_icons/category_8.png" data-original="https://b.zmtcdn.com/images/search_tokens/app_icons/category_8.png">
-                @Ajax.ActionLink("Breakfast", "GetPlacesByCategory", new { category = "Restaurant"}, new AjaxOptions
+                @Ajax.ActionLink("Breakfast", "GetPlacesByCategory", new {category = "Restaurant"}, new AjaxOptions
                 {
                     UpdateTargetId = "places",
                     InsertionMode = InsertionMode.Replace,
                 })
-        </li>
-        <li>
+            </li>
+            <li>
                 <img src="https://b.zmtcdn.com/images/search_tokens/app_icons/category_9.png" data-original="https://b.zmtcdn.com/images/search_tokens/app_icons/category_9.png">
-                @Ajax.ActionLink("Lunch", "GetPlacesByCategory", new { category = "Restaurant"}, new AjaxOptions
+                @Ajax.ActionLink("Lunch", "GetPlacesByCategory", new {category = "Restaurant"}, new AjaxOptions
                 {
                     UpdateTargetId = "places",
                     InsertionMode = InsertionMode.Replace,
                 })
-        </li>
-        <li>
+            </li>
+            <li>
                 <img src="https://b.zmtcdn.com/images/search_tokens/app_icons/category_10.png" data-original="https://b.zmtcdn.com/images/search_tokens/app_icons/category_10.png">
-            @Ajax.ActionLink("Dinner", "GetPlacesByCategory", new { category = "Restaurant"}, new AjaxOptions
-            {
-                UpdateTargetId = "places",
-                InsertionMode = InsertionMode.Replace,
-            })
-        </li>
-        <li>
+                @Ajax.ActionLink("Dinner", "GetPlacesByCategory", new {category = "Restaurant"}, new AjaxOptions
+                {
+                    UpdateTargetId = "places",
+                    InsertionMode = InsertionMode.Replace,
+                })
+            </li>
+            <li>
                 <img src="https://b.zmtcdn.com/images/search_tokens/app_icons/category_3.png" data-original="https://b.zmtcdn.com/images/search_tokens/app_icons/category_3.png">
-                @Ajax.ActionLink("Nightlife", "GetPlacesByCategory", new { category = "Club"}, new AjaxOptions
+                @Ajax.ActionLink("Nightlife", "GetPlacesByCategory", new {category = "Club"}, new AjaxOptions
                 {
                     UpdateTargetId = "places",
                     InsertionMode = InsertionMode.Replace,
                 })
-        </li>
-        <li>
+            </li>
+            <li>
                 <img src="https://b.zmtcdn.com/images/search_tokens/app_icons/category_6.png" data-original="https://b.zmtcdn.com/images/search_tokens/app_icons/category_6.png">
-                @Ajax.ActionLink("Cafe", "GetPlacesByCategory", new { category = "Cafe"}, new AjaxOptions
+                @Ajax.ActionLink("Cafe", "GetPlacesByCategory", new {category = "Cafe"}, new AjaxOptions
                 {
                     UpdateTargetId = "places",
                     InsertionMode = InsertionMode.Replace,
                 })
-        </li>
-    </ul>
+            </li>
+        </ul>
+    </fieldset>
 </section>
 <section>
     <div class="container" id="places">

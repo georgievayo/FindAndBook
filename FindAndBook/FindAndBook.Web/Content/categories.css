@@ -2,15 +2,23 @@
     list-style-type: none;
 }
 
-li {
+#categories li {
     display: inline-block;
     padding-right: 20px;
+}
+
+#categories li a {
+    color: rgba(127, 59, 79, 0.9) !important;
+    font-size: 14pt !important;
 }
 
 #categories>li>a>img {
     height: 60px;
     width: 60px;
-    /*display: inline-block;
-    position: center;*/
+}
+
+legend {
+    color: rgba(127, 59, 79, 0.9);
+    font-size: 22pt;
 }
 
