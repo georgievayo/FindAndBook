@@ -104,7 +104,7 @@
                         <td>@user.Email</td>
                         <td>@user.PhoneNumber</td>
                         <td class="text-center">
-                            @Ajax.ActionLink("Delete", "DeleteUser", new {id = @user.Id},
+                            @Ajax.ActionLink("Make admin", "ChangeRole", new {id = @user.Id},
                                 new AjaxOptions
                                 {
                                     UpdateTargetId = "notification",

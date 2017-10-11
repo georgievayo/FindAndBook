@@ -13,7 +13,7 @@ namespace FindAndBook.Web.Models.Places
         public string Name { get; set; }
 
         [Required]
-        [Display(Name = "Types")]
+        [Display(Name = "Type")]
         [AllowHtml]
         public string Types { get; set; }
 

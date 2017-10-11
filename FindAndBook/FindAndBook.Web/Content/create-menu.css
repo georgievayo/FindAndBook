@@ -1,3 +1,23 @@
 ﻿.table-sortable tbody tr {
     cursor: move;
 }
+
+legend, th {
+    color: rgba(127, 59, 79, 0.9);
+}
+
+th {
+    font-size: 14pt;
+}
+
+.btn {
+    background-color: rgba(127, 59, 79, 0.9);
+    color: white;
+    border: none;
+}
+
+.btn:hover {
+    background-color: white;
+    color: rgba(127, 59, 79, 0.9);
+    border: none;
+}

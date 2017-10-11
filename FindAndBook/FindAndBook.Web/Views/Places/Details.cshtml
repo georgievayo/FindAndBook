@@ -27,7 +27,7 @@
                         <span class="review-no">@Model.Reviews.Count reviews</span>
                     </div>
                     <p class="product-description">@Model.Details</p>
-                    <p class="product-description"><strong><span class="glyphicon glyphicon-map-marker"></span> Find us at</strong> @Model.Address.City, @Model.Address.Area, @Model.Address.Street @Model.Address.Number</p>
+                    <p class="product-description"><strong><span class="price glyphicon glyphicon-map-marker"></span> Find us at</strong> @Model.Address.City, @Model.Address.Area, @Model.Address.Street @Model.Address.Number</p>
                     <h5 class="price"><span class="glyphicon glyphicon-phone-alt"></span> Contact: <span>@Model.Contact</span></h5>
                     <h5 class="price"><span class="glyphicon glyphicon-euro"></span> Average bill: <span>@Model.AverageBill</span></h5>
                     <h5 class="price"><span class="glyphicon glyphicon-time"></span> Opening hours</h5>
@@ -42,7 +42,7 @@
         </div>
     </div>
 
-    <div class="jumbotron col-md-12" id="booking-field">
+    <div class="jumbotron col-md-12 card" id="booking-field">
         <fieldset>
             <legend><strong>Book a table</strong></legend>
             <div class="row" id="book-form">
@@ -51,7 +51,7 @@
         </fieldset>
     </div>
 
-    <div id="reviews" class="col-md-12 jumbotron">
+    <div id="reviews" class="col-md-12 jumbotron card">
         <fieldset>
             <legend><strong>Reviews</strong></legend>
             <section class="comments" id="reviews-list">

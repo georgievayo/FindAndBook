@@ -33,8 +33,8 @@
                     <td>@place.Details</td>
                     <td><img src="@place.PhotoUrl" alt="photo" /></td>
                     <td class="text-center">
-                        <p>@Html.ActionLink("Edit", "Edit", new { controller = "Places", id = @place.Id }, new { @class = "btn btn-warning btn-xs col-md-12" })</p>
-                        <p>@Html.ActionLink("Add menu", "Create", new { controller = "Consumables", id = @place.Id }, new { @class = "btn btn-success btn-xs col-md-12" })</p>
+                        <p>@Html.ActionLink("Edit", "Edit", new { controller = "Places", id = @place.Id }, new { @class = "btn btn-xs col-md-12" })</p>
+                        <p>@Html.ActionLink("Add menu", "Create", new { controller = "Consumables", id = @place.Id }, new { @class = "btn  btn-xs col-md-12" })</p>
                         @Ajax.ActionLink("Bookings", "GetBookings", new
                         {
                             controller = "Bookings",
@@ -45,7 +45,7 @@
                             UpdateTargetId = "bookings",
                             InsertionMode = InsertionMode.Replace,
                         },
-                            new {@class = "btn btn-info btn-xs col-md-12"})
+                            new {@class = "btn btn-xs col-md-12"})
 
                     </td>
                 </tr>

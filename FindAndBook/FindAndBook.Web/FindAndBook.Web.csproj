@@ -282,6 +282,10 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\booking-datetime-form.css" />
+    <Content Include="Content\home.css" />
+    <Content Include="Content\list.css" />
+    <Content Include="Content\form.css" />
     <Content Include="Content\PagedList.css" />
     <Content Include="Content\tabs.css" />
     <Content Include="Content\bookings.css" />

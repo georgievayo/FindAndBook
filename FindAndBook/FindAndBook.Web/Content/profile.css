@@ -1,4 +1,4 @@
-﻿.profile-head { width:100%;background-color: rgb(255, 102, 0);float: left;padding: 15px 5px;}
+﻿.profile-head { width:100%;background-color: #c08e96;float: left;padding: 15px 5px;}
 .profile-head img { height:150px; width:150px; margin:0 auto; border:5px solid #fff; border-radius:5px;}
 .profile-head h5 {width: 100%;padding:5px 5px 0px 5px;text-align:justify;font-weight: bold;color: #fff;font-size: 25px;text-transform:capitalize;
     margin-bottom: 0;}
@@ -11,3 +11,7 @@
 .profile-head ul li span { color:#ffffff;padding-right: 10px;}
 .profile-head ul li a { color:#ffffff;}
 .profile-head h6 {width: 100%;text-align: center;font-weight: 100;color: #fff;font-size: 15px;text-transform: uppercase;margin-bottom: 0;}
+
+h3 {
+    color: rgba(127, 59, 79, 0.9);
+}

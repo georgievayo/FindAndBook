@@ -48,10 +48,10 @@
 .pagination > .active > a:focus,
 .pagination > .active > span:focus {
   z-index: 2;
-  color: #ffffff;
+    color: white;
   cursor: default;
-  background-color: #428bca;
-  border-color: #428bca;
+    background-color: rgba(127, 59, 79, 0.9) !important;
+    border: unset !important;
 }
 
 .pagination > .disabled > span,

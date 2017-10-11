@@ -17,3 +17,10 @@ select,
 textarea {
     max-width: 280px;
 }
+
+body {
+    /*background-color: #ffeeb0;*/
+    /*background-color: #ffe59e;*/
+    background-color: #f0e2e2;
+}
+

@@ -35,6 +35,7 @@ namespace FindAndBook.Web.Controllers
         }
 
         [HttpGet]
+        [Authorize(Roles = "Manager")]
         public ActionResult Create(Guid? id)
         {
             if (id == null)
@@ -48,6 +49,7 @@ namespace FindAndBook.Web.Controllers
         }
 
         [HttpPost]
+        [Authorize(Roles = "Manager")]
         public ActionResult AddConsumable(ConsumableViewModel model)
         {
             if (!ModelState.IsValid)
@@ -61,6 +63,8 @@ namespace FindAndBook.Web.Controllers
             return PartialView("_Consumable", model);
         }
 
+        [Authorize(Roles = "Manager")]
+        [HttpGet]
         public ActionResult GetNewForm(Guid? id)
         {
             if (id == null)
