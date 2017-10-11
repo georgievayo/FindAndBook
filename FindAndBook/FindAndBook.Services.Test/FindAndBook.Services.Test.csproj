@@ -73,6 +73,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BookingService\ConstructorShould.cs" />
+    <Compile Include="BookingService\CreateBookingShould.cs" />
+    <Compile Include="BookingService\DeleteAllShould.cs" />
+    <Compile Include="BookingService\FindAllOnShould.cs" />
+    <Compile Include="BookingService\GetBookingsOfPlaceShould.cs" />
+    <Compile Include="BookingService\GetByIdShould.cs" />
+    <Compile Include="BookingService\RemoveBookingShould.cs" />
     <Compile Include="ConsumableService\AddBookingShould.cs" />
     <Compile Include="ConsumableService\AddConsumableShould.cs" />
     <Compile Include="ConsumableService\ConstructorShould.cs" />
