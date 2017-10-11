@@ -13,7 +13,8 @@ namespace FindAndBook.Services
         private readonly IUnitOfWork unitOfWork;
         private readonly IConsumableFactory factory;
 
-        public ConsumableService(IRepository<Consumable> consumableRepository, IUnitOfWork unitOfWork, IConsumableFactory factory)
+        public ConsumableService(IRepository<Consumable> consumableRepository,
+            IUnitOfWork unitOfWork, IConsumableFactory factory)
         {
             if (consumableRepository == null)
             {
@@ -37,12 +38,16 @@ namespace FindAndBook.Services
 
         public IQueryable<Consumable> GetAllConsumablesOf(Guid? placeId)
         {
-            return this.consumableRepository.All.Where(x => x.PlaceId == placeId);
+            return this.consumableRepository
+                .All
+                .Where(x => x.PlaceId == placeId);
         }
 
         public Consumable GetByName(string name)
         {
-            return this.consumableRepository.All.FirstOrDefault(x => x.Name == name);
+            return this.consumableRepository
+                .All
+                .FirstOrDefault(x => x.Name == name);
         }
 
         public void AddBooking(Consumable consumable, Booking booking)
@@ -53,7 +58,8 @@ namespace FindAndBook.Services
 
         public Consumable AddConsumable(Guid? placeId, string name, int quantity, decimal? price, string type, string ingredients)
         {
-            var consumable = this.factory.CreateConsumable(placeId, name, quantity, price, type, ingredients);
+            var consumable = this.factory.CreateConsumable(placeId, name, quantity,
+                price, type, ingredients);
             this.consumableRepository.Add(consumable);
             this.unitOfWork.Commit();
 

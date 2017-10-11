@@ -73,6 +73,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ConsumableService\AddBookingShould.cs" />
+    <Compile Include="ConsumableService\AddConsumableShould.cs" />
+    <Compile Include="ConsumableService\ConstructorShould.cs" />
+    <Compile Include="ConsumableService\GetAllConsumablesOfShould.cs" />
+    <Compile Include="ConsumableService\GetByNameShould.cs" />
     <Compile Include="PlaceService\ConstructorShould.cs" />
     <Compile Include="PlaceService\CreatePlaceShould.cs" />
     <Compile Include="PlaceService\DeletePlaceShould.cs" />

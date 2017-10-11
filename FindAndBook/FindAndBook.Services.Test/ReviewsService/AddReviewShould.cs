@@ -14,7 +14,8 @@ namespace FindAndBook.Services.Test.ReviewsService
     [TestFixture]
     public class AddReviewShould
     {
-        [TestCase("d547a40d-c45f-4c43-99de-0bfe9199ff95", "d547a474-c45f-4c43-99de-0bfe9199ff95", "15/03/2017", "cool", 5)]
+        [TestCase("d547a40d-c45f-4c43-99de-0bfe9199ff95", 
+            "d547a474-c45f-4c43-99de-0bfe9199ff95", "5/1/2008 8:30:52 AM", "cool", 5)]
         public void AddReviewShould_CallFactoryMethodCreateReview(string placeId, string userId, 
             string postedOn, string message, int rating)
         {
@@ -31,7 +32,8 @@ namespace FindAndBook.Services.Test.ReviewsService
             factoryMock.Verify(f => f.CreateReview(placeIdGuid, userId, postedOnDateTime, message, rating), Times.Once);
         }
 
-        [TestCase("d547a40d-c45f-4c43-99de-0bfe9199ff95", "d547a474-c45f-4c43-99de-0bfe9199ff95", "15/03/2017", "cool", 5)]
+        [TestCase("d547a40d-c45f-4c43-99de-0bfe9199ff95", "d547a474-c45f-4c43-99de-0bfe9199ff95",
+            "5/1/2008 8:30:52 AM", "cool", 5)]
         public void AddReviewShould_CallRepositoryMethodAdd(string placeId, string userId,
             string postedOn, string message, int rating)
         {
@@ -58,7 +60,8 @@ namespace FindAndBook.Services.Test.ReviewsService
             repositoryMock.Verify(f => f.Add(review), Times.Once);
         }
 
-        [TestCase("d547a40d-c45f-4c43-99de-0bfe9199ff95", "d547a474-c45f-4c43-99de-0bfe9199ff95", "15/03/2017", "cool", 5)]
+        [TestCase("d547a40d-c45f-4c43-99de-0bfe9199ff95", "d547a474-c45f-4c43-99de-0bfe9199ff95",
+            "5/1/2008 8:30:52 AM", "cool", 5)]
         public void AddReviewShould_CallUnitOfWorkMethodCommit(string placeId, string userId,
             string postedOn, string message, int rating)
         {
@@ -85,7 +88,8 @@ namespace FindAndBook.Services.Test.ReviewsService
             unitOfWorkMock.Verify(f => f.Commit(), Times.Once);
         }
 
-        [TestCase("d547a40d-c45f-4c43-99de-0bfe9199ff95", "d547a474-c45f-4c43-99de-0bfe9199ff95", "15/03/2017", "cool", 5)]
+        [TestCase("d547a40d-c45f-4c43-99de-0bfe9199ff95", "d547a474-c45f-4c43-99de-0bfe9199ff95",
+            "5/1/2008 8:30:52 AM", "cool", 5)]
         public void AddReviewShould_ReturnCorrectResult(string placeId, string userId,
             string postedOn, string message, int rating)
         {
