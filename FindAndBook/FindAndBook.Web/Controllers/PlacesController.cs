@@ -125,7 +125,7 @@ namespace FindAndBook.Web.Controllers
 
             //Create place
             var place = this.placeService.CreatePlace(model.Name, model.Types, model.Contact, model.WeekendHours, model.WeekdayHours,
-                model.Description, model.AverageBill, userId, address);
+                model.Description, model.AverageBill, userId, address.Id);
 
             // Create all types of tables
             var tablesWithTwoPeople = this.tablesService.CreateTableType(place.Id, 2, model.TwoPeopleCount);

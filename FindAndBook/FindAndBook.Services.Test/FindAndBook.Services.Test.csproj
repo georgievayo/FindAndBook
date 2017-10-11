@@ -73,6 +73,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="PlaceService\ConstructorShould.cs" />
+    <Compile Include="PlaceService\CreatePlaceShould.cs" />
+    <Compile Include="PlaceService\DeletePlaceShould.cs" />
+    <Compile Include="PlaceService\EditPlaceShould.cs" />
+    <Compile Include="PlaceService\FindShould.cs" />
+    <Compile Include="PlaceService\GetAllShould.cs" />
+    <Compile Include="PlaceService\GetPlaceByIdShould.cs" />
+    <Compile Include="PlaceService\GetPlacesByCategoryShould.cs" />
+    <Compile Include="PlaceService\GetPlaceWithReviewsShould.cs" />
+    <Compile Include="PlaceService\GetUserPlacesShould.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ReviewsService\AddReviewShould.cs" />
     <Compile Include="ReviewsService\ConstructorShould.cs" />

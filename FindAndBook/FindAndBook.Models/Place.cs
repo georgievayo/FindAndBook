@@ -14,7 +14,7 @@ namespace FindAndBook.Models
             this.Tables = new HashSet<Table>();
         }
         public Place(string name, string type, string contact, string weekendHours,
-            string weekdaayHours, string details, int? averageBill, User manager, Address address)
+            string weekdaayHours, string details, int? averageBill, string managerId, Guid? addressId)
             : this()
         {
             this.Name = name;
@@ -25,8 +25,8 @@ namespace FindAndBook.Models
             this.WeekendHours = weekendHours;
             this.Details = details;
             this.AverageBill = averageBill;
-            this.Manager = manager;
-            this.AddressId = address.Id;
+            this.ManagerId = managerId;
+            this.AddressId = addressId;
         }
 
         public Guid Id { get; set; }

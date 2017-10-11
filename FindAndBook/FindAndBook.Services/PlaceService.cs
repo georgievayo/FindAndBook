@@ -16,12 +16,9 @@ namespace FindAndBook.Services
 
         private readonly IPlaceFactory placeFactory;
 
-        private readonly IUserService userService;
-
-        private readonly IAddressService addressService;
 
         public PlaceService(IRepository<Place> placeRepository, IUnitOfWork unitOfWork,
-            IPlaceFactory placeFactory, IUserService userService, IAddressService addressService)
+            IPlaceFactory placeFactory)
         {
             if (placeRepository == null)
             {
@@ -38,24 +35,17 @@ namespace FindAndBook.Services
                 throw new ArgumentNullException(nameof(placeFactory));
             }
 
-            if (userService == null)
-            {
-                throw new ArgumentNullException(nameof(userService));
-            }
-
             this.placeRepository = placeRepository;
             this.unitOfWork = unitOfWork;
             this.placeFactory = placeFactory;
-            this.userService = userService;
-            this.addressService = addressService;
         }
 
         public Place CreatePlace(string name, string type, string contact, 
-            string weekendHours, string weekdaayHours, string details, int? averageBill, string userId, Address address)
+            string weekendHours, string weekdaayHours, string details, int? averageBill, 
+            string managerId, Guid? addressId)
         {
-            var manager = this.userService.GetUserById(userId);
-            var newPlace = this.placeFactory.CreatePlace(name, type, contact, weekendHours, weekdaayHours, details,
-                averageBill, manager, address);
+            var newPlace = this.placeFactory.CreatePlace(name, type, contact, weekendHours,
+                weekdaayHours, details, averageBill, managerId, addressId);
 
             this.placeRepository.Add(newPlace);
             this.unitOfWork.Commit();
@@ -65,7 +55,10 @@ namespace FindAndBook.Services
 
         public IQueryable<Place> GetAll()
         {
-            return this.placeRepository.All.Include(p => p.Reviews).Include(p => p.Address);
+            return this.placeRepository
+                .All
+                .Include(p => p.Reviews)
+                .Include(p => p.Address);
         }
 
         public IQueryable<Place> GetPlaceById(Guid id)
@@ -122,23 +115,25 @@ namespace FindAndBook.Services
         {
             return this.placeRepository
                 .All
-                .Where(x => x.Name.Contains(pattern) && x.Type == category);
+                .Where(x => x.Name.ToLower().Contains(pattern.ToLower()) && x.Type == category);
         }
 
         public IQueryable<Place> FindInDescription(string category, string pattern)
         {
             return this.placeRepository
                 .All
-                .Where(x => x.Details.Contains(pattern) && x.Type == category);
+                .Where(x => x.Details.ToLower().Contains(pattern.ToLower()) && x.Type == category);
         }
 
         public IQueryable<Place> FindInAddress(string category, string pattern)
         {
+            var lowerPattern = pattern.ToLower();
             return this.placeRepository
                 .All
-                .Where(x => (x.Address.Country.Contains(pattern) || 
-                x.Address.City.Contains(pattern) || x.Address.Area.Contains(pattern) ||
-                x.Address.Street.Contains(pattern)) && x.Type == category);
+                .Where(x => (x.Address.Country.ToLower().Contains(lowerPattern) || 
+                x.Address.City.ToLower().Contains(lowerPattern) || 
+                x.Address.Area.ToLower().Contains(lowerPattern) ||
+                x.Address.Street.ToLower().Contains(lowerPattern)) && x.Type == category);
         }
 
         public IQueryable<Place> FindInBill(string category, string pattern)
