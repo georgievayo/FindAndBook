@@ -62,7 +62,7 @@ namespace FindAndBook.Services
                 .FirstOrDefault();
         }
 
-        public User AddUser(string username, string email, string firstName, string lastName, string phoneNumber)
+        public User CreateUser(string username, string email, string firstName, string lastName, string phoneNumber)
         {
             var user = this.userFactory.CreateUser(username, email, firstName, lastName, phoneNumber);
 
