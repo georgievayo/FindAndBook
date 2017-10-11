@@ -74,6 +74,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SearchService\ConstructorShould.cs" />
+    <Compile Include="SearchService\FindByShould.cs" />
     <Compile Include="TablesService\ConstructorShould.cs" />
     <Compile Include="TablesService\CreateTableTypeShould.cs" />
     <Compile Include="TablesService\GetByPlaceAndNumberOfPeopleShould.cs" />
