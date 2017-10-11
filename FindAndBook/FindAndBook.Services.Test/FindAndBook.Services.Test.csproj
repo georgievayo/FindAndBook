@@ -73,6 +73,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AddressService\ConstructorShould.cs" />
+    <Compile Include="AddressService\CreateAddressShould.cs" />
     <Compile Include="BookedTablesService\AddBookedTablesShould.cs" />
     <Compile Include="BookedTablesService\ConstructorShould.cs" />
     <Compile Include="BookedTablesService\GetBookedTableShould.cs" />
