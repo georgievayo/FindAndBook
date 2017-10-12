@@ -8,4 +8,6 @@ before_build:
 - ps: nuget restore ./FindAndBook/FindAndBook.sln
 
 after_test: 
-  - FindAndBook\packages\OpenCover.4.6.519\tools\OpenCover.Console.exe -register:user -filter:"+[*]*" -target:"FindAndBook\packages\NUnit.ConsoleRunner.3.7.0\tools\nunit3-console.exe" -targetargs:"/domain:single  FindAndBook\FindAndBook.Services.Test\bin\Debug\FindAndBook.Services.Test.dll FindAndBook\FindAndBook.Web.Test\bin\Debug\FindAndBook.Web.Test.dll
+  - FindAndBook\packages\OpenCover.4.6.519\tools\OpenCover.Console.exe -register:user -filter:"+[*]*" -target:"FindAndBook\packages\NUnit.ConsoleRunner.3.7.0\tools\nunit3-console.exe" -targetargs:"/domain:single  FindAndBook\FindAndBook.Services.Test\bin\Debug\FindAndBook.Services.Test.dll FindAndBook\FindAndBook.Web.Test\bin\Debug\FindAndBook.Web.Test.dll -output:coverage.xml
+  
+  - FindAndBook\packages\coveralls.io.1.4.1\tools\coveralls.net.exe --opencover coverage.xml
