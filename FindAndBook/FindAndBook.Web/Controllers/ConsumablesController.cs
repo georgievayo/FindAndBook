@@ -13,7 +13,8 @@ namespace FindAndBook.Web.Controllers
         private readonly IPlaceService placeService;
         private readonly IViewModelFactory factory;
 
-        public ConsumablesController(IConsumableService consumableService, IPlaceService placeService, IViewModelFactory factory)
+        public ConsumablesController(IConsumableService consumableService, 
+            IPlaceService placeService, IViewModelFactory factory)
         {
             if (consumableService == null)
             {
@@ -29,6 +30,7 @@ namespace FindAndBook.Web.Controllers
             {
                 throw new ArgumentNullException(nameof(factory));
             }
+
             this.consumableService = consumableService;
             this.placeService = placeService;
             this.factory = factory;

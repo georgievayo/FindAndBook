@@ -97,6 +97,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controllers\ConsumablesController\AddConsumableShould.cs" />
+    <Compile Include="Controllers\ConsumablesController\ConstructorShould.cs" />
+    <Compile Include="Controllers\ConsumablesController\GetCreateShould.cs" />
+    <Compile Include="Controllers\ConsumablesController\GetNewFormShould.cs" />
     <Compile Include="Controllers\HomeController\ConstructorShould.cs" />
     <Compile Include="Controllers\HomeController\IndexShould.cs" />
     <Compile Include="Controllers\NavigationController\ConstructorShould.cs" />
