@@ -97,6 +97,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controllers\ReviewsController\ConstructorShould.cs" />
+    <Compile Include="Controllers\ReviewsController\LeaveReviewShould.cs" />
     <Compile Include="Controllers\SearchController\ConstructorShould.cs" />
     <Compile Include="Controllers\SearchController\GetSearchShould.cs" />
     <Compile Include="Controllers\SearchController\PostSearchShould.cs" />
@@ -110,6 +112,10 @@
     <ProjectReference Include="..\FindAndBook.Models\FindAndBook.Models.csproj">
       <Project>{AD395CA0-599F-4774-A88D-41B475561AE3}</Project>
       <Name>FindAndBook.Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FindAndBook.Providers\FindAndBook.Providers.csproj">
+      <Project>{86281080-03F2-46A5-9E5E-660AA5BFBFC0}</Project>
+      <Name>FindAndBook.Providers</Name>
     </ProjectReference>
     <ProjectReference Include="..\FindAndBook.Services\FindAndBook.Services.csproj">
       <Project>{D8F3636E-3C62-4F9D-B492-D7B92269CCBE}</Project>
