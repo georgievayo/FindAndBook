@@ -97,6 +97,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controllers\NavigationController\ConstructorShould.cs" />
+    <Compile Include="Controllers\NavigationController\IndexShould.cs" />
     <Compile Include="Controllers\ReviewsController\ConstructorShould.cs" />
     <Compile Include="Controllers\ReviewsController\LeaveReviewShould.cs" />
     <Compile Include="Controllers\SearchController\ConstructorShould.cs" />
@@ -109,6 +111,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\FindAndBook.Authentication\FindAndBook.Authentication.csproj">
+      <Project>{240F6D12-7D2B-4AAF-A467-116676AA94CB}</Project>
+      <Name>FindAndBook.Authentication</Name>
+    </ProjectReference>
     <ProjectReference Include="..\FindAndBook.Models\FindAndBook.Models.csproj">
       <Project>{AD395CA0-599F-4774-A88D-41B475561AE3}</Project>
       <Name>FindAndBook.Models</Name>

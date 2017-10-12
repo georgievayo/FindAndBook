@@ -38,9 +38,8 @@ namespace FindAndBook.Web.Controllers
             {
                 username = this.authenticationProvider.CurrentUserUsername;
                 userId = this.authenticationProvider.CurrentUserId;
-                var currentUserId = this.authenticationProvider.CurrentUserId;
-                isAdmin = this.authenticationProvider.IsInRole(currentUserId, "Admin");
-                isManager = this.authenticationProvider.IsInRole(currentUserId, "Manager"); ;
+                isAdmin = this.authenticationProvider.IsInRole(userId, "Admin");
+                isManager = this.authenticationProvider.IsInRole(userId, "Manager"); ;
             }
 
             var model = this.viewModelFactory.CreateNavigationViewModel(isAuthenticated, isManager, isAdmin, username, userId);
