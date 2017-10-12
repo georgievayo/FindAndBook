@@ -115,14 +115,18 @@ namespace FindAndBook.Services
         {
             return this.placeRepository
                 .All
-                .Where(x => x.Name.ToLower().Contains(pattern.ToLower()) && x.Type == category);
+                .Where(x => x.Name.ToLower().Contains(pattern.ToLower()) && x.Type == category)
+                .Include(p => p.Reviews)
+                .Include(p => p.Address);
         }
 
         public IQueryable<Place> FindInDescription(string category, string pattern)
         {
             return this.placeRepository
                 .All
-                .Where(x => x.Details.ToLower().Contains(pattern.ToLower()) && x.Type == category);
+                .Where(x => x.Details.ToLower().Contains(pattern.ToLower()) && x.Type == category)
+                .Include(p => p.Reviews)
+                .Include(p => p.Address);
         }
 
         public IQueryable<Place> FindInAddress(string category, string pattern)
@@ -133,14 +137,18 @@ namespace FindAndBook.Services
                 .Where(x => (x.Address.Country.ToLower().Contains(lowerPattern) || 
                 x.Address.City.ToLower().Contains(lowerPattern) || 
                 x.Address.Area.ToLower().Contains(lowerPattern) ||
-                x.Address.Street.ToLower().Contains(lowerPattern)) && x.Type == category);
+                x.Address.Street.ToLower().Contains(lowerPattern)) && x.Type == category)
+                .Include(p => p.Reviews)
+                .Include(p => p.Address);
         }
 
         public IQueryable<Place> FindInBill(string category, string pattern)
         {
             return this.placeRepository
                 .All
-                .Where(x => x.AverageBill == int.Parse(pattern) && x.Type == category);
+                .Where(x => x.AverageBill == int.Parse(pattern) && x.Type == category)
+                .Include(p => p.Reviews)
+                .Include(p => p.Address);
         }
 
         public void DeletePlace(Guid? id)
