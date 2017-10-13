@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace FindAndBook.Web.Models.Reviews
 {
@@ -16,16 +17,23 @@ namespace FindAndBook.Web.Models.Reviews
             Username = username;
         }
 
+        [Required]
         public Guid? PlaceId { get; set; }
 
+        [Required]
         public string UserId { get; set; }
 
+        [Required]
         public string Username { get; set; }
 
+        [Required]
+        [MinLength(5)]
         public string Message { get; set; }
 
+        [Required]
         public DateTime PostedOn { get; set; }
 
+        [Required]
         public int Rating { get; set; }
     }
 }

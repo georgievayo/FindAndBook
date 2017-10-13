@@ -10,14 +10,14 @@ namespace FindAndBook.Web.Areas.Administration.Models
             
         }
 
-        public AllInformationViewModel(ICollection<User> users, ICollection<Review> reviews, ICollection<Place> places)
+        public AllInformationViewModel(ICollection<UserViewModel> users, ICollection<Review> reviews, ICollection<Place> places)
         {
             Users = users;
             Reviews = reviews;
             Places = places;
         }
 
-        public ICollection<User> Users { get; set; }
+        public ICollection<UserViewModel> Users { get; set; }
 
         public ICollection<Review> Reviews { get; set; }
 

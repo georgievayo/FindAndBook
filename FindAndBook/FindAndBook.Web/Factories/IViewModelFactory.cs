@@ -38,7 +38,9 @@ namespace FindAndBook.Web.Factories
 
         CreateMenuViewModel CreateMenuViewModel(Guid? id, ICollection<Consumable> menu);
 
-        AllInformationViewModel CreateAllInformationViewModel(ICollection<User> users, ICollection<Review> reviews,
+        UserViewModel CreateUserViewModel(User user, bool isAdmin);
+
+        AllInformationViewModel CreateAllInformationViewModel(ICollection<UserViewModel> users, ICollection<Review> reviews,
             ICollection<Place> places);
     }
 }

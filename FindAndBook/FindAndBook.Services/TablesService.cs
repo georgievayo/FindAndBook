@@ -48,6 +48,7 @@ namespace FindAndBook.Services
             var firstOrDefault = this.tablesRepository
                 .All
                 .FirstOrDefault(x => x.PlaceId == id && x.NumberOfPeople == peopleCount);
+
             if (firstOrDefault == null)
             {
                 return 0;

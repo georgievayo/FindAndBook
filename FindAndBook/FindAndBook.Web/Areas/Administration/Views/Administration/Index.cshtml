@@ -95,21 +95,33 @@
                     <th class="text-center">Action</th>
                 </tr>
                 </thead>
-                @foreach (var user in Model.Users)
+                @foreach (var userModel in Model.Users)
                 {
                     <tr>
-                        <td>@user.UserName</td>
-                        <td>@user.FirstName</td>
-                        <td>@user.LastName</td>
-                        <td>@user.Email</td>
-                        <td>@user.PhoneNumber</td>
+                        <td>@userModel.User.UserName</td>
+                        <td>@userModel.User.FirstName</td>
+                        <td>@userModel.User.LastName</td>
+                        <td>@userModel.User.Email</td>
+                        <td>@userModel.User.PhoneNumber</td>
                         <td class="text-center">
-                            @Ajax.ActionLink("Make admin", "ChangeRole", new {id = @user.Id},
-                                new AjaxOptions
-                                {
-                                    UpdateTargetId = "notification",
-                                    InsertionMode = InsertionMode.Replace
-                                })
+                            @if (!userModel.IsAdmin)
+                            {
+                                @Ajax.ActionLink("Make admin", "AddAdmin", new {id = @userModel.User.Id},
+                                    new AjaxOptions
+                                    {
+                                        UpdateTargetId = "notification",
+                                        InsertionMode = InsertionMode.Replace
+                                    })
+                            }
+                            else
+                            {
+                                @Ajax.ActionLink("Remove admin", "RemoveAdmin", new { id = @userModel.User.Id },
+                                    new AjaxOptions
+                                    {
+                                        UpdateTargetId = "notification",
+                                        InsertionMode = InsertionMode.Replace
+                                    })
+                            }
                         </td>
                     </tr>
                 }

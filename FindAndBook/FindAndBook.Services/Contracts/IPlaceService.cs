@@ -7,11 +7,12 @@ namespace FindAndBook.Services.Contracts
     public interface IPlaceService
     {
         Place CreatePlace(string name, string type, string contact,
-            string weekendHours, string weekdaayHours, string details, int? averageBill, string userId, Address address);
+            string weekendHours, string weekdaayHours, string details, int? averageBill, 
+            string userId, Guid? addressId);
 
         IQueryable<Place> GetAll();
 
-        IQueryable<Place> GetPlaceById(Guid id);
+        IQueryable<Place> GetPlaceById(Guid? id);
 
         IQueryable<Place> GetPlaceWithReviews(Guid? id);
 

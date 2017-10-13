@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using FindAndBook.Authentication.Contracts;
 using FindAndBook.Services.Contracts;
+using FindAndBook.Web.Areas.Administration.Models;
 using FindAndBook.Web.Factories;
 
 namespace FindAndBook.Web.Areas.Administration.Controllers
@@ -65,6 +66,12 @@ namespace FindAndBook.Web.Areas.Administration.Controllers
 
             var users = this.userService
                 .GetAll()
+                .ToList()
+                .Select(user =>
+                {
+                    var isAdmin = this.authProvider.IsInRole(user.Id, "Admin");
+                    return this.factory.CreateUserViewModel(user, isAdmin);
+                })
                 .ToList();
 
             var model = this.factory.CreateAllInformationViewModel(users, reviews, places);
@@ -76,27 +83,29 @@ namespace FindAndBook.Web.Areas.Administration.Controllers
         public ActionResult DeletePlace(Guid? id)
         {
             this.placeService.DeletePlace(id);
-            return Json("Success");
+            return new EmptyResult();
         }
 
         [Authorize(Roles = "Admin")]
         public ActionResult DeleteReview(Guid? id)
         {
             this.reviewService.DeleteReview(id);
-            return Json("Success");
+            return new EmptyResult();
         }
 
         [Authorize(Roles = "Admin")]
-        public ActionResult ChangeRole(string id)
+        public ActionResult AddAdmin(string id)
         {
-            var isManager = this.authProvider.IsInRole(id, "Manager");
-            if (isManager)
-            {
-                this.authProvider.RemoveFromRole(id, "Manager");
-            }
-
             this.authProvider.AddToRole(id, "Admin");
-            return Json("Success");
+            return new JavaScriptResult {Script = "alert('User role was changed!');"};
+        }
+
+        [Authorize(Roles = "Admin")]
+        public ActionResult RemoveAdmin(string id)
+        {
+            this.authProvider.RemoveFromRole(id, "Admin");
+
+            return Content("Removed");
         }
     }
 }

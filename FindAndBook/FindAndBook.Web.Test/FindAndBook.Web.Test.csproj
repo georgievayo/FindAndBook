@@ -1,0 +1,188 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\NUnit3TestAdapter.3.8.0\build\net35\NUnit3TestAdapter.props" Condition="Exists('..\packages\NUnit3TestAdapter.3.8.0\build\net35\NUnit3TestAdapter.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{F9D758FB-32BE-4243-9CC3-0FC395A9EDF5}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>FindAndBook.Web.Test</RootNamespace>
+    <AssemblyName>FindAndBook.Web.Test</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AutoMapper, Version=6.1.1.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.6.1.1\lib\net45\AutoMapper.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Castle.Core, Version=4.0.0.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
+      <HintPath>..\packages\Castle.Core.4.2.1\lib\net45\Castle.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.1\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.EntityFramework, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Moq, Version=4.7.142.0, Culture=neutral, PublicKeyToken=69f491c39445e920, processorArchitecture=MSIL">
+      <HintPath>..\packages\Moq.4.7.142\lib\net45\Moq.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="nunit.framework, Version=3.8.1.0, Culture=neutral, PublicKeyToken=2638cd05610744eb, processorArchitecture=MSIL">
+      <HintPath>..\packages\NUnit.3.8.1\lib\net45\nunit.framework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="PagedList, Version=1.17.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.1.17.0.0\lib\net40\PagedList.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.Helpers.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.3\lib\net45\System.Web.Mvc.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.3\lib\net45\System.Web.Razor.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+    <Reference Include="TestStack.FluentMVCTesting, Version=3.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\TestStack.FluentMVCTesting.3.0.0\lib\NET45\TestStack.FluentMVCTesting.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Controllers\AccountController\ConstructorShould.cs" />
+    <Compile Include="Controllers\AccountController\LoginShould.cs" />
+    <Compile Include="Controllers\AccountController\LogoffShould.cs" />
+    <Compile Include="Controllers\AccountController\LogoutShould.cs" />
+    <Compile Include="Controllers\AccountController\ProfileShould.cs" />
+    <Compile Include="Controllers\AccountController\RegisterShould.cs" />
+    <Compile Include="Controllers\BookingsController\BookTablesShould.cs" />
+    <Compile Include="Controllers\BookingsController\CancelBookingShould.cs" />
+    <Compile Include="Controllers\BookingsController\ConstructorShould.cs" />
+    <Compile Include="Controllers\BookingsController\GetAvailableTablesShould.cs" />
+    <Compile Include="Controllers\BookingsController\GetBookingFormShould.cs" />
+    <Compile Include="Controllers\BookingsController\GetBookingsShould.cs" />
+    <Compile Include="Controllers\BookingsController\GetOrderShould.cs" />
+    <Compile Include="Controllers\BookingsController\PostOrderShould.cs" />
+    <Compile Include="Controllers\ConsumablesController\AddConsumableShould.cs" />
+    <Compile Include="Controllers\ConsumablesController\ConstructorShould.cs" />
+    <Compile Include="Controllers\ConsumablesController\GetCreateShould.cs" />
+    <Compile Include="Controllers\ConsumablesController\GetNewFormShould.cs" />
+    <Compile Include="Controllers\HomeController\ConstructorShould.cs" />
+    <Compile Include="Controllers\HomeController\IndexShould.cs" />
+    <Compile Include="Controllers\NavigationController\ConstructorShould.cs" />
+    <Compile Include="Controllers\NavigationController\IndexShould.cs" />
+    <Compile Include="Controllers\PlacesController\ConstructorShould.cs" />
+    <Compile Include="Controllers\PlacesController\DetailsShould.cs" />
+    <Compile Include="Controllers\PlacesController\GetCreateShould.cs" />
+    <Compile Include="Controllers\PlacesController\GetEditShould.cs" />
+    <Compile Include="Controllers\PlacesController\GetPlacesByCategoryShould.cs" />
+    <Compile Include="Controllers\PlacesController\IndexShould.cs" />
+    <Compile Include="Controllers\PlacesController\ListShould.cs" />
+    <Compile Include="Controllers\PlacesController\MyPlacesShould.cs" />
+    <Compile Include="Controllers\PlacesController\PostCreateShould.cs" />
+    <Compile Include="Controllers\PlacesController\PostEditShould.cs" />
+    <Compile Include="Controllers\ReviewsController\ConstructorShould.cs" />
+    <Compile Include="Controllers\ReviewsController\LeaveReviewShould.cs" />
+    <Compile Include="Controllers\SearchController\ConstructorShould.cs" />
+    <Compile Include="Controllers\SearchController\GetSearchShould.cs" />
+    <Compile Include="Controllers\SearchController\PostSearchShould.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\FindAndBook.Authentication\FindAndBook.Authentication.csproj">
+      <Project>{240F6D12-7D2B-4AAF-A467-116676AA94CB}</Project>
+      <Name>FindAndBook.Authentication</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FindAndBook.Models\FindAndBook.Models.csproj">
+      <Project>{AD395CA0-599F-4774-A88D-41B475561AE3}</Project>
+      <Name>FindAndBook.Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FindAndBook.Providers\FindAndBook.Providers.csproj">
+      <Project>{86281080-03F2-46A5-9E5E-660AA5BFBFC0}</Project>
+      <Name>FindAndBook.Providers</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FindAndBook.Services\FindAndBook.Services.csproj">
+      <Project>{D8F3636E-3C62-4F9D-B492-D7B92269CCBE}</Project>
+      <Name>FindAndBook.Services</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FindAndBook.Web\FindAndBook.Web.csproj">
+      <Project>{03FD273B-0988-4F6D-8CA5-B4CF31177EB4}</Project>
+      <Name>FindAndBook.Web</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\NUnit3TestAdapter.3.8.0\build\net35\NUnit3TestAdapter.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\NUnit3TestAdapter.3.8.0\build\net35\NUnit3TestAdapter.props'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

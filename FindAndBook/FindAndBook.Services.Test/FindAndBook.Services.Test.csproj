@@ -1,5 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\NUnit3TestAdapter.3.8.0\build\net35\NUnit3TestAdapter.props" Condition="Exists('..\packages\NUnit3TestAdapter.3.8.0\build\net35\NUnit3TestAdapter.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -11,6 +12,8 @@
     <AssemblyName>FindAndBook.Services.Test</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -30,7 +33,37 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Castle.Core, Version=4.0.0.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
+      <HintPath>..\packages\Castle.Core.4.2.0\lib\net45\Castle.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.1\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.EntityFramework, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.EntityFramework.2.2.1\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Moq, Version=4.7.137.0, Culture=neutral, PublicKeyToken=69f491c39445e920, processorArchitecture=MSIL">
+      <HintPath>..\packages\Moq.4.7.137\lib\net45\Moq.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="nunit.framework, Version=3.8.1.0, Culture=neutral, PublicKeyToken=2638cd05610744eb, processorArchitecture=MSIL">
+      <HintPath>..\packages\NUnit.3.8.1\lib\net45\nunit.framework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -40,12 +73,87 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AddressService\ConstructorShould.cs" />
+    <Compile Include="AddressService\CreateAddressShould.cs" />
+    <Compile Include="BookedTablesService\AddBookedTablesShould.cs" />
+    <Compile Include="BookedTablesService\ConstructorShould.cs" />
+    <Compile Include="BookedTablesService\GetBookedTableShould.cs" />
+    <Compile Include="BookedTablesService\RemoveBookedTablesShould.cs" />
+    <Compile Include="BookingService\ConstructorShould.cs" />
+    <Compile Include="BookingService\CreateBookingShould.cs" />
+    <Compile Include="BookingService\DeleteAllShould.cs" />
+    <Compile Include="BookingService\FindAllOnShould.cs" />
+    <Compile Include="BookingService\GetBookingsOfPlaceShould.cs" />
+    <Compile Include="BookingService\GetByIdShould.cs" />
+    <Compile Include="BookingService\RemoveBookingShould.cs" />
+    <Compile Include="ConsumableService\AddBookingShould.cs" />
+    <Compile Include="ConsumableService\AddConsumableShould.cs" />
+    <Compile Include="ConsumableService\ConstructorShould.cs" />
+    <Compile Include="ConsumableService\GetAllConsumablesOfShould.cs" />
+    <Compile Include="ConsumableService\GetByNameShould.cs" />
+    <Compile Include="PlaceService\ConstructorShould.cs" />
+    <Compile Include="PlaceService\CreatePlaceShould.cs" />
+    <Compile Include="PlaceService\DeletePlaceShould.cs" />
+    <Compile Include="PlaceService\EditPlaceShould.cs" />
+    <Compile Include="PlaceService\FindShould.cs" />
+    <Compile Include="PlaceService\GetAllShould.cs" />
+    <Compile Include="PlaceService\GetPlaceByIdShould.cs" />
+    <Compile Include="PlaceService\GetPlacesByCategoryShould.cs" />
+    <Compile Include="PlaceService\GetPlaceWithReviewsShould.cs" />
+    <Compile Include="PlaceService\GetUserPlacesShould.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ReviewsService\AddReviewShould.cs" />
+    <Compile Include="ReviewsService\ConstructorShould.cs" />
+    <Compile Include="ReviewsService\DeleteAllShould.cs" />
+    <Compile Include="ReviewsService\DeleteReviewShould.cs" />
+    <Compile Include="ReviewsService\GetAllShould.cs" />
+    <Compile Include="ReviewsService\GetByUserAndPlaceShould.cs" />
+    <Compile Include="SearchService\ConstructorShould.cs" />
+    <Compile Include="SearchService\FindByShould.cs" />
+    <Compile Include="TablesService\ConstructorShould.cs" />
+    <Compile Include="TablesService\CreateTableTypeShould.cs" />
+    <Compile Include="TablesService\GetByPlaceAndNumberOfPeopleShould.cs" />
+    <Compile Include="TablesService\GetTablesCountShould.cs" />
+    <Compile Include="UserServiceTest\AddUserShould.cs" />
+    <Compile Include="UserServiceTest\ConstructorShould.cs" />
+    <Compile Include="UserServiceTest\DeleteUserShould.cs" />
+    <Compile Include="UserServiceTest\GetAllShould.cs" />
+    <Compile Include="UserServiceTest\GetUserByIdShould.cs" />
+    <Compile Include="UserServiceTest\GetUserByUsernameShould.cs" />
+    <Compile Include="UserServiceTest\GetUserWithBookingsShould.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\FindAndBook.Data\FindAndBook.Data.csproj">
+      <Project>{A392A611-D090-4877-8879-3C3C6EF49348}</Project>
+      <Name>FindAndBook.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FindAndBook.Factories\FindAndBook.Factories.csproj">
+      <Project>{70B60740-999C-47D2-A317-2214C41095C0}</Project>
+      <Name>FindAndBook.Factories</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FindAndBook.Models\FindAndBook.Models.csproj">
+      <Project>{AD395CA0-599F-4774-A88D-41B475561AE3}</Project>
+      <Name>FindAndBook.Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FindAndBook.Services\FindAndBook.Services.csproj">
+      <Project>{D8F3636E-3C62-4F9D-B492-D7B92269CCBE}</Project>
+      <Name>FindAndBook.Services</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\NUnit3TestAdapter.3.8.0\build\net35\NUnit3TestAdapter.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\NUnit3TestAdapter.3.8.0\build\net35\NUnit3TestAdapter.props'))" />
+  </Target>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

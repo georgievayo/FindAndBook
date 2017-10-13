@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using FindAndBook.Data.Contracts;
 using FindAndBook.Factories;
 using FindAndBook.Models;

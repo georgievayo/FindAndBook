@@ -68,7 +68,6 @@ namespace FindAndBook.Web.Controllers
             this.tablesService = tablesService;
         }
 
-        [Authorize]
         [HttpGet]
         public ActionResult GetBookingForm(Guid? id)
         {
@@ -99,7 +98,8 @@ namespace FindAndBook.Web.Controllers
             }
 
             var bookings = this.bookingService
-                .FindAllOn(model.DateTime, model.PlaceId).ToList();
+                .FindAllOn(model.DateTime, model.PlaceId)
+                .ToList();
 
             var reservedTwoPeopleTables = 0;
             var reservedFourPeopleTables = 0;
@@ -176,9 +176,14 @@ namespace FindAndBook.Web.Controllers
 
         [HttpGet]
         [Authorize]
-        public ActionResult Order(Guid? id, Guid? bookingId)
+        public ActionResult Order(Guid? placeId, Guid? bookingId)
         {
-            var menu = this.consumableService.GetAllConsumablesOf(id).ToList();
+            if (placeId == null || bookingId == null)
+            {
+                return View("Error");
+            }
+
+            var menu = this.consumableService.GetAllConsumablesOf(placeId).ToList();
 
             var model = this.factory.CreateOrderFormViewModel(bookingId, menu);
 
@@ -210,8 +215,15 @@ namespace FindAndBook.Web.Controllers
         [Authorize]
         public ActionResult GetBookings(string id)
         {
+            if (id == null)
+            {
+                return View("Error");
+            }
+
             var idGuid = new Guid(id);
-            var bookings = this.bookingService.GetBookingsOfPlace(idGuid).ToList();
+            var bookings = this.bookingService
+                .GetBookingsOfPlace(idGuid)
+                .ToList();
 
             return PartialView("_PlaceBookings", bookings);
         }
@@ -226,7 +238,8 @@ namespace FindAndBook.Web.Controllers
 
             this.bookedTablesService.RemoveBookedTables(id);
             this.bookingService.RemoveBooking(id);
-            return null;
+
+            return new EmptyResult();
         }
     }
 }
