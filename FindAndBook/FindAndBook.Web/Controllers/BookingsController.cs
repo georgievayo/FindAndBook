@@ -239,7 +239,7 @@ namespace FindAndBook.Web.Controllers
             this.bookedTablesService.RemoveBookedTables(id);
             this.bookingService.RemoveBooking(id);
 
-            return Json("You have canceled your booking");
+            return new EmptyResult();
         }
     }
 }

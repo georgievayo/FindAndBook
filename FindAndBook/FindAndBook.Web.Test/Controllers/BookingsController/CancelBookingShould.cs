@@ -91,7 +91,7 @@ namespace FindAndBook.Web.Test.Controllers.BookingsController
 
             controller
                 .WithCallTo(c => c.CancelBooking(bookingId))
-                .ShouldReturnJson();
+                .ShouldReturnEmptyResult();
         }
     }
 }
