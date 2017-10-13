@@ -4,7 +4,6 @@ using System.Web.Mvc;
 using AutoMapper.QueryableExtensions;
 using FindAndBook.Authentication.Contracts;
 using FindAndBook.Services.Contracts;
-using FindAndBook.Web.Factories;
 using FindAndBook.Web.Models.Account;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
@@ -19,10 +18,8 @@ namespace FindAndBook.Web.Controllers
 
         private readonly IAuthenticationProvider provider;
         private readonly IUserService userService;
-        private readonly IViewModelFactory viewModelFactory;
 
-        public AccountController(IAuthenticationProvider provider,
-            IUserService userService, IViewModelFactory viewModelFactory)
+        public AccountController(IAuthenticationProvider provider, IUserService userService)
         {
             if (provider == null)
             {
@@ -34,14 +31,8 @@ namespace FindAndBook.Web.Controllers
                 throw new ArgumentNullException(nameof(userService));
             }
 
-            if (viewModelFactory == null)
-            {
-                throw new ArgumentNullException(nameof(viewModelFactory));
-            }
-
             this.provider = provider;
             this.userService = userService;
-            this.viewModelFactory = viewModelFactory;
         }
 
         // GET: /Account/Login
@@ -134,9 +125,13 @@ namespace FindAndBook.Web.Controllers
         [Authorize]
         public ActionResult Profile(string username)
         {
+            if (username == null)
+            {
+                return View("Error");
+            }
+
             var user = this.userService.GetUserByUsername(username)
                 .ProjectTo<ProfileViewModel>()
-                .ToList()
                 .FirstOrDefault();
 
             if (user == null)
