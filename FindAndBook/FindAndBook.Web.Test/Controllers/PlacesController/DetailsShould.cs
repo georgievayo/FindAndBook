@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using AutoMapper;
 using FindAndBook.Authentication.Contracts;
 using FindAndBook.Models;
@@ -201,7 +199,7 @@ namespace FindAndBook.Web.Test.Controllers.PlacesController
             authProviderMock.Setup(ap => ap.CurrentUserUsername).Returns(username);
             var emptyListReviews = new List<Review>();
             reviewsServiceMock.Setup(s => s.GetByUserAndPlace(placeId, userId)).Returns(emptyListReviews.AsQueryable());
-            var reviewForm = new SingleReviewViewModel() {UserId = userId, Username = username, PlaceId = placeId, PostedOn = DateTime.Parse("1.1.0001 г. 0:00:00"), Rating = 0 };
+            var reviewForm = new SingleReviewViewModel();
             factoryMock.Setup(f => f.CreateReviewViewModel(placeId, userId, username)).Returns(reviewForm);
 
             controller
