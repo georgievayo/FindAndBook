@@ -97,6 +97,14 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controllers\BookingsController\BookTablesShould.cs" />
+    <Compile Include="Controllers\BookingsController\CancelBookingShould.cs" />
+    <Compile Include="Controllers\BookingsController\ConstructorShould.cs" />
+    <Compile Include="Controllers\BookingsController\GetAvailableTablesShould.cs" />
+    <Compile Include="Controllers\BookingsController\GetBookingFormShould.cs" />
+    <Compile Include="Controllers\BookingsController\GetBookingsShould.cs" />
+    <Compile Include="Controllers\BookingsController\GetOrderShould.cs" />
+    <Compile Include="Controllers\BookingsController\PostOrderShould.cs" />
     <Compile Include="Controllers\ConsumablesController\AddConsumableShould.cs" />
     <Compile Include="Controllers\ConsumablesController\ConstructorShould.cs" />
     <Compile Include="Controllers\ConsumablesController\GetCreateShould.cs" />
