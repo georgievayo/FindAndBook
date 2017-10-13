@@ -1,5 +1,9 @@
 version: 1.0.{build}
-  
+
+environment:
+  COVERALLS_REPO_TOKEN:
+    secure:9nRVSujpqNvWGqWfQyKhamDpnIwYThwey
+    
 build:
   verbosity: minimal
   project: FindAndBook\FindAndBook.sln
