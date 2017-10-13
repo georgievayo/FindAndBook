@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using AutoMapper;
 using FindAndBook.Models;
 using FindAndBook.Services.Contracts;
@@ -23,13 +20,6 @@ namespace FindAndBook.Web.Test.Controllers.SearchController
                 cfg.CreateMap<Place, PlaceShortViewModel>()
                     .ForMember(viewModel => viewModel.Name, 
                     opt => opt.MapFrom(place => place.Name))
-                    //.ForMember(viewModel => viewModel.Contact, opt => opt.Ignore())
-                    //.ForMember(viewModel => viewModel.PhotoUrl, opt => opt.Ignore())
-                    //.ForMember(viewModel => viewModel.Id, opt => opt.MapFrom(place => place.Id))
-                    //.ForMember(viewModel => viewModel.Rating, opt => opt.Ignore())
-                    //.ForMember(viewModel => viewModel.ReviewsCount, opt => opt.Ignore())
-                    //.ForMember(viewModel => viewModel.AverageBill, opt => opt.Ignore())
-                    //.ForMember(viewModel => viewModel.Address, opt => opt.Ignore())
             );
         }
 

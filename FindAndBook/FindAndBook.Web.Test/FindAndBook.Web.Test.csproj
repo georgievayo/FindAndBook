@@ -105,6 +105,16 @@
     <Compile Include="Controllers\HomeController\IndexShould.cs" />
     <Compile Include="Controllers\NavigationController\ConstructorShould.cs" />
     <Compile Include="Controllers\NavigationController\IndexShould.cs" />
+    <Compile Include="Controllers\PlacesController\ConstructorShould.cs" />
+    <Compile Include="Controllers\PlacesController\DetailsShould.cs" />
+    <Compile Include="Controllers\PlacesController\GetCreateShould.cs" />
+    <Compile Include="Controllers\PlacesController\GetEditShould.cs" />
+    <Compile Include="Controllers\PlacesController\GetPlacesByCategoryShould.cs" />
+    <Compile Include="Controllers\PlacesController\IndexShould.cs" />
+    <Compile Include="Controllers\PlacesController\ListShould.cs" />
+    <Compile Include="Controllers\PlacesController\MyPlacesShould.cs" />
+    <Compile Include="Controllers\PlacesController\PostCreateShould.cs" />
+    <Compile Include="Controllers\PlacesController\PostEditShould.cs" />
     <Compile Include="Controllers\ReviewsController\ConstructorShould.cs" />
     <Compile Include="Controllers\ReviewsController\LeaveReviewShould.cs" />
     <Compile Include="Controllers\SearchController\ConstructorShould.cs" />

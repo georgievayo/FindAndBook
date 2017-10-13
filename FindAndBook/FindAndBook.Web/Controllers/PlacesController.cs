@@ -23,7 +23,7 @@ namespace FindAndBook.Web.Controllers
 
 
         public PlacesController(IAuthenticationProvider authProvider, IViewModelFactory factory,
-            IPlaceService placeService, IAddressService addressService, ITablesService tablesService, 
+            IPlaceService placeService, IAddressService addressService, ITablesService tablesService,
             IReviewsService reviewsService)
         {
             if (factory == null)
@@ -90,18 +90,6 @@ namespace FindAndBook.Web.Controllers
         [Authorize(Roles = "Manager")]
         public ActionResult Create()
         {
-            if (!this.authProvider.IsAuthenticated)
-            {
-                return this.RedirectToAction("Login", "Account");
-            }
-
-            var userId = this.authProvider.CurrentUserId;
-            var isManager = this.authProvider.IsInRole(userId, "Manager");
-            if (!isManager)
-            {
-                return View("Error");
-            }
-
             var model = this.viewModelFactory.CreateCreateViewModel();
 
             return View(model);
@@ -137,29 +125,28 @@ namespace FindAndBook.Web.Controllers
 
         [HttpGet]
         [Authorize(Roles = "Manager")]
-        public ActionResult Edit(Guid id)
+        public ActionResult Edit(Guid? id)
         {
-            if (!this.authProvider.IsAuthenticated)
-            {
-                return this.RedirectToAction("Login", "Account");
-            }
-
-            var currentUserId = this.authProvider.CurrentUserId;
-            var place = this.placeService.GetPlaceById(id).FirstOrDefault();
-            if (place == null || (place != null && currentUserId != place.ManagerId))
+            if (id == null)
             {
                 return View("Error");
             }
 
-            var model = this.placeService.GetPlaceById(id)
-                .ProjectTo<EditViewModel>()
-                .FirstOrDefault();
+            var currentUserId = this.authProvider.CurrentUserId;
+            var found = this.placeService.GetPlaceById(id);
+            var place = found.FirstOrDefault();
+            if (place == null || currentUserId != place.ManagerId)
+            {
+                return View("Error");
+            }
+
+            var model = found.ProjectTo<EditViewModel>()
+                            .FirstOrDefault();
 
             return View("Edit", model);
-
         }
 
-        
+
         [HttpPost]
         [Authorize(Roles = "Manager")]
         [ValidateAntiForgeryToken]
@@ -172,10 +159,11 @@ namespace FindAndBook.Web.Controllers
 
             var updatedPlace = this.placeService.EditPlace(model.Id, model.Contact, model.Description, model.PhotoUrl, model.WeekdayHours,
                 model.WeekendHours, model.AverageBill);
+
             var updatedAddress = this.addressService.EditAddress(updatedPlace.AddressId, model.Country, model.City, model.Area,
                 model.Street, model.Number);
 
-            return this.RedirectToAction("Details", "Places", new {id = updatedPlace.Id});
+            return this.RedirectToAction("Details", "Places", new { id = updatedPlace.Id });
         }
 
         [HttpGet]
@@ -230,13 +218,9 @@ namespace FindAndBook.Web.Controllers
         public ActionResult MyPlaces()
         {
             var currentUser = this.authProvider.CurrentUserId;
-            if (this.authProvider.IsInRole(currentUser, "Manager"))
-            {
-                var model = this.placeService.GetUserPlaces(currentUser).ToList();
-                return View(model);
-            }
+            var model = this.placeService.GetUserPlaces(currentUser).ToList();
 
-            return View("Error");
+            return View(model);
         }
 
         private void AddErrors(IdentityResult result)
