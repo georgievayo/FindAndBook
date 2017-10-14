@@ -312,6 +312,8 @@
     </Content>
     <Content Include="Areas\Administration\Views\web.config" />
     <Content Include="Areas\Administration\Views\Administration\Index.cshtml" />
+    <Content Include="Areas\Administration\Views\Shared\_AddToRole.cshtml" />
+    <Content Include="Areas\Administration\Views\Shared\_RemoveFromRole.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -414,7 +416,6 @@
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Areas\Administration\Views\Shared\" />
     <Folder Include="Views\Reviews\" />
   </ItemGroup>
   <PropertyGroup>

@@ -103,24 +103,14 @@
                         <td>@userModel.User.LastName</td>
                         <td>@userModel.User.Email</td>
                         <td>@userModel.User.PhoneNumber</td>
-                        <td class="text-center">
+                        <td class="text-center" id="action-@userModel.User.Id">
                             @if (!userModel.IsAdmin)
                             {
-                                @Ajax.ActionLink("Make admin", "AddAdmin", new {id = @userModel.User.Id},
-                                    new AjaxOptions
-                                    {
-                                        UpdateTargetId = "notification",
-                                        InsertionMode = InsertionMode.Replace
-                                    })
+                                @Html.Partial("_AddToRole", @userModel.User.Id)
                             }
                             else
                             {
-                                @Ajax.ActionLink("Remove admin", "RemoveAdmin", new { id = @userModel.User.Id },
-                                    new AjaxOptions
-                                    {
-                                        UpdateTargetId = "notification",
-                                        InsertionMode = InsertionMode.Replace
-                                    })
+                                @Html.Partial("_RemoveFromRole", @userModel.User.Id)
                             }
                         </td>
                     </tr>

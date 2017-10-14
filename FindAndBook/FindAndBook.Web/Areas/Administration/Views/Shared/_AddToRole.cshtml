@@ -1,0 +1,7 @@
+﻿@model string
+@Ajax.ActionLink("Make admin", "AddAdmin", new { controller="Administration", id = @Model},
+    new AjaxOptions
+    {
+        UpdateTargetId = "action-"+@Model,
+        InsertionMode = InsertionMode.Replace
+    })

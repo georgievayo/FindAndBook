@@ -99,7 +99,7 @@ namespace FindAndBook.Web.Areas.Administration.Controllers
         public ActionResult AddAdmin(string id)
         {
             this.authProvider.AddToRole(id, "Admin");
-            return new JavaScriptResult {Script = "alert('User role was changed!');"};
+            return PartialView("_RemoveFromRole", id);
         }
 
         [Authorize(Roles = "Admin")]
@@ -107,7 +107,7 @@ namespace FindAndBook.Web.Areas.Administration.Controllers
         {
             this.authProvider.RemoveFromRole(id, "Admin");
 
-            return Content("Removed");
+            return PartialView("_AddToRole", id);
         }
     }
 }
