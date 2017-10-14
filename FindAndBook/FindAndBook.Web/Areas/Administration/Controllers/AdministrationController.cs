@@ -1,12 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
+using AutoMapper.QueryableExtensions;
 using FindAndBook.Authentication.Contracts;
 using FindAndBook.Services.Contracts;
 using FindAndBook.Web.Areas.Administration.Models;
 using FindAndBook.Web.Factories;
+using FindAndBook.Web.Models.Reviews;
 
 namespace FindAndBook.Web.Areas.Administration.Controllers
 {
@@ -58,10 +58,12 @@ namespace FindAndBook.Web.Areas.Administration.Controllers
         {
             var places = this.placeService
                 .GetAll()
+                .ProjectTo<PlaceViewModel>()
                 .ToList();
 
             var reviews = this.reviewService
                 .GetAll()
+                .ProjectTo<ReviewViewModel>()
                 .ToList();
 
             var users = this.userService

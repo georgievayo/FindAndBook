@@ -1,5 +1,8 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
+using AutoMapper;
+using FindAndBook.Models;
+using FindAndBook.Web.Infrastructure;
 
 namespace FindAndBook.Web.Models.Reviews
 {

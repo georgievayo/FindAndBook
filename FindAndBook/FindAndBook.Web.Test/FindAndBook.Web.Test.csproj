@@ -108,6 +108,8 @@
     <Compile Include="Controllers\AccountController\LogoutShould.cs" />
     <Compile Include="Controllers\AccountController\ProfileShould.cs" />
     <Compile Include="Controllers\AccountController\RegisterShould.cs" />
+    <Compile Include="Controllers\AdministrationController\ConstructorShould.cs" />
+    <Compile Include="Controllers\AdministrationController\IndexShould.cs" />
     <Compile Include="Controllers\BookingsController\BookTablesShould.cs" />
     <Compile Include="Controllers\BookingsController\CancelBookingShould.cs" />
     <Compile Include="Controllers\BookingsController\ConstructorShould.cs" />

@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using FindAndBook.Models;
 
 namespace FindAndBook.Web.Areas.Administration.Models
 {
@@ -10,7 +9,7 @@ namespace FindAndBook.Web.Areas.Administration.Models
             
         }
 
-        public AllInformationViewModel(ICollection<UserViewModel> users, ICollection<Review> reviews, ICollection<Place> places)
+        public AllInformationViewModel(ICollection<UserViewModel> users, ICollection<ReviewViewModel> reviews, ICollection<PlaceViewModel> places)
         {
             Users = users;
             Reviews = reviews;
@@ -19,8 +18,8 @@ namespace FindAndBook.Web.Areas.Administration.Models
 
         public ICollection<UserViewModel> Users { get; set; }
 
-        public ICollection<Review> Reviews { get; set; }
+        public ICollection<ReviewViewModel> Reviews { get; set; }
 
-        public ICollection<Place> Places { get; set; }
+        public ICollection<PlaceViewModel> Places { get; set; }
     }
 }

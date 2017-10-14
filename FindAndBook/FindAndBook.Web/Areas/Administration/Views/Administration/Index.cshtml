@@ -30,11 +30,11 @@
                 </thead>
                 @foreach (var place in Model.Places)
                 {
+                    @Html.Hidden(@place.Id.ToString())
                     <tr>
-                        @Html.Hidden(@place.Id.ToString())
                         <td>@place.Name</td>
-                        <td>@place.Manager.FirstName @place.Manager.LastName</td>
-                        <td>@place.Address.Country, @place.Address.City, @place.Address.Area, @place.Address.Street @place.Address.Number</td>
+                        <td>@place.Manager</td>
+                        <td>@place.Address</td>
                         <td>@place.Type</td>
                         <td>@place.Contact</td>
                         <td>@place.AverageBill</td>
@@ -68,8 +68,8 @@
                 {
                     <tr>
                         @Html.Hidden(@review.Id.ToString())   
-                        <td>@review.Place.Name</td>
-                        <td>@review.User.FirstName @review.User.LastName</td>
+                        <td>@review.PlaceName</td>
+                        <td>@review.UserNames</td>
                         <td>@review.Message</td>
                         <td class="text-center">
                             @Ajax.ActionLink("Delete", "DeleteReview", new {id = @review.Id},

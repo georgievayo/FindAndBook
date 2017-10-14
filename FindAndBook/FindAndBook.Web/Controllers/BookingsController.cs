@@ -176,14 +176,14 @@ namespace FindAndBook.Web.Controllers
 
         [HttpGet]
         [Authorize]
-        public ActionResult Order(Guid? placeId, Guid? bookingId)
+        public ActionResult Order(Guid? id, Guid? bookingId)
         {
-            if (placeId == null || bookingId == null)
+            if (id == null || bookingId == null)
             {
                 return View("Error");
             }
 
-            var menu = this.consumableService.GetAllConsumablesOf(placeId).ToList();
+            var menu = this.consumableService.GetAllConsumablesOf(id).ToList();
 
             var model = this.factory.CreateOrderFormViewModel(bookingId, menu);
 
@@ -201,15 +201,16 @@ namespace FindAndBook.Web.Controllers
 
             string selected = Request.Form["consumable"];
             string[] selectedList = selected.Split(',');
-
+            decimal currentBill = 0;
             foreach (var select in selectedList)
             {
                 var consumable = this.consumableService.GetByName(select);
+                currentBill += (decimal)consumable.Price;
                 var booking = this.bookingService.GetById(model.BookingId);
                 this.consumableService.AddBooking(consumable, booking);
             }
-
-            return View(model);
+            ViewBag.CurrentBill = currentBill;
+            return PartialView("_CurrentBill");
         }
 
         [Authorize]
