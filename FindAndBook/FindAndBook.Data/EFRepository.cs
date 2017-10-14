@@ -7,9 +7,9 @@ namespace FindAndBook.Data
     public class EFRepository<T> : IRepository<T>
         where T : class
     {
-        private readonly FindAndBookContext dbContext;
+        private readonly IFindAndBookContext dbContext;
 
-        public EFRepository(FindAndBookContext dbContext)
+        public EFRepository(IFindAndBookContext dbContext)
         {
             if (dbContext == null)
             {
