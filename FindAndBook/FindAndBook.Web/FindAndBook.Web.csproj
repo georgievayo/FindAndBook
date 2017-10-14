@@ -248,6 +248,7 @@
     <Compile Include="Areas\Administration\Controllers\AdministrationController.cs" />
     <Compile Include="Areas\Administration\Models\AllInformationViewModel.cs" />
     <Compile Include="Areas\Administration\Models\PlaceViewModel.cs" />
+    <Compile Include="Areas\Administration\Models\QuestionViewModel.cs" />
     <Compile Include="Areas\Administration\Models\ReviewViewModel.cs" />
     <Compile Include="Areas\Administration\Models\UserViewModel.cs" />
     <Compile Include="Controllers\AccountController.cs" />
@@ -270,11 +271,11 @@
     <Compile Include="Models\Bookings\OrderFormViewModel.cs" />
     <Compile Include="Models\Consumables\ConsumableViewModel.cs" />
     <Compile Include="Models\Consumables\CreateMenuViewModel.cs" />
+    <Compile Include="Models\Home\ContactViewModel.cs" />
     <Compile Include="Models\Home\HomeViewModel.cs" />
     <Compile Include="Models\Navigation\NavigationViewModel.cs" />
     <Compile Include="Models\Bookings\BookingFormViewModel.cs" />
     <Compile Include="Models\Bookings\BookingViewModel.cs" />
-    <Compile Include="Models\OrderViewModel.cs" />
     <Compile Include="Models\Places\CreateViewModel.cs" />
     <Compile Include="Models\Places\DetailsViewModel.cs" />
     <Compile Include="Models\Places\EditViewModel.cs" />
@@ -286,6 +287,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\booking-datetime-form.css" />
+    <Content Include="Content\contact.css" />
     <Content Include="Content\home.css" />
     <Content Include="Content\list.css" />
     <Content Include="Content\form.css" />
@@ -377,6 +379,7 @@
     <Content Include="Views\Shared\_Review.cshtml" />
     <Content Include="Views\Consumables\_Consumable.cshtml" />
     <Content Include="Views\Bookings\_CurrentBill.cshtml" />
+    <Content Include="Views\Home\SentQuestion.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

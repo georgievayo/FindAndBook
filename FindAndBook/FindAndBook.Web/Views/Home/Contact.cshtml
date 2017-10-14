@@ -1,17 +1,82 @@
-﻿@{
+﻿@using System.Web.Mvc.Html
+@model FindAndBook.Web.Models.Home.ContactViewModel
+@{
     ViewBag.Title = "Contact";
 }
-<h2>@ViewBag.Title.</h2>
-<h3>@ViewBag.Message</h3>
+@Styles.Render("~/Content/contact.css")
+<div class="container" id="contacts">
+    <div class="col-md-12">
+        <div class="col-md-10 col-md-offset-1">
+            <h3>Contact us about anything related to our company or services. We will do our best to get back to you as soon as possible.</h3>
+        </div>
+        <div class="col-md-10 col-md-offset-1">
+            <div class="col-md-6" id="contact-info">
+                <div class="row col1">
+                    <div class="col-xs-3">
+                        <i class="fa fa-map-marker" style="font-size:16px;"></i>   Address
+                    </div>
+                    <div class="col-xs-9">
+                        bul. "Aleksandar Malinov" 31, 1729 g.k. Mladost 1A, Sofia
+                    </div>
+                </div>
 
-<address>
-    One Microsoft Way<br />
-    Redmond, WA 98052-6399<br />
-    <abbr title="Phone">P:</abbr>
-    425.555.0100
-</address>
+                <div class="row col1">
+                    <div class="col-sm-3">
+                        <i class="fa fa-phone"></i>   Phone
+                    </div>
+                    <div class="col-sm-9">
+                        +(91) 123 277 4239
+                    </div>
+                </div>
+                <div class="row col1">
+                    <div class="col-sm-3">
+                        <i class="fa fa-fax"></i>   Fax
+                    </div>
+                    <div class="col-sm-9">
+                        123 123 4567
+                    </div>
+                </div>
+                <div class="row col1">
+                    <div class="col-sm-3">
+                        <i class="fa fa-envelope"></i>   Email
+                    </div>
+                    <div class="col-sm-9">
+                        <a href="mailto:info@yourdomain.com">yoanageorgieva96@gmail.com</a>
+                    </div>
+                </div><br>
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2934.494372144443!2d23.377300715220752!3d42.650878024679045!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40aa86940322e46b%3A0x9dcf2a89d173b821!2sTelerik+Academy!5e0!3m2!1sbg!2sbg!4v1504873468902"
+                        width="100%" height="230" frameborder="0" style="border:0" allowfullscreen></iframe>
 
-<address>
-    <strong>Support:</strong>   <a href="mailto:Support@example.com">Support@example.com</a><br />
-    <strong>Marketing:</strong> <a href="mailto:Marketing@example.com">Marketing@example.com</a>
-</address>
+            </div>
+            <div class="col-md-6">
+                @using (Html.BeginForm("SendQuestion", "Home", FormMethod.Post))
+                {
+                    @Html.AntiForgeryToken()
+                    <div class="form-group">
+                        <label>First Name*</label>
+                        @Html.TextBoxFor(m => m.FirstName, new { @class = "form-control" })
+                    </div>
+                    <div class="form-group">
+                        <label>Last Name*</label>
+                        @Html.TextBoxFor(m => m.LastName, new { @class = "form-control" })
+                    </div>
+                    <div class="form-group">
+                        <label>Email*</label>
+                        @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+                    </div>
+                    <div class="form-group">
+                        <label>Subject</label>
+                        @Html.TextBoxFor(m => m.Subject, new { @class = "form-control" })
+                    </div>
+                    <div class="form-group">
+                        <label>Your Question*</label>
+                        @Html.TextAreaFor(m => m.Question, new { @class = "form-control" })
+                        <small>*These fields are required.</small>
+                    </div>
+
+                    <input type="submit" class="btn btn-md col-md-4 col-md-offset-4" value="Send" />
+                }
+            </div>
+        </div>
+    </div>
+</div>

@@ -62,6 +62,7 @@
     <Compile Include="Contracts\IUnitOfWork.cs" />
     <Compile Include="EFRepository.cs" />
     <Compile Include="Contracts\IRepository.cs" />
+    <Compile Include="Mapping\QuestionMap.cs" />
     <Compile Include="Mapping\UserMap.cs" />
     <Compile Include="Migrations\201710081847226_Initial.cs" />
     <Compile Include="Migrations\201710081847226_Initial.Designer.cs">
@@ -74,6 +75,14 @@
     <Compile Include="Migrations\201710081924595_AddCascadeDeletev2.cs" />
     <Compile Include="Migrations\201710081924595_AddCascadeDeletev2.Designer.cs">
       <DependentUpon>201710081924595_AddCascadeDeletev2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201710141212440_ChangeSomething.cs" />
+    <Compile Include="Migrations\201710141212440_ChangeSomething.Designer.cs">
+      <DependentUpon>201710141212440_ChangeSomething.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201710141259461_AddQuestionsTable.cs" />
+    <Compile Include="Migrations\201710141259461_AddQuestionsTable.Designer.cs">
+      <DependentUpon>201710141259461_AddQuestionsTable.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="FindAndBookContext.cs" />
@@ -105,6 +114,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201710081924595_AddCascadeDeletev2.resx">
       <DependentUpon>201710081924595_AddCascadeDeletev2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710141212440_ChangeSomething.resx">
+      <DependentUpon>201710141212440_ChangeSomething.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710141259461_AddQuestionsTable.resx">
+      <DependentUpon>201710141259461_AddQuestionsTable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

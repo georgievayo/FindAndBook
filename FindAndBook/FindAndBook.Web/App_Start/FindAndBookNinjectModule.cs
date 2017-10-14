@@ -34,6 +34,7 @@ namespace FindAndBook.Web
             this.Bind<IBookedTablesFactory>().ToFactory().InSingletonScope();
             this.Bind<IReviewsFactory>().ToFactory().InSingletonScope();
             this.Bind<IConsumableFactory>().ToFactory().InSingletonScope();
+            this.Bind<IQuestionFactory>().ToFactory().InSingletonScope();
 
             // Services
             this.Bind<IPlaceService>().To<PlaceService>().InRequestScope();
@@ -45,11 +46,13 @@ namespace FindAndBook.Web
             this.Bind<IBookedTablesService>().To<BookedTablesService>().InRequestScope();
             this.Bind<IReviewsService>().To<ReviewsService>().InRequestScope();
             this.Bind<ISearchService>().To<SearchService>().InRequestScope();
+            this.Bind<IQuestionService>().To<QuestionService>().InRequestScope();
             
             // Others
             this.Bind(typeof(IRepository<>)).To(typeof(EFRepository<>)).InRequestScope();
             this.Bind<IUnitOfWork>().To<UnitOfWork>().InRequestScope();
-            this.Bind<FindAndBookContext>().ToSelf().InRequestScope();
+            //this.Bind<FindAndBookContext>().ToSelf().InRequestScope();
+            this.Bind<IFindAndBookContext>().To<FindAndBookContext>().InRequestScope();
             this.Bind<IMapper>().ToMethod(x => Mapper.Instance).InSingletonScope();
         }
     }

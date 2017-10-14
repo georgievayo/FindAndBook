@@ -40,7 +40,8 @@ namespace FindAndBook.Web.Factories
 
         UserViewModel CreateUserViewModel(User user, bool isAdmin);
 
-        AllInformationViewModel CreateAllInformationViewModel(ICollection<UserViewModel> users, ICollection<ReviewViewModel> reviews,
-            ICollection<PlaceViewModel> places);
+        AllInformationViewModel CreateAllInformationViewModel(ICollection<UserViewModel> users, 
+            ICollection<ReviewViewModel> reviews, 
+            ICollection<PlaceViewModel> places, ICollection<QuestionViewModel> questions);
     }
 }

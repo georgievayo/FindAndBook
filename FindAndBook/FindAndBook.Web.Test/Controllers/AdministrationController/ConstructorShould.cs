@@ -16,11 +16,13 @@ namespace FindAndBook.Web.Test.Controllers.AdministrationController
             var placeServiceMock = new Mock<IPlaceService>();
             var userServiceMock = new Mock<IUserService>();
             var reviewsServiceMock = new Mock<IReviewsService>();
+            var questionServiceMock = new Mock<IQuestionService>();
             var authProviderMock = new Mock<IAuthenticationProvider>();
             var factoryMock = new Mock<IViewModelFactory>();
 
             var controller = new Areas.Administration.Controllers.AdministrationController(placeServiceMock.Object,
-                reviewsServiceMock.Object, authProviderMock.Object, userServiceMock.Object, factoryMock.Object);
+                reviewsServiceMock.Object, authProviderMock.Object, userServiceMock.Object, 
+                questionServiceMock.Object, factoryMock.Object);
 
             Assert.IsNotNull(controller);
         }
@@ -30,11 +32,27 @@ namespace FindAndBook.Web.Test.Controllers.AdministrationController
         {
             var userServiceMock = new Mock<IUserService>();
             var reviewsServiceMock = new Mock<IReviewsService>();
+            var questionServiceMock = new Mock<IQuestionService>();
             var authProviderMock = new Mock<IAuthenticationProvider>();
             var factoryMock = new Mock<IViewModelFactory>();
 
             Assert.Throws<ArgumentNullException>(() => new Areas.Administration.Controllers.AdministrationController(null,
-                reviewsServiceMock.Object, authProviderMock.Object, userServiceMock.Object, factoryMock.Object));
+                reviewsServiceMock.Object, authProviderMock.Object, userServiceMock.Object, 
+                questionServiceMock.Object, factoryMock.Object));
+        }
+
+        [Test]
+        public void ConstructorShould_ThrowException_WhenQuestionServiceIsNull()
+        {
+            var userServiceMock = new Mock<IUserService>();
+            var reviewsServiceMock = new Mock<IReviewsService>();
+            var placeServiceMock = new Mock<IPlaceService>();
+            var authProviderMock = new Mock<IAuthenticationProvider>();
+            var factoryMock = new Mock<IViewModelFactory>();
+
+            Assert.Throws<ArgumentNullException>(() => new Areas.Administration.Controllers.AdministrationController(placeServiceMock.Object,
+                reviewsServiceMock.Object, authProviderMock.Object, userServiceMock.Object,
+                null, factoryMock.Object));
         }
 
         [Test]
@@ -42,11 +60,13 @@ namespace FindAndBook.Web.Test.Controllers.AdministrationController
         {
             var userServiceMock = new Mock<IUserService>();
             var placeServiceMock = new Mock<IPlaceService>();
+            var questionServiceMock = new Mock<IQuestionService>();
             var authProviderMock = new Mock<IAuthenticationProvider>();
             var factoryMock = new Mock<IViewModelFactory>();
 
             Assert.Throws<ArgumentNullException>(() => new Areas.Administration.Controllers.AdministrationController(placeServiceMock.Object,
-                null, authProviderMock.Object, userServiceMock.Object, factoryMock.Object));
+                null, authProviderMock.Object, userServiceMock.Object, 
+                questionServiceMock.Object, factoryMock.Object));
         }
 
         [Test]
@@ -55,10 +75,12 @@ namespace FindAndBook.Web.Test.Controllers.AdministrationController
             var userServiceMock = new Mock<IUserService>();
             var placeServiceMock = new Mock<IPlaceService>();
             var reviewsServiceMock = new Mock<IReviewsService>();
+            var questionServiceMock = new Mock<IQuestionService>();
             var factoryMock = new Mock<IViewModelFactory>();
 
             Assert.Throws<ArgumentNullException>(() => new Areas.Administration.Controllers.AdministrationController(placeServiceMock.Object,
-                reviewsServiceMock.Object, null, userServiceMock.Object, factoryMock.Object));
+                reviewsServiceMock.Object, null, userServiceMock.Object, 
+                questionServiceMock.Object, factoryMock.Object));
         }
 
         [Test]
@@ -66,11 +88,13 @@ namespace FindAndBook.Web.Test.Controllers.AdministrationController
         {
             var userServiceMock = new Mock<IUserService>();
             var placeServiceMock = new Mock<IPlaceService>();
+            var questionServiceMock = new Mock<IQuestionService>();
             var reviewsServiceMock = new Mock<IReviewsService>();
             var authProviderMock = new Mock<IAuthenticationProvider>();
 
             Assert.Throws<ArgumentNullException>(() => new Areas.Administration.Controllers.AdministrationController(placeServiceMock.Object,
-                reviewsServiceMock.Object, authProviderMock.Object, userServiceMock.Object,null));
+                reviewsServiceMock.Object, authProviderMock.Object, userServiceMock.Object,
+                questionServiceMock.Object, null));
         }
 
         [Test]
@@ -78,11 +102,13 @@ namespace FindAndBook.Web.Test.Controllers.AdministrationController
         {
             var reviewsServiceMock = new Mock<IReviewsService>();
             var placeServiceMock = new Mock<IPlaceService>();
+            var questionServiceMock = new Mock<IQuestionService>();
             var authProviderMock = new Mock<IAuthenticationProvider>();
             var factoryMock = new Mock<IViewModelFactory>();
 
             Assert.Throws<ArgumentNullException>(() => new Areas.Administration.Controllers.AdministrationController(placeServiceMock.Object,
-                reviewsServiceMock.Object, authProviderMock.Object, null, factoryMock.Object));
+                reviewsServiceMock.Object, authProviderMock.Object, null, 
+                questionServiceMock.Object, factoryMock.Object));
         }
     }
 }

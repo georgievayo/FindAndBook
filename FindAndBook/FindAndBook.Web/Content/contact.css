@@ -1,0 +1,18 @@
+﻿#contacts {
+    background-color: rgba(255, 255, 255, 0.7);
+    border-radius: 5px; 
+    padding-bottom: 2%;
+}
+
+h3 {
+    text-align: center;
+}
+
+#contact-info {
+    margin-top: 5%;
+}
+
+.btn {
+    background-color: #806857;
+    color: white;
+}

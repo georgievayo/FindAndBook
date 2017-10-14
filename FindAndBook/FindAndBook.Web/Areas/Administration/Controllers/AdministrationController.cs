@@ -15,11 +15,13 @@ namespace FindAndBook.Web.Areas.Administration.Controllers
         private readonly IPlaceService placeService;
         private readonly IReviewsService reviewService;
         private readonly IUserService userService;
+        private readonly IQuestionService questionService;
         private readonly IAuthenticationProvider authProvider;
         private readonly IViewModelFactory factory;
 
         public AdministrationController(IPlaceService placeService, IReviewsService reviewService,
-            IAuthenticationProvider authProvider, IUserService userService, IViewModelFactory factory)
+            IAuthenticationProvider authProvider, IUserService userService, 
+            IQuestionService questionService, IViewModelFactory factory)
         {
             if (placeService == null)
             {
@@ -41,6 +43,11 @@ namespace FindAndBook.Web.Areas.Administration.Controllers
                 throw new ArgumentNullException(nameof(userService));
             }
 
+            if (questionService == null)
+            {
+                throw new ArgumentNullException(nameof(questionService));
+            }
+
             if (factory == null)
             {
                 throw new ArgumentNullException(nameof(factory));
@@ -49,6 +56,7 @@ namespace FindAndBook.Web.Areas.Administration.Controllers
             this.placeService = placeService;
             this.reviewService = reviewService;
             this.userService = userService;
+            this.questionService = questionService;
             this.authProvider = authProvider;
             this.factory = factory;
         }
@@ -76,7 +84,12 @@ namespace FindAndBook.Web.Areas.Administration.Controllers
                 })
                 .ToList();
 
-            var model = this.factory.CreateAllInformationViewModel(users, reviews, places);
+            var questions = this.questionService
+                .GetAll()
+                .ProjectTo<QuestionViewModel>()
+                .ToList();
+
+            var model = this.factory.CreateAllInformationViewModel(users, reviews, places, questions);
 
             return View(model);
         }

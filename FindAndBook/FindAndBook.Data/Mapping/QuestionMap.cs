@@ -1,12 +1,12 @@
-using FindAndBook.Models;
-using System.ComponentModel.DataAnnotations.Schema;
+﻿using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity.ModelConfiguration;
+using FindAndBook.Models;
 
 namespace FindAndBook.Data.Mapping
 {
-    public class AddressMap : EntityTypeConfiguration<Address>
+    public class QuestionMap: EntityTypeConfiguration<Question>
     {
-        public AddressMap()
+        public QuestionMap()
         {
             this.Property(x => x.Id)
                 .HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);

@@ -9,9 +9,11 @@ namespace FindAndBook.Data.Migrations
 
     internal sealed class Configuration : DbMigrationsConfiguration<FindAndBookContext>
     {
-        private const string AdministratorUserName = "yoanageorgieva@gmail.com";
+        private const string AdministratorEmail = "yoanageorgieva@gmail.com";
+        private const string AdministratorUsername = "admin";
         private const string AdministratorPassword = "123456";
-        private const int RolesCount = 3;
+        private const int RolesCount = 2;
+
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
@@ -27,7 +29,7 @@ namespace FindAndBook.Data.Migrations
         {
             if (!context.Roles.Any())
             {
-                var roles = new string [RolesCount] { "Admin", "Manager", "User"};
+                var roles = new string [RolesCount] { "Admin", "Manager"};
 
                 var roleStore = new RoleStore<IdentityRole>(context);
                 var roleManager = new RoleManager<IdentityRole>(roleStore);
@@ -41,8 +43,8 @@ namespace FindAndBook.Data.Migrations
                 var userManager = new UserManager<User>(userStore);
                 var user = new User
                 {
-                    UserName = AdministratorUserName,
-                    Email = AdministratorUserName,
+                    UserName = AdministratorUsername,
+                    Email = AdministratorEmail,
                     EmailConfirmed = true,
                 };
 
