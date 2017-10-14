@@ -1,11 +1,12 @@
 using System.Data.Entity;
+using FindAndBook.Data.Contracts;
 using FindAndBook.Data.Mapping;
 using FindAndBook.Models;
 using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace FindAndBook.Data
 {
-    public partial class FindAndBookContext : IdentityDbContext<User>
+    public partial class FindAndBookContext : IdentityDbContext<User>, IFindAndBookContext
     {
         public FindAndBookContext() 
             : base("FindAndBook", throwIfV1Schema: false)
@@ -32,6 +33,8 @@ namespace FindAndBook.Data
 
         public DbSet<BookedTables> BookedTables { get; set; }
 
+        public DbSet<Question> Questions { get; set; }
+
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -42,6 +45,8 @@ namespace FindAndBook.Data
             modelBuilder.Configurations.Add(new ReviewMap());
             modelBuilder.Configurations.Add(new TableMap());
             modelBuilder.Configurations.Add(new UserMap());
+            modelBuilder.Configurations.Add(new QuestionMap());
+
             base.OnModelCreating(modelBuilder);
         }
 

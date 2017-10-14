@@ -1,8 +1,6 @@
 using FindAndBook.Models;
-using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity.ModelConfiguration;
-using System.Data.Entity.ModelConfiguration.Configuration;
 
 namespace FindAndBook.Data.Mapping
 {

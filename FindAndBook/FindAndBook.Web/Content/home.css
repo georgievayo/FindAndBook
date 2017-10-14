@@ -1,5 +1,5 @@
 ﻿body{
-    background-image: url(https://ak3.picdn.net/shutterstock/videos/22131343/thumb/1.jpg);
+    background-image: url(http://4.bp.blogspot.com/-buWb2dpBapo/T2vfQZLWTaI/AAAAAAAAD00/aBbh1bL5WKo/s1600/ocean-view-from-the-restaurant-at-the-12-apostles-hotel-and-spa.jpg);
     background-position: initial;
     background-repeat: no-repeat;
     background-size: cover;
@@ -7,5 +7,7 @@
 }
 
 .btn {
-    
+    color: white;
+    background-color: rgba(127, 59, 79, 0.9);
+    border: none;
 }

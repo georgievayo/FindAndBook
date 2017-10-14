@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using FindAndBook.Services.Contracts;
 using FindAndBook.Web.Factories;
 using FindAndBook.Web.Models.Search;
 using Moq;
@@ -18,8 +14,9 @@ namespace FindAndBook.Web.Test.Controllers.HomeController
         public void IndexShould_CallFactoryMethodCreateSearchViewModel()
         {
             var factoryMock = new Mock<IViewModelFactory>();
+            var questionServiceMock = new Mock<IQuestionService>();
 
-            var controller = new Web.Controllers.HomeController(factoryMock.Object);
+            var controller = new Web.Controllers.HomeController(factoryMock.Object, questionServiceMock.Object);
 
             controller.Index();
 
@@ -30,11 +27,12 @@ namespace FindAndBook.Web.Test.Controllers.HomeController
         public void IndexShould_ReturnViewWithCorrectModel()
         {
             var factoryMock = new Mock<IViewModelFactory>();
+            var questionServiceMock = new Mock<IQuestionService>();
 
             var model = new SearchViewModel();
             factoryMock.Setup(f => f.CreateSearchViewModel()).Returns(model);
 
-            var controller = new Web.Controllers.HomeController(factoryMock.Object);
+            var controller = new Web.Controllers.HomeController(factoryMock.Object, questionServiceMock.Object);
             controller
                 .WithCallTo(c => c.Index())
                 .ShouldRenderDefaultView()

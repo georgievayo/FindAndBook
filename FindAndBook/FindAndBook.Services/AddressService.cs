@@ -64,12 +64,5 @@ namespace FindAndBook.Services
 
             return address;
         }
-
-        //public Address GetAddressByPlaceId(Guid placeId)
-        //{
-        //    return this.addressRepository.All
-        //        .ToList()
-        //        .FirstOrDefault(p => p.PlaceId == placeId);
-        //}
     }
 }

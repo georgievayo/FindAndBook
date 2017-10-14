@@ -108,6 +108,12 @@
     <Compile Include="Controllers\AccountController\LogoutShould.cs" />
     <Compile Include="Controllers\AccountController\ProfileShould.cs" />
     <Compile Include="Controllers\AccountController\RegisterShould.cs" />
+    <Compile Include="Controllers\AdministrationController\AddAdminShould.cs" />
+    <Compile Include="Controllers\AdministrationController\ConstructorShould.cs" />
+    <Compile Include="Controllers\AdministrationController\DeletePlaceShould.cs" />
+    <Compile Include="Controllers\AdministrationController\DeleteReviewShould.cs" />
+    <Compile Include="Controllers\AdministrationController\IndexShould.cs" />
+    <Compile Include="Controllers\AdministrationController\RemoveAdminShould.cs" />
     <Compile Include="Controllers\BookingsController\BookTablesShould.cs" />
     <Compile Include="Controllers\BookingsController\CancelBookingShould.cs" />
     <Compile Include="Controllers\BookingsController\ConstructorShould.cs" />
@@ -121,7 +127,9 @@
     <Compile Include="Controllers\ConsumablesController\GetCreateShould.cs" />
     <Compile Include="Controllers\ConsumablesController\GetNewFormShould.cs" />
     <Compile Include="Controllers\HomeController\ConstructorShould.cs" />
+    <Compile Include="Controllers\HomeController\ContactShould.cs" />
     <Compile Include="Controllers\HomeController\IndexShould.cs" />
+    <Compile Include="Controllers\HomeController\SendQuestionShould.cs" />
     <Compile Include="Controllers\NavigationController\ConstructorShould.cs" />
     <Compile Include="Controllers\NavigationController\IndexShould.cs" />
     <Compile Include="Controllers\PlacesController\ConstructorShould.cs" />

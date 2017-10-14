@@ -25,7 +25,7 @@ namespace FindAndBook.Services.Test.PlaceService
                 unitOfWorkMock.Object, factoryMock.Object);
             var id = Guid.NewGuid();
 
-            service.GetPlaceById(id);
+            service.GetPlaceWithReviews(id);
 
             repositoryMock.Verify(r => r.All, Times.Once);
         }
@@ -45,7 +45,7 @@ namespace FindAndBook.Services.Test.PlaceService
             var service = new Services.PlaceService(repositoryMock.Object,
                 unitOfWorkMock.Object, factoryMock.Object);
 
-            var result = service.GetPlaceById(id);
+            var result = service.GetPlaceWithReviews(id);
 
             Assert.AreSame(place, result.ToList().First());
         }

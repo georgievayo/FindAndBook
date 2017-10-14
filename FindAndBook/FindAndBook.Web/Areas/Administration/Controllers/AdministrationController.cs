@@ -1,12 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
+using AutoMapper.QueryableExtensions;
 using FindAndBook.Authentication.Contracts;
 using FindAndBook.Services.Contracts;
 using FindAndBook.Web.Areas.Administration.Models;
 using FindAndBook.Web.Factories;
+using FindAndBook.Web.Models.Reviews;
 
 namespace FindAndBook.Web.Areas.Administration.Controllers
 {
@@ -15,11 +15,13 @@ namespace FindAndBook.Web.Areas.Administration.Controllers
         private readonly IPlaceService placeService;
         private readonly IReviewsService reviewService;
         private readonly IUserService userService;
+        private readonly IQuestionService questionService;
         private readonly IAuthenticationProvider authProvider;
         private readonly IViewModelFactory factory;
 
         public AdministrationController(IPlaceService placeService, IReviewsService reviewService,
-            IAuthenticationProvider authProvider, IUserService userService, IViewModelFactory factory)
+            IAuthenticationProvider authProvider, IUserService userService, 
+            IQuestionService questionService, IViewModelFactory factory)
         {
             if (placeService == null)
             {
@@ -41,6 +43,11 @@ namespace FindAndBook.Web.Areas.Administration.Controllers
                 throw new ArgumentNullException(nameof(userService));
             }
 
+            if (questionService == null)
+            {
+                throw new ArgumentNullException(nameof(questionService));
+            }
+
             if (factory == null)
             {
                 throw new ArgumentNullException(nameof(factory));
@@ -49,6 +56,7 @@ namespace FindAndBook.Web.Areas.Administration.Controllers
             this.placeService = placeService;
             this.reviewService = reviewService;
             this.userService = userService;
+            this.questionService = questionService;
             this.authProvider = authProvider;
             this.factory = factory;
         }
@@ -58,10 +66,12 @@ namespace FindAndBook.Web.Areas.Administration.Controllers
         {
             var places = this.placeService
                 .GetAll()
+                .ProjectTo<PlaceViewModel>()
                 .ToList();
 
             var reviews = this.reviewService
                 .GetAll()
+                .ProjectTo<ReviewViewModel>()
                 .ToList();
 
             var users = this.userService
@@ -74,7 +84,12 @@ namespace FindAndBook.Web.Areas.Administration.Controllers
                 })
                 .ToList();
 
-            var model = this.factory.CreateAllInformationViewModel(users, reviews, places);
+            var questions = this.questionService
+                .GetAll()
+                .ProjectTo<QuestionViewModel>()
+                .ToList();
+
+            var model = this.factory.CreateAllInformationViewModel(users, reviews, places, questions);
 
             return View(model);
         }
@@ -97,7 +112,7 @@ namespace FindAndBook.Web.Areas.Administration.Controllers
         public ActionResult AddAdmin(string id)
         {
             this.authProvider.AddToRole(id, "Admin");
-            return new JavaScriptResult {Script = "alert('User role was changed!');"};
+            return PartialView("_RemoveFromRole", id);
         }
 
         [Authorize(Roles = "Admin")]
@@ -105,7 +120,7 @@ namespace FindAndBook.Web.Areas.Administration.Controllers
         {
             this.authProvider.RemoveFromRole(id, "Admin");
 
-            return Content("Removed");
+            return PartialView("_AddToRole", id);
         }
     }
 }

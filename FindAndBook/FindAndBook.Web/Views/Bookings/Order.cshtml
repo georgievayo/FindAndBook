@@ -9,7 +9,7 @@
                     new AjaxOptions { UpdateTargetId = "content", InsertionMode = InsertionMode.Replace, HttpMethod = "POST" }))
         {
             @Html.HiddenFor(x => x.BookingId)
-            if (Model.PlaceMenu.Count == 0)
+            if (@Model.PlaceMenu.Count == 0)
             {
                 <h3>Sorry! This place does not offer online menu.</h3>
             }

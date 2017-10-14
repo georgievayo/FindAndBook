@@ -6,9 +6,9 @@ namespace FindAndBook.Data
 {
     public class UnitOfWork : IUnitOfWork
     {
-        private readonly FindAndBookContext dbContext;
+        private readonly IFindAndBookContext dbContext;
 
-        public UnitOfWork(FindAndBookContext dbContext)
+        public UnitOfWork(IFindAndBookContext dbContext)
         {
             if (dbContext == null)
             {

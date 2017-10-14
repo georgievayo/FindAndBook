@@ -45,6 +45,7 @@
     <Compile Include="IBookingFactory.cs" />
     <Compile Include="IConsumableFactory.cs" />
     <Compile Include="IPlaceFactory.cs" />
+    <Compile Include="IQuestionFactory.cs" />
     <Compile Include="IReviewsFactory.cs" />
     <Compile Include="ITablesFactory.cs" />
     <Compile Include="IUserFactory.cs" />

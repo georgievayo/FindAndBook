@@ -69,6 +69,7 @@ namespace FindAndBook.Web.Controllers
             return View();
         }
 
+        [OutputCache(Duration = 60*5, VaryByParam = "page")]
         public ActionResult GetPlacesByCategory([Bind(Prefix = "category")] string category, int count = 10, int page = 1)
         {
             if (category == null)
