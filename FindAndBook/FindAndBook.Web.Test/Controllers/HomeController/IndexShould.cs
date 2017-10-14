@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using FindAndBook.Services.Contracts;
+﻿using FindAndBook.Services.Contracts;
 using FindAndBook.Web.Factories;
 using FindAndBook.Web.Models.Search;
 using Moq;

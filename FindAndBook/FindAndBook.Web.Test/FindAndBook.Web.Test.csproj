@@ -127,7 +127,9 @@
     <Compile Include="Controllers\ConsumablesController\GetCreateShould.cs" />
     <Compile Include="Controllers\ConsumablesController\GetNewFormShould.cs" />
     <Compile Include="Controllers\HomeController\ConstructorShould.cs" />
+    <Compile Include="Controllers\HomeController\ContactShould.cs" />
     <Compile Include="Controllers\HomeController\IndexShould.cs" />
+    <Compile Include="Controllers\HomeController\SendQuestionShould.cs" />
     <Compile Include="Controllers\NavigationController\ConstructorShould.cs" />
     <Compile Include="Controllers\NavigationController\IndexShould.cs" />
     <Compile Include="Controllers\PlacesController\ConstructorShould.cs" />

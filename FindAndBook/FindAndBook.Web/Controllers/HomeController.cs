@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Net;
-using System.Net.Mail;
 using System.Web.Mvc;
 using FindAndBook.Services.Contracts;
 using FindAndBook.Web.Factories;
@@ -39,8 +37,6 @@ namespace FindAndBook.Web.Controllers
         [HttpGet]
         public ActionResult Contact()
         {
-            ViewBag.Message = "Your contact page.";
-
             return View();
         }
 
