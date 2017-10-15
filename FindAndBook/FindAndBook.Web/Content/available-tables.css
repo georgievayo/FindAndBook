@@ -1,0 +1,18 @@
+﻿#tables {
+    background-color: #f0e2e2;
+    color: rgba(127, 59, 79, 0.7);
+}
+
+.add-to-cart, .like {
+    background: #c08e96;
+    padding: 1.2em 1.5em;
+    border: none;
+    text-transform: UPPERCASE;
+    font-weight: bold;
+    color: #fff;
+    -webkit-transition: background .3s ease;
+    transition: background .3s ease; }
+
+.add-to-cart:hover, .like:hover {
+    background: #dfc8ce;
+    color: #fff; }

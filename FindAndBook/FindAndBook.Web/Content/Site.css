@@ -24,3 +24,10 @@ body {
     background-color: #f0e2e2;
 }
 
+legend {
+    font-family: navFont;
+    font-size: 30pt !important;
+    border-bottom-color: rgba(127, 59, 79, 0.9);
+    margin-bottom: 50px !important;
+}
+

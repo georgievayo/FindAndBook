@@ -18,8 +18,8 @@
             <div class="input-group-btn">
                 <div class="row">
                     <div class="input-group col-md-10 col-md-offset-1">
-                        @Html.DropDownListFor(x => x.Category, @Model.CategoryOptions, new { @class = "form-control col-md-3" })
-                        @Html.DropDownListFor(x => x.SearchBy, @Model.SearchByOptions, new {@class = "form-control col-md-3"})
+                        @Html.DropDownListFor(x => x.Category, @Model.CategoryOptions, "Select category",new { @class = "form-control col-md-3" })
+                        @Html.DropDownListFor(x => x.SearchBy, @Model.SearchByOptions, "Search in", new {@class = "form-control col-md-3"})
                         @Html.EditorFor(x => x.Pattern, new { htmlAttributes = new { @class = "input form-control col-md-3", placeholder = "Enter pattern..." } })
                         <button type="submit" class="btn col-md-1"><span class="glyphicon glyphicon-search"></span> Go</button>
                     </div>

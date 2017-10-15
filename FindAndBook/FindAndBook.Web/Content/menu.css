@@ -1,0 +1,23 @@
+﻿legend {
+    color: rgba(127, 59, 79, 0.9);
+}
+
+.add-to-cart, .like {
+    background: #c08e96;
+    padding: 1em 1.2em;
+    border: none;
+    text-transform: UPPERCASE;
+    font-weight: bold;
+    color: #fff;
+    -webkit-transition: background .3s ease;
+    transition: background .3s ease; }
+
+.add-to-cart:hover, .like:hover {
+    background: #dfc8ce;
+    color: #fff; }
+
+th {
+    color: rgba(127, 59, 79, 0.9);
+    font-size: 14pt;
+    border-bottom: 1px solid rgba(127, 59, 79, 0.9) !important;
+}

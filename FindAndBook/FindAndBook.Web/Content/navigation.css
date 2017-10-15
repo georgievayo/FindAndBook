@@ -1,7 +1,13 @@
-﻿.navbar {
+﻿@font-face {
+    font-family: navFont;
+    src: url('../fonts/Rainbow Bridge Personal Use.ttf');
+}
+
+.navbar {
   position: absolute;
   width: 100%;
   top: 0px;
+    font-family: navFont;
   margin-bottom: 0px;
     border-radius: unset !important;
     background-color: rgba(127, 59, 79, 0.7) !important;
@@ -19,22 +25,23 @@
   background-color: transparent;
 }
 .navbar-nav > li > a {
-  text-transform: uppercase;
+  /*text-transform: uppercase;*/
   line-height: 42px;
   -webkit-transition: all ease-in-out 0.4s;
   -moz-transition: all ease-in-out 0.4s;
   -o-transition: all ease-in-out 0.4s;
   transition: all ease-in-out 0.4s;
     color: white;
+
 }
 .navbar-default .navbar-nav > li > a {
     color: white !important;
-  font-size: 16px;
+  font-size: 25px;
 }
 .navbar-brand {
   padding: 17px 15px;
     color: white !important;
-    font-size: 30px !important;
+    font-size: 40px !important;
 
 }
 .navbar-brand img {

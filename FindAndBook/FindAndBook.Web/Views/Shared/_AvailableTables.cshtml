@@ -1,5 +1,6 @@
 ﻿@model FindAndBook.Web.Models.Places.BookingFormViewModel
-<div class="jumbotron">
+    @Styles.Render("~/Content/available-tables.css")
+<div class="jumbotron" id="tables">
     @if (Model.TwoPeopleTablesCount == 0 && Model.FourPeopleTablesCount == 0 && Model.SixPeopleTablesCount == 0)
     {
         <h3>Sorry! There is no available tables.</h3>

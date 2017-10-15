@@ -286,11 +286,13 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\available-tables.css" />
     <Content Include="Content\booking-datetime-form.css" />
     <Content Include="Content\contact.css" />
     <Content Include="Content\home.css" />
     <Content Include="Content\list.css" />
     <Content Include="Content\form.css" />
+    <Content Include="Content\menu.css" />
     <Content Include="Content\PagedList.css" />
     <Content Include="Content\tabs.css" />
     <Content Include="Content\bookings.css" />
@@ -316,6 +318,9 @@
     <Content Include="Areas\Administration\Views\Administration\Index.cshtml" />
     <Content Include="Areas\Administration\Views\Shared\_AddToRole.cshtml" />
     <Content Include="Areas\Administration\Views\Shared\_RemoveFromRole.cshtml" />
+    <Content Include="fonts\Rainbow Bridge Personal Use.ttf" />
+    <Content Include="fonts\Seaside Heights.ttf" />
+    <Content Include="fonts\Cool-BoldDuranGo.ttf" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />

@@ -6,6 +6,12 @@
     color: white;
 }
 
+h1 {
+    font-family: navFont;
+    font-size: 60px;
+    color: rgba(127, 59, 79, 0.9);
+}
+
 .btn {
     color: white;
     background-color: rgba(127, 59, 79, 0.9);

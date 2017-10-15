@@ -4,8 +4,8 @@
     margin: 5% 0;
     box-shadow: 3px 3px 2px #ccc;
     transition: 0.5s;
-    background-color: rgba(127, 59, 79, 0.7);
 }
+
 .custab:hover{
     box-shadow: 3px 3px 0px transparent;
     transition: 0.5s;
@@ -29,6 +29,8 @@ img {
 
 th {
     color: white;
+    background-color: rgba(127, 59, 79, 0.7);
+
 }
 
 tr td a, tr td a:hover {
