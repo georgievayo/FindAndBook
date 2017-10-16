@@ -36,7 +36,9 @@ namespace FindAndBook.Web.Controllers
                 .ToList();
 
             var model = found.ToPagedList(page, count);
-
+            ViewBag.Category = category;
+            ViewBag.SearchBy = searchBy;
+            ViewBag.Pattern = pattern;
             return View("List", model);
         }
 

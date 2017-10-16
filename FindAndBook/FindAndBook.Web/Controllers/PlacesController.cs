@@ -83,6 +83,7 @@ namespace FindAndBook.Web.Controllers
                 .ToList();
 
             var model = places.ToPagedList(page, count);
+            ViewBag.Category = category;
 
             return this.PartialView("_PartialList", model);
         }
