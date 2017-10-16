@@ -70,7 +70,7 @@ namespace FindAndBook.Web.Controllers
         }
 
         [OutputCache(Duration = 60*5, VaryByParam = "page")]
-        public ActionResult GetPlacesByCategory([Bind(Prefix = "category")] string category, int count = 10, int page = 1)
+        public ActionResult GetPlacesByCategory([Bind(Prefix = "category")] string category, int count = 6, int page = 1)
         {
             if (category == null)
             {
@@ -168,7 +168,7 @@ namespace FindAndBook.Web.Controllers
         }
 
         [HttpGet]
-        public ActionResult List(int count = 10, int page = 1)
+        public ActionResult List(int count = 6, int page = 1)
         {
             var places = this.placeService
                 .GetAll()
