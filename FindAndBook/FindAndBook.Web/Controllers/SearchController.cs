@@ -28,7 +28,7 @@ namespace FindAndBook.Web.Controllers
         [HttpGet]
         public ActionResult Search([Bind(Prefix = "category")] string category, 
             [Bind(Prefix = "searchBy")] string searchBy, [Bind(Prefix = "pattern")] string pattern,
-            int count = 10, int page = 1)
+            int count = 6, int page = 1)
         {
             var found = this.searchService
                 .FindBy(category, searchBy, pattern)

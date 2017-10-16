@@ -36,7 +36,7 @@
                     new AjaxOptions()
                     {
                         HttpMethod = "GET",
-                        UpdateTargetId = "list",
+                        UpdateTargetId = "results",
                         InsertionMode = InsertionMode.Replace
                     }))
             Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
